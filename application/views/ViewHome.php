@@ -15,12 +15,8 @@
     }
     
     #img1{
-        filter: blur(8px);
-        -webkit-filter: blur(8px);
         width: 100%;
-        height: auto;
-        background-position: center;
-        background-repeat: no-repeat;
+        height: 721px;
         background-size: cover;
     }
     
@@ -37,7 +33,7 @@
         width: 50px;
         height: 60px;
         position: absolute;
-        left: 1640px;
+        left: 1250px;
         top: 10px;
         
     }
@@ -50,24 +46,16 @@
     }
 
     .centered2{
-        background-color: rgb(0,0,0);
-        background-color: rgba(0,0,0, 0.4);
-        color: white;
-        font-weight: bold;
         position: absolute;
         top: 50%;
-        left: 50%;
+        left: 40%;
         transform: translate(-50%, -50%);
-        z-index: 2;
-        width: 60%;
-        padding: 20px;
-        text-align: center;
     }
 
     .top-right {
         position: absolute;
-        top: 0px;
-        right: 0px;
+        top: 8px;
+        right: 40px;
         color: black;
     }
 
@@ -128,20 +116,22 @@
 <body>
         <!--COVER-->
         <img src="<?php echo base_url('assets/img/homepic.jpg'); ?>" id="img1" />
-        <!--<img src="<?php echo base_url('assets/img/gray.jpg'); ?>" id="img2" />-->
-        <!--<img src="<?php echo base_url('assets/img/telpun.png'); ?>" id="img3"/>-->
+        <img src="<?php echo base_url('assets/img/gray.jpg'); ?>" id="img2" />
+        <img src="<?php echo base_url('assets/img/telpun.png'); ?>" id="img3"/>
         <!--END COVER-->
 
         <!--TULISAN TULISAN DI COVER-->
         <div class="centered2">
-            <h1 class="welkam2"> ONE STOP FOR YOUR PET</h1>
+            <h1 class="welkam2" style="color: black;"> ONE STOP FOR YOUR PET</h1>
             <br>
             <br>
-            <a href="#" class="btn btn-default btn-rounded mb-4 button2" data-toggle="modal" data-target="#modalContactForm"  style="color: white;">REQUEST APPOINTMENT</a>
+            <a href="#" class="btn btn-default btn-rounded mb-4 button2" data-toggle="modal" data-target="#modalContactForm">REQUEST APPOINTMENT</a>
         </div>
 
         <div class="top-right">
-            <h2 class="button button1" style="color:white;font-weight: 800;">Call Us<br>   022-232323   </h2>
+            <h2 style="font-size: 30px;">Call Us Today</h2>
+            <br>
+            <h2 class="button button1" style="position: relative;top: -40px;right: -15px;color:black;font-weight: 800;">   022-232323   </h2>
         </div>
 
         <!--END TULISAN TULISAN DI COVER-->
@@ -165,25 +155,24 @@
 <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-        <div class="modal-header text-center">
-            <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
+          <div class="modal-header text-center">
+              <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
         <div class="modal-body mx-3">
             <div class="md-form mb-5">
-            <i class="fas fa-envelope prefix grey-text"></i>
-            <input type="email" id="defaultForm-email" class="form-control validate">
-            <label data-error="wrong" data-success="right" for="defaultForm-email">Your email</label>
+              <i class="fas fa-envelope prefix grey-text"></i>
+              <input type="email" id="defaultForm-email" class="form-control validate">
+              <label>Your email</label>
             </div>
 
             <div class="md-form mb-4">
-            <i class="fas fa-lock prefix grey-text"></i>
-            <input type="password" id="defaultForm-pass" class="form-control validate">
-            <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
+              <i class="fas fa-lock prefix grey-text"></i>
+              <input type="password" id="defaultForm-pass" class="form-control validate">
+              <label>Your password</label>
             </div>
-
         </div>
         <div class="modal-footer d-flex justify-content-center">
 
@@ -209,19 +198,20 @@
         </button>
       </div>
       <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <i class="fas fa-user prefix grey-text"></i>
+        <!-- NAMA -->
+        <div class="md-form mb-4">
           <input type="text" id="orangeForm-name" class="form-control validate">
           <label data-error="wrong" data-success="right" for="orangeForm-name">Your name</label>
         </div>
-        <div class="md-form mb-5">
-          <i class="fas fa-envelope prefix grey-text"></i>
+
+        <!-- EMAIL -->
+        <div class="md-form mb-4">
           <input type="email" id="orangeForm-email" class="form-control validate">
           <label data-error="wrong" data-success="right" for="orangeForm-email">Your email</label>
         </div>
 
+        <!-- PASSWORD -->
         <div class="md-form mb-4">
-          <i class="fas fa-lock prefix grey-text"></i>
           <input type="password" id="orangeForm-pass" class="form-control validate">
           <label data-error="wrong" data-success="right" for="orangeForm-pass">Your password</label>
         </div>

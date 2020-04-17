@@ -65,7 +65,7 @@
           </li>
           <!--START ICON-->
           <li class="nav-item">
-            <a class="nav-link fa fa-fw fa-user" id="icon" href="#" ></a>
+            <a class="nav-link fa fa-fw fa-user" id="icon" href="<?= site_url('ControlProfile') ?>" ></a>
             <a class="nav-link fa fa-shopping-cart" id="icon1" href="<?= site_url('ControlCart') ?>"></a>
           <!--END ICON-->
           </li>
@@ -103,7 +103,7 @@
     
 
     
-      <p style="text-align: center;position: absolute;right: 390px;bottom: -10px;"><span style="font-size: 30px;font-weight: bold;">KENAPA CAT N DOC ?</span> <br> 
+      <p style="text-align: center;position: absolute;right: 270px;bottom: -187px;"><span style="font-size: 30px;font-weight: bold;">KENAPA CAT N DOC ?</span> <br> 
         <span style="position: relative;right: -155px;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab, possimus! Eum, ad placeat!
         <br>
         <!--- batas-->AIDAWOIDAW AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAAA<!--- batas-->

@@ -53,7 +53,7 @@
             </li>
             <!--START ICON-->
             <li class="nav-item">
-              <a class="nav-link fa fa-fw fa-user" id="icon" href="#" ></a>
+              <a class="nav-link fa fa-fw fa-user" id="icon" href="<?= site_url('ControlProfile') ?>" ></a>
               <a class="nav-link fa fa-shopping-cart" id="icon" href="<?= site_url('ControlCart') ?>"></a>
             <!--END ICON-->
             </li>
