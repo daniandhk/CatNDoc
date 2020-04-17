@@ -15,6 +15,8 @@
     }
     
     #img1{
+        filter: blur(5px);
+        -webkit-filter: blur(5px);
         width: 100%;
         height: 721px;
         background-size: cover;
@@ -31,10 +33,10 @@
 
     #img3{
         width: 50px;
-        height: 60px;
+        height: 50px;
         position: absolute;
-        left: 1250px;
-        top: 10px;
+        left: 1320px;
+        top: 18px;
         
     }
 
@@ -46,10 +48,18 @@
     }
 
     .centered2{
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0, 0.4);
+        color: white;
+        font-weight: bold;
         position: absolute;
         top: 50%;
-        left: 40%;
+        left: 50%;
         transform: translate(-50%, -50%);
+        z-index: 2;
+        width: 60%;
+        padding: 20px;
+        text-align: center;
     }
 
     .top-right {
@@ -83,7 +93,8 @@
     }
 
     .button1{
-        background-color:gray;
+        background-color: rgb(0,0,0);
+        background-color: rgba(255,255,255,0.8);
         border: none;
         color: black;
         padding: 10px;
@@ -94,7 +105,7 @@
         font-size: 16px;
         margin: 6px 13px;
         border-radius: 70px;
-        opacity: 0.6;
+        opacity: 0.8;
     }
 
     .button2{
@@ -116,22 +127,20 @@
 <body>
         <!--COVER-->
         <img src="<?php echo base_url('assets/img/homepic.jpg'); ?>" id="img1" />
-        <img src="<?php echo base_url('assets/img/gray.jpg'); ?>" id="img2" />
+        <!--<img src="<?php echo base_url('assets/img/gray.jpg'); ?>" id="img2" />-->
         <img src="<?php echo base_url('assets/img/telpun.png'); ?>" id="img3"/>
         <!--END COVER-->
 
         <!--TULISAN TULISAN DI COVER-->
         <div class="centered2">
-            <h1 class="welkam2" style="color: black;"> ONE STOP FOR YOUR PET</h1>
+            <h1 class="welkam2" style="color: white;"> ONE STOP FOR YOUR PET</h1>
             <br>
             <br>
-            <a href="#" class="btn btn-default btn-rounded mb-4 button2" data-toggle="modal" data-target="#modalContactForm">REQUEST APPOINTMENT</a>
+            <a href="#" class="btn btn-default btn-rounded mb-4 button2" style="color: white;" data-toggle="modal" data-target="#modalContactForm">REQUEST APPOINTMENT</a>
         </div>
 
         <div class="top-right">
-            <h2 style="font-size: 30px;">Call Us Today</h2>
-            <br>
-            <h2 class="button button1" style="position: relative;top: -40px;right: -15px;color:black;font-weight: 800;">   022-232323   </h2>
+            <h1 class="button button1" style="position: relative;right: -35px;color:black;font-weight: 800;">Call Us<br>   022-232323   </h1>
         </div>
 
         <!--END TULISAN TULISAN DI COVER-->
