@@ -1,2 +1,2 @@
 # CatNDoc
-Cat N Doc: Web Layanan Kesehatan &amp; Petshop untuk Kucing dan Anjing
+ Cat N Doc : Web Layanan Kesehatan Hewan Peliharaan & Petshop
