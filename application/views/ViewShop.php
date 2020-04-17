@@ -79,13 +79,13 @@
     <div id="carouselExampleControls" class="carousel slide m-5" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="<?php echo base_url('assests/img/makan1.jpg'); ?>" class="d-block w-100 " id="pic1">
+          <img src="<?php echo base_url('assets/img/makan1.jpg'); ?>" class="d-block w-100 " id="pic1">
         </div>
         <div class="carousel-item">
-          <img src="<?php echo base_url('assests/img/makan2.jpg'); ?>" class="d-block w-100 "  id="pic1">
+          <img src="<?php echo base_url('assets/img/makan2.jpg'); ?>" class="d-block w-100 "  id="pic1">
         </div>
         <div class="carousel-item">
-          <img src="<?php echo base_url('assests/img/makan3.jpg'); ?>" class="d-block w-100 " id="pic1">
+          <img src="<?php echo base_url('assets/img/makan3.jpg'); ?>" class="d-block w-100 " id="pic1">
         </div>
       </div>
       <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
