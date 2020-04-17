@@ -40,6 +40,11 @@
         
     }
 
+    #img4{
+        width: 50%;
+        height: 50%;
+    }
+
     .centered {
         position: absolute;
         top: 10%;
@@ -133,9 +138,10 @@
 
         <!--TULISAN TULISAN DI COVER-->
         <div class="centered2">
+            <img src="<?php echo base_url('assets/img/banner.png'); ?>"id="img4"/>
+            <br>
+            <br>
             <h1 class="welkam2" style="color: white;"> ONE STOP FOR YOUR PET</h1>
-            <br>
-            <br>
             <a href="#" class="btn btn-default btn-rounded mb-4 button2" style="color: white;" data-toggle="modal" data-target="#modalContactForm">REQUEST APPOINTMENT</a>
         </div>
 
