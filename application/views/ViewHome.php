@@ -15,8 +15,12 @@
     }
     
     #img1{
+        filter: blur(8px);
+        -webkit-filter: blur(8px);
         width: 100%;
-        height: 903px;
+        height: auto;
+        background-position: center;
+        background-repeat: no-repeat;
         background-size: cover;
     }
     
@@ -46,16 +50,24 @@
     }
 
     .centered2{
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0, 0.4);
+        color: white;
+        font-weight: bold;
         position: absolute;
         top: 50%;
-        left: 40%;
+        left: 50%;
         transform: translate(-50%, -50%);
+        z-index: 2;
+        width: 60%;
+        padding: 20px;
+        text-align: center;
     }
 
     .top-right {
         position: absolute;
-        top: 8px;
-        right: 40px;
+        top: 0px;
+        right: 0px;
         color: black;
     }
 
@@ -116,22 +128,20 @@
 <body>
         <!--COVER-->
         <img src="<?php echo base_url('assets/img/homepic.jpg'); ?>" id="img1" />
-        <img src="<?php echo base_url('assets/img/gray.jpg'); ?>" id="img2" />
-        <img src="<?php echo base_url('assets/img/telpun.png'); ?>" id="img3"/>
+        <!--<img src="<?php echo base_url('assets/img/gray.jpg'); ?>" id="img2" />-->
+        <!--<img src="<?php echo base_url('assets/img/telpun.png'); ?>" id="img3"/>-->
         <!--END COVER-->
 
         <!--TULISAN TULISAN DI COVER-->
         <div class="centered2">
-            <h1 class="welkam2" style="color: black;"> ONE STOP FOR YOUR PET</h1>
+            <h1 class="welkam2"> ONE STOP FOR YOUR PET</h1>
             <br>
             <br>
-            <a href="#" class="btn btn-default btn-rounded mb-4 button2" data-toggle="modal" data-target="#modalContactForm">REQUEST APPOINTMENT</a>
+            <a href="#" class="btn btn-default btn-rounded mb-4 button2" data-toggle="modal" data-target="#modalContactForm"  style="color: white;">REQUEST APPOINTMENT</a>
         </div>
 
         <div class="top-right">
-            <h2 style="font-size: 30px;">Call Us Today</h2>
-            <br>
-            <h2 class="button button1" style="position: relative;top: -40px;right: -15px;color:black;font-weight: 800;">   022-232323   </h2>
+            <h2 class="button button1" style="color:white;font-weight: 800;">Call Us<br>   022-232323   </h2>
         </div>
 
         <!--END TULISAN TULISAN DI COVER-->
