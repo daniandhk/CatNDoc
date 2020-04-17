@@ -115,9 +115,9 @@
 </head>
 <body>
         <!--COVER-->
-        <img src="<?php echo base_url('assests/img/homepic.jpg'); ?>" id="img1" />
-        <img src="<?php echo base_url('assests/img/gray.jpg'); ?>" id="img2" />
-        <img src="<?php echo base_url('assests/img/telpun.png'); ?>" id="img3"/>
+        <img src="<?php echo base_url('assets/img/homepic.jpg'); ?>" id="img1" />
+        <img src="<?php echo base_url('assets/img/gray.jpg'); ?>" id="img2" />
+        <img src="<?php echo base_url('assets/img/telpun.png'); ?>" id="img3"/>
         <!--END COVER-->
 
         <!--TULISAN TULISAN DI COVER-->
