@@ -6,6 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
  
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
  
   
   <style>
@@ -256,38 +261,70 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <i class="fas fa-user prefix grey-text"></i>
-          <input type="text" id="form34" class="form-control validate">
-          <label data-error="wrong" data-success="right" for="form34">Nama</label>
+      <div class="bootstrap-iso">
+       <div class="container-fluid">
+        <div class="row">
+         <div class="col-md-12 col-sm-6 col-xs-12">
+          <form method="post">
+           <div class="form-group ">
+            <label class="control-label " for="nama">
+             Nama
+            </label>
+            <input class="form-control" id="nama" name="nama" type="text"/>
+           </div>
+           <div class="form-group ">
+            <label class="control-label requiredField" for="email">
+             Email
+             <span class="asteriskField">
+              *
+             </span>
+            </label>
+            <input class="form-control" id="email" name="email" type="text"/>
+           </div>
+           <div class="form-group ">
+            <label class="control-label " for="telepon">
+             No. Telp
+            </label>
+            <input class="form-control" id="telepon" name="telepon" type="text"/>
+           </div>
+           <div class="form-group ">
+            <label class="control-label " for="date">
+             Date
+            </label>
+            <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
+           </div>
+           <div class="form-group ">
+            <label class="control-label " for="select">
+             Jenis Hewan Peliharaan
+            </label>
+            <select class="select form-control" id="select" name="select">
+             <option selected="selected" value="">
+             </option>
+             <option value="Kucing">
+              Kucing
+             </option>
+             <option value="Anjing">
+              Anjing
+             </option>
+            </select>
+           </div>
+           <div class="form-group ">
+            <label class="control-label " for="message">
+             Keluhan
+            </label>
+            <textarea class="form-control" cols="40" id="message" name="message" rows="6"></textarea>
+           </div>
+           <div class="form-group">
+            <div>
+             <button class="btn btn-primary " name="submit" type="submit">
+              Submit
+             </button>
+            </div>
+           </div>
+          </form>
+         </div>
         </div>
-
-        <div class="md-form mb-5">
-          <i class="fas fa-envelope prefix grey-text"></i>
-          <input type="email" id="form29" class="form-control validate">
-          <label data-error="wrong" data-success="right" for="form29">Email</label>
-        </div>
-
-        <div class="md-form mb-5">
-          <i class="fas fa-tag prefix grey-text"></i>
-          <input type="text" id="form32" class="form-control validate">
-          <label data-error="wrong" data-success="right" for="form32">No Telepon</label>
-        </div>
-
-
-        
-        <div class="md-form">
-          <i class="fas fa-pencil prefix grey-text"></i>
-          <textarea type="text" id="form8" class="md-textarea form-control" rows="4"></textarea>
-          <label data-error="wrong" data-success="right" for="form8">Hari,Tanggal,Jam dan juga keluhan</label>
-        </div>
-
-      </div>
-      <div class="modal-footer d-flex justify-content-center">
-        <!-- LEMPAR KE DATABASE -->
-        <button class="btn btn-unique">Send <i class="fas fa-paper-plane-o ml-1"></i></button>
-        <!-- LEMPAR KE DATABASE -->
+       </div>
       </div>
     </div>
   </div>
