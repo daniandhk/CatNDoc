@@ -65,6 +65,10 @@
 .btn{
     margin-left:900px;
 }
+
+
+
+
       
     </style>
   </head>
@@ -111,29 +115,28 @@
                       <div class="col-md-3 col-xs-12 col-sm-6 col-lg-3">
                         <div class="thumbnail text-center photo_view_postion_b" >
                         <!-- GET FOTO-->
-                          <img src="" alt="stack photo" class="img">
+                          <img src="https://1.bp.blogspot.com/-Z4udyQ92_Pk/XoK9UJkRlAI/AAAAAAAAIRc/89AwHjoIaaAVH_x1QQ2GlJwPhC5w1xk1QCNcBGAsYHQ/s1600/8VO262-ZLMGFz-sB.jpg" alt="stack photo" class="img">
                         
                         </div>
                       </div>
                       <div class="col-md-9 col-xs-12 col-sm-6 col-lg-9">
                           <div class="" style="border-bottom:1px solid black">
                             <!-- GET NAMA-->
-                            <h2>aa</h2>
+                            <h2>MANUSIAWI</h2>
                             
                           </div>
                             <hr>
                           <div class="col-md-8">  
-                          <ul class=" details">
-                            <!-- GET NOTELP-->
-                            <li id="profil"><p><span class="glyphicon glyphicon-earphone one" style="width:50px;"></span>086969696</p></li>
+                            <ul class=" details">
+                              <!-- GET NOTELP-->
+                              <li id="profil"><p><span class="glyphicon glyphicon-earphone one" style="width:50px;"></span>086969696</p></li>
 
-                            <!-- GET EMAIL-->
-                            <li id="profil"><p><span class="glyphicon glyphicon-envelope one" style="width:50px;"></span>somerandom@email.com</p></li>
+                              <!-- GET EMAIL-->
+                              <li id="profil"><p><span class="glyphicon glyphicon-envelope one" style="width:50px;"></span>somerandom@email.com</p></li>
 
-                            <!-- GET KOTA ASAL-->
-                            <li id="profil"><p><span class="glyphicon glyphicon-map-marker one" style="width:50px;"></span>Hyderabad</p></li>
-                          </ul>
-
+                              <!-- GET KOTA ASAL-->
+                              <li id="profil"><p><span class="glyphicon glyphicon-map-marker one" style="width:50px;"></span>ANAPTANI</p></li>
+                            </ul>
                           </div>
                           <!-- INCASE BUTUH BUAT DATA DIRI TAMBAHAN
                           <div class="col-md-4">  
@@ -147,59 +150,67 @@
                           -->
                       </div>
                     </div>
+
+                    <!-- HEWAN -->
+                    <a href="#" type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal2">UPDATE DATA HEWAN</a>
                     <div class="row">
-                      <div class="form-group row">
-                        <div class="col-md-12">
-                        <div class="form-group" style="border-bottom:1px solid black">
-                            <h2>INFO PELIHARAAN</h2>
+                    
+                      <div class="col-md-3 col-xs-12 col-sm-6 col-lg-3">
+                      
+                        <div class="thumbnail text-center photo_view_postion_b" >
+                        
+                        <!-- GET FOTO-->
+                          <img src="https://1.bp.blogspot.com/-Z4udyQ92_Pk/XoK9UJkRlAI/AAAAAAAAIRc/89AwHjoIaaAVH_x1QQ2GlJwPhC5w1xk1QCNcBGAsYHQ/s1600/8VO262-ZLMGFz-sB.jpg" alt="stack photo" class="img">
+                        
+                        </div>
+                        
+                      </div>
+                      
+                      <div class="col-md-9 col-xs-12 col-sm-6 col-lg-9">
+                      
+                          <div class="" style="border-bottom:1px solid black">
+                          
+                            <!-- GET NAMA-->
+                            <h2>HEWANI</h2>
                             
-                        </div>
-                        </div>
+                          </div>
+                          
+                            <hr>
+                          <div class="col-md-8">  
+                          
+                        <div class="col-2 col-xs-4 tital " >Jenis:</div><div class="col-sm-6 col-xs-6 contant_i">-</div>
+                        <div class="clearfix"></div><div class="bot-border"></div>
+                        <div class="col-2 col-xs-4 tital " >Berat:</div><div class="col-sm-6 col-xs-6 contant_i">-</div>
+                        <div class="clearfix"></div><div class="bot-border"></div>
+                        <div class="col-2 col-xs-4 tital " >Tinggi:</div><div class="col-sm-6 col-xs-6 contant_i">-</div>
+                        <div class="clearfix"></div><div class="bot-border"></div>
+                        <div class="col-2 col-xs-4 tital " >Warna:</div><div class="col-sm-6 col-xs-6 contant_i">-</div>
+                        <div class="clearfix"></div><div class="bot-border"></div>
+                          </div>
                       </div>
                     </div>
-                    <div class="row"> 
-                     <div class="col-md-4">
-                        <div class="col-sm-6 col-xs-6 tital " >Jenis:</div><div class="col-sm-6 col-xs-6 contant_i">-</div>
-                        <div class="clearfix"></div><div class="bot-border"></div>
-                        <div class="col-sm-6 col-xs-6 tital " >Berat:</div><div class="col-sm-6 col-xs-6 contant_i">-</div>
-                        <div class="clearfix"></div><div class="bot-border"></div>
-                        <div class="col-sm-6 col-xs-6 tital " >Tinggi:</div><div class="col-sm-6 col-xs-6 contant_i">-</div>
-                        <div class="clearfix"></div><div class="bot-border"></div>
-                        <div class="col-sm-6 col-xs-6 tital " >Warna:</div><div class="col-sm-6 col-xs-6 contant_i">-</div>
-                        <div class="clearfix"></div><div class="bot-border"></div>
-                     </div>
-                     <div class="col-md-4">
-                        <div class="col-sm-6 col-xs-6 tital " >GATAU:</div><div class="col-sm-6 col-xs-6 contant_i">-</div>
-                        <div class="clearfix"></div><div class="bot-border"></div>
-                        <div class="col-sm-6 col-xs-6 tital " >GATAU:</div><div class="col-sm-6 col-xs-6 contant_i">-</div>
-                        <div class="clearfix"></div><div class="bot-border"></div>
-                        <div class="col-sm-6 col-xs-6 tital " >GATAU:</div><div class="col-sm-6 col-xs-6 contant_i">-</div>
-                        <div class="clearfix"></div><div class="bot-border"></div>
-                        <div class="col-sm-6 col-xs-6 tital " >GATAU:</div><div class="col-sm-6 col-xs-6 contant_i">-</div>
-                        <div class="clearfix"></div><div class="bot-border"></div>
-                     </div>
-                    </div>                                 
-                </div>
-            </div>
+                    <!-- HEWAN -->
+
+                    
         <!-- END USER PROFILE -->
 
-        <!-- EDIT HEWAN -->
+        <!-- EDIT DIRI -->
 
-             <!-- Modal Edit Mahasiswa-->
+             <!-- Modal Edit Diri-->
              <div class="modal fade" id="myModal<?php //echo $data['id']; ?>" role="dialog">
               <div class="modal-dialog">
                 <!-- Modal content-->
                 <div class="modal-content">
                   <div class="modal-header">
-                     
-                     <h4 class="modal-title font-weight-bold">Update Data Hewan</h4>
+                     <h4 class="modal-title font-weight-bold">Update Data Diri</h4>
                   </div>
+                  
                   <div class="modal-body">
                     <form role="form" action="" method="">
                         
                         <?php
                         //$id = $data['id']; 
-                        //$query_edit = mysqli_query($koneksi, "SELECT * FROM mhs WHERE id='$id'");
+                        //$query_edit = mysqli_query($koneksi, "SELECT * FROM cust WHERE id='$id'");
                         //while ($row = mysqli_fetch_array($query_edit)) {  
                         ?>
 
@@ -209,8 +220,16 @@
                           <input type="text" name="nama_cust" class="form-control" value="<?php// echo $row['nama']; ?>">      
                         </div>
                         <div class="form-group">
-                          <label>Fakultas</label>
-                          <input type="text" name="fakultas_mhs" class="form-control" value="<?php// echo $row['fakultas']; ?>">      
+                          <label>No Telp</label>
+                          <input type="text" name="fakultas_mhs" class="form-control" value="<?php// echo $row['Notelp']; ?>">      
+                        </div>
+                        <div class="form-group">
+                          <label>Email</label>
+                          <input type="text" name="fakultas_mhs" class="form-control" value="<?php// echo $row['email']; ?>">      
+                        </div>
+                        <div class="form-group">
+                          <label>Asal</label>
+                          <input type="text" name="fakultas_mhs" class="form-control" value="<?php// echo $row['asal']; ?>">      
                         </div>
                         <div class="modal-footer">  
                           <button type="submit" class="btn btn-success">Update</button>
@@ -224,13 +243,58 @@
                 </div>
               </div>
             </div>
-        <!-- EDIT HEWANI-->
+        <!-- EDIT DIRINI-->
 
-        <!--a-->
+        <!--EDIT HEWANI-->
+            <!-- Modal Edit Diri-->
+            <div class="modal fade" id="myModal2<?php //echo $data['id']; ?>" role="dialog">
+              <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                     <h4 class="modal-title font-weight-bold">Update Data Hewan</h4>
+                  </div>
+                  
+                  <div class="modal-body">
+                    <form role="form" action="" method="">
+                        
+                        <?php
+                        //$id = $data['id']; 
+                        //$query_edit = mysqli_query($koneksi, "SELECT * FROM ngews WHERE id='$id'");
+                        //while ($row = mysqli_fetch_array($query_edit)) {  
+                        ?>
 
-
+                        <input type="hidden" name="id_hewan" value="<?php// echo $row['id']; ?>">
+                        <div class="form-group">
+                          <label>Jenis</label>
+                          <input type="text" name="jenis_hewan" class="form-control" value="<?php// echo $row['jenis']; ?>">      
+                        </div>
+                        <div class="form-group">
+                          <label>Berat</label>
+                          <input type="text" name="berat_hewan" class="form-control" value="<?php// echo $row['berat']; ?>">      
+                        </div>
+                        <div class="form-group">
+                          <label>Tinggi</label>
+                          <input type="text" name="tinggi_hewan" class="form-control" value="<?php// echo $row['tinggi']; ?>">      
+                        </div>
+                        <div class="form-group">
+                          <label>Warna</label>
+                          <input type="text" name="warna_hewan" class="form-control" value="<?php// echo $row['warna']; ?>">      
+                        </div>
+                        <div class="modal-footer">  
+                          <button type="submit" class="btn btn-success">Update</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                        <?php 
+                        //}
+                        ?>        
+                      </form>
+                  </div>
+                </div>
+              </div>
+            </div>              
     
-        <!-- z-->
+        <!-- EDIT HEWANO-->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
