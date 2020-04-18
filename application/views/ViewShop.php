@@ -24,8 +24,16 @@
       }
 
       #pic1{
-        height: 600px;
-        width: 50px;
+        height: 400px;
+        width: 4000px;
+      }
+      #pic2{
+        height: 400px;
+        width: 4000px;
+      }
+      #pic3{
+        height: 400px;
+        width: 4000px;
       }
       
       #icon1{
@@ -75,70 +83,105 @@
     <!-- END NAVBAR -->
 
     <!-- START DISPLAY PICTURE -->
+<!-- Page Content -->
+<div class="container">
 
-    <div id="carouselExampleControls" class="carousel slide m-5" data-ride="carousel">
-      <div class="carousel-inner">
+<div class="row">
+
+  <div class="col-lg-3">
+
+    <h1 class="my-4">Frankie Shop</h1>
+    <!-- KATEGORI 
+      <div class="list-group">
+        <a href="#" class="list-group-item">Toy</a>
+        <a href="#" class="list-group-item">Shampoo</a>
+        <a href="#" class="list-group-item">Accesories</a>
+      </div>
+    KATEGORI -->
+
+  </div>
+
+  <div class="col-lg-9">
+
+    <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
         <div class="carousel-item active">
-          <img src="<?php echo base_url('assets/img/makan1.jpg'); ?>" class="d-block w-100 " id="pic1">
+          <img class="d-block img-fluid" src="<?php echo base_url('assets/img/makan1.jpg'); ?>" id="pic1">
         </div>
         <div class="carousel-item">
-          <img src="<?php echo base_url('assets/img/makan2.jpg'); ?>" class="d-block w-100 "  id="pic1">
+          <img class="d-block img-fluid" src="<?php echo base_url('assets/img/makan2.jpg'); ?>" id="pic2">
         </div>
         <div class="carousel-item">
-          <img src="<?php echo base_url('assets/img/makan3.jpg'); ?>" class="d-block w-100 " id="pic1">
+          <img class="d-block img-fluid" src="<?php echo base_url('assets/img/makan3.jpg'); ?>" id="pic3">
         </div>
       </div>
-      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
       </a>
-      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
       </a>
     </div>
-    <!-- END DISPLAY PICTURE -->
 
-    <h1 style="text-align: left; position: absolute;left: 20px;bottom: -200px;">BEST SELLER</h1>
-    
+    <div class="row">
 
-    
-      <p style="text-align: center;position: absolute;right: 270px;bottom: -187px;"><span style="font-size: 30px;font-weight: bold;">KENAPA CAT N DOC ?</span> <br> 
-        <span style="position: relative;right: -155px;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab, possimus! Eum, ad placeat!
-        <br>
-        <!--- batas-->AIDAWOIDAW AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAAA<!--- batas-->
-        <br>
-        <!--- batas-->AIDAWOIDAW AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA AAAAAAAAAAAAAAAAAAA<!--- batas--> </span></p>
-
-    <!-- START PRODUK -->
-
-    <div class="card w-50">
-      <div class="card-img-top d-flex align-items-center bg-light">
-          <div>
-              <img class="img-fluid" src="http://via.placeholder.com/150x150/1f1a38/ffffff?text=Image" alt="Card image cap">
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100">
+          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="#">MAKANAN ANJING</a>
+            </h4>
+            <h5>$24.99</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
           </div>
-          <p class="col p-2 m-0">Text next to the right of the image</p>
-          <button style="position: relative;left: -40px;">Buy</button>
-      </div>
-  </div>
-  
-  <div class="card w-50">
-    <div class="card-img-top d-flex align-items-center bg-light">
-        <div>
-            <img class="img-fluid" src="http://via.placeholder.com/150x150/1f1a38/ffffff?text=Image" alt="Card image cap">
+          <div class="card-footer">
+            <button class="btn btn-primary btn-lg" style="position: relative;left: 70px;">Buy</button>
+          </div>
         </div>
-        <p class="col p-2 m-0">Text next to the right of the image</p>
-        <button style="position: relative;left: -40px;">Buy</button>
-    </div>
-</div>
-<div class="card w-50">
-  <div class="card-img-top d-flex align-items-center bg-light">
-      <div>
-          <img class="img-fluid" src="http://via.placeholder.com/150x150/1f1a38/ffffff?text=Image" alt="Card image cap">
       </div>
-      <p class="col p-2 m-0">Text next to the right of the image</p>
-      <button style="position: relative;left: -40px;">Buy</button>
+
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100">
+          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="#">MAKANAN KUCING</a>
+            </h4>
+            <h5>$24.99</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-primary btn-lg" style="position: relative;left: 70px;">Buy</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100">
+          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="#">MAKAN ENAK</a>
+            </h4>
+            <h5>$24.99</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-primary btn-lg" style="position: relative;left: 70px;">Buy</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+ </div>
 </div>
 
     <!-- END PRODUK -->
