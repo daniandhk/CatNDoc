@@ -39,14 +39,24 @@
 	</style>
   </head>
   <body>
-  <a class="nav-link" href="<?= site_url('HomePage') ?>">Home <span class="sr-only">(current)</span></a>
-    
-   <br>
-   <br>
+  	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	  <a class="navbar-brand" href="#">Admin Panel</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="navbarNav">
+	    <ul class="navbar-nav">
+	      <li class="nav-item">
+	        <a class="nav-link" href="<?php echo site_url('HomePage'); ?>">Home <span class="sr-only">(current)</span></a>
+	      </li>
+	    </ul>
+	  </div>
+	</nav>
 
-   	<div class="container">
+   	<div class="container my-3">
    		<div class="row">
    			<div class="col-3">
+   				<h3 style="font-weight: bolder">Lihat Data</p>
    				<button id="btn1" class="btn btn-secondary my-1">DATA REGISTER</button>
    				<button id="btn2" class="btn btn-secondary my-1">DATA APPOINMENT</button> 
    				<button id="btn3" class="btn btn-secondary my-1">DATA HEWAN</button>
