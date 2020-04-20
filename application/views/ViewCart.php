@@ -24,7 +24,7 @@
         }
 
         #iconCart{
-            font-size: 3000%;
+            font-size: 25vw;
         }
 
         #btnbuy{
