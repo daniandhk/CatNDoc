@@ -139,8 +139,8 @@
             <h4 class="card-title">
               <a href="#">MAKANAN ANJING</a>
             </h4>
-            <h5>$24.99</h5>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+            <h5>Rp60.000,-</h5>
+            <p class="card-text">Makanan yang diformulasikan khusus untuk anjing dan mengandung nutrisi yang dibutuhkan oleh anjing</p>
           </div>
           <div class="card-footer">
             <button class="btn btn-primary btn-lg" style="position: relative;left: 70px;">Buy</button>
@@ -155,8 +155,8 @@
             <h4 class="card-title">
               <a href="#">MAKANAN KUCING</a>
             </h4>
-            <h5>$24.99</h5>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
+            <h5>Rp60.000,-</h5>
+            <p class="card-text">Makanan yang diformulasikan khusus untuk kucing dan mengandung nutrisi dan zat makanan terbaik untuk kucing</p>
           </div>
           <div class="card-footer">
             <button class="btn btn-primary btn-lg" style="position: relative;left: 70px;">Buy</button>
@@ -169,10 +169,10 @@
           <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
           <div class="card-body">
             <h4 class="card-title">
-              <a href="#">MAKAN ENAK</a>
+              <a href="#">SHAMPOO KUCING</a>
             </h4>
-            <h5>$24.99</h5>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+            <h5>Rp150.000,-</h5>
+            <p class="card-text">Produk yang paling penting untuk menjaga agar kucing tetap bersih dan sehat</p>
           </div>
           <div class="card-footer">
             <button class="btn btn-primary btn-lg" style="position: relative;left: 70px;">Buy</button>
