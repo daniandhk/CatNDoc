@@ -15,16 +15,16 @@
     <style>
         
         .nav-item{
-          font-size: 19px;
+          font-size: 140%;
         }
   
         #icon{
           position: relative;
-          right: -230px;
+          right: -200%;
         }
 
         #iconCart{
-            font-size: 400px;
+            font-size: 25vw;
         }
 
         #btnbuy{
@@ -88,7 +88,7 @@
 							<td data-th="Product">
 								<div class="row">
                 <!-- LOOP LOOP LOOP-->
-                
+
                 <!-- GET FOTO -->
 									<div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
 									<div class="col-sm-8">
