@@ -163,7 +163,7 @@
                     <li><a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalLoginForm">Login</a></li>
                     <li><a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalRegisterForm">Register</a></li>
                     <li><a href="<?= site_url('ControlShop') ?>" class="btn btn-default btn-rounded mb-4" data-toggle="" data-target="">Shop</a></li>
-                    <li><a href="" class="btn btn-default btn-rounded mb-4" data-toggle="" data-target="">About Us</a></li>
+                    <li><a href="<?= site_url('ControlAdmin') ?>" class="btn btn-default btn-rounded mb-4" data-toggle="" data-target="">CEK ADMIN</a></li>
                 </ul>
             </div>
         </div>
