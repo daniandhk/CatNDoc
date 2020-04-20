@@ -45,7 +45,10 @@
 
     #img4{
         width: 50%;
-        height: 50%;
+        max-width: 360px;
+        height: auto;
+        /*width: 50%;
+        height: 50%;*/
     }
 
     .centered {
@@ -93,7 +96,7 @@
     }
 
     .welkam2{
-        font-size: 65px;
+        font-size: 5vw;
         font-family :'Gill Sans', sans-serif;
         font-weight: bold;
         position: relative;
@@ -106,7 +109,9 @@
         border: none;
         color: black;
         padding: 10px;
-        width: 140px;
+        width: 100%;
+        max-width: 140px;
+        height: auto;
         text-align: center;
         text-decoration: none;
         display: inline-block;
@@ -124,7 +129,9 @@
         text-align: center;
         text-decoration: none;
         display: inline-block;
-        font-size: 25px;
+        max-width: 375px;
+        height: auto;
+        font-weight: bold;
         margin: 6px 13px;
         border-radius: 1px;
         opacity: 0.8;
