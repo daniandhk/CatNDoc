@@ -174,31 +174,29 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header text-center">
-              <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+              <h4 class="modal-title w-100 font-weight-bold" style="margin-left:8%;">Sign in</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
               </button>
           </div>
-        <div class="modal-body mx-3">
-            <div class="md-form mb-5">
-              <i class="fas fa-envelope prefix grey-text"></i>
-              <input type="email" id="defaultForm-email" class="form-control validate">
-              <label>Your email</label>
-            </div>
+          <form action="<?= site_url('login/login') ?>" method="post">
+            <div class="modal-body mx-3">
+              <div>
+                <i class="fas fa-envelope prefix grey-text"></i>
+                <input type="email" id="defaultForm-email" class="form-control validate" name="email" placeholder="email" required>
+                <label>Email</label>
+              </div>
 
-            <div class="md-form mb-4">
-              <i class="fas fa-lock prefix grey-text"></i>
-              <input type="password" id="defaultForm-pass" class="form-control validate">
-              <label>Your password</label>
+              <div>
+                <i class="fas fa-lock prefix grey-text"></i>
+                <input type="password" id="defaultForm-pass" class="form-control validate" name="password" placeholder="password" required>
+                <label>Password</label>
+              </div>
             </div>
-        </div>
-        <div class="modal-footer d-flex justify-content-center">
-
-            <!-- LEMPAR KE DATABASE -->
-                <button class="btn btn-secondary">Login</button>
-            <!-- LEMPAR KE DATABASE -->
-        
-        </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary">Login</button>
+            </div>
+          </form>
         </div>
     </div>
 </div>
