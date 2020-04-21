@@ -15,17 +15,23 @@
     <style>
         
         .nav-item{
-          font-size: 19px;
+          font-size: 140%;
         }
   
         #icon{
           position: relative;
-          right: -230px;
+          right: -200%;
         }
 
         #iconCart{
-            font-size: 400px;
+            font-size: 25vw;
         }
+
+        #btnbuy{
+          margin-left:-40%;
+        }
+
+        
               
       </style>
   </head>
@@ -60,22 +66,79 @@
           </ul>
         </div>
       </nav>
-
-      <li class="nav-link fa fa-shopping-cart" id="iconCart"></li>
+      <br>
+      <br>
       <h2 style="position: absolute;left: 50px;">Item belanjaan anda :</h2>
+      <br>
+      <br>
+      <li class="nav-link fa fa-shopping-cart" id="iconCart"></li>
+      
       
       <!-- BUAT GET APA AJA YG UDAH DIBELI-->
-      <table style="border: 1px solid;position: absolute;right: 800px;top: 300px;">
-        <tr>
-            <th>QTY</th>
-            <th>ITEM</th>
-        </tr>
-        <tr>
-            <td>aw</td>
-            <td>aw</td>
-        </tr>
+      <div class="container" style="position:absolute;top:23%;left:28%;width:80%;">
+	<table id="cart" class="table table-hover">
+    				<thead>
+						<tr>
+							<th style="width:65%">Produk</th>
+							<th style="width:10%">Harga</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td data-th="Product">
+								<div class="row">
+                <!-- LOOP LOOP LOOP-->
 
-      </table>
+                <!-- GET FOTO -->
+									<div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
+									<div class="col-sm-8">
+                  <!-- GET NAMA PRODUK -->
+										<h4 class="nomargin">Product 1</h4>
+                    <!-- GET DESKRIPSI PRODUK -->
+										<p>Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet.</p>
+									</div>
+								</div>
+							</td>
+							<!-- GET HARGA -->
+              <td data-th="Price">$150.00</td>
+							<!-- LOOP LOOP LOOP-->
+							
+							<td class="actions" data-th="">
+              <!-- BUAT DELETE -->
+								<button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>								
+							<!-- END BUAT DELETE -->
+              </td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td><a href="<?= site_url('ControlShop') ?>" class="btn btn-warning"><i class="fa fa-angle-left"></i> BACK</a></td>
+							<td colspan="0" class="hidden-xs"></td>         
+							<td><button id="btnbuy" type="button" class="btn btn-success btn-lg " data-toggle="modal" data-target="#myModal">CHECKOUT</button></td>
+						</tr>
+					</tfoot>
+				</table>
+</div>
+
+<!-- Modal -->
+<div  id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">SUCCESS</h4>
+      </div>
+      <div class="modal-body">
+        <p>PEMBELIAN BERHASIL</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
         
 
 
