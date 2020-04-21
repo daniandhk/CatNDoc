@@ -156,7 +156,7 @@
         </div>
 
         <div class="top-right">
-            <h1 class="button button1" style="position: relative;right: -35px;color:black;font-weight: 800;">Call Us<br>   022-232323   </h1>
+            <h1 class="button button1" style="position: relative;color:black;font-weight: 800;">Call Us<br>   022-232323   </h1>
         </div>
 
         <!--END TULISAN TULISAN DI COVER-->
@@ -188,16 +188,12 @@
           </div>
           <form action="<?= site_url('login/login') ?>" method="post">
             <div class="modal-body mx-3">
-              <div>
-                <i class="fas fa-envelope prefix grey-text"></i>
-                <input type="email" id="defaultForm-email" class="form-control validate" name="email" placeholder="email" required>
-                <label>Email</label>
+              <div class="md-form mb-4">
+                <input type="email" id="defaultForm-email" class="form-control validate" name="email" placeholder="Email" required>
               </div>
 
-              <div>
-                <i class="fas fa-lock prefix grey-text"></i>
-                <input type="password" id="defaultForm-pass" class="form-control validate" name="password" placeholder="password" required>
-                <label>Password</label>
+              <div class="md-form mb-4">
+                <input type="password" id="defaultForm-pass" class="form-control validate" name="password" placeholder="Password" required>
               </div>
             </div>
             <div class="modal-footer d-flex justify-content-center">
@@ -223,20 +219,17 @@
       <div class="modal-body mx-3">
         <!-- NAMA -->
         <div class="md-form mb-4">
-          <input type="text" id="orangeForm-name" class="form-control validate">
-          <label data-error="wrong" data-success="right" for="orangeForm-name">Your name</label>
+          <input type="text" id="orangeForm-name" class="form-control validate" placeholder="Nama anda" required>
         </div>
 
         <!-- EMAIL -->
         <div class="md-form mb-4">
-          <input type="email" id="orangeForm-email" class="form-control validate">
-          <label data-error="wrong" data-success="right" for="orangeForm-email">Your email</label>
+          <input type="email" id="orangeForm-email" class="form-control validate" placeholder="Email" required>
         </div>
 
         <!-- PASSWORD -->
         <div class="md-form mb-4">
-          <input type="password" id="orangeForm-pass" class="form-control validate">
-          <label data-error="wrong" data-success="right" for="orangeForm-pass">Your password</label>
+          <input type="password" id="orangeForm-pass" class="form-control validate" placeholder="Password" required>
         </div>
 
       </div>

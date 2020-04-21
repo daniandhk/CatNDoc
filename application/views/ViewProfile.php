@@ -8,114 +8,61 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-   
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Bentham|Playfair+Display|Raleway:400,500|Suranna|Trocchi" rel="stylesheet">
     
 
     <title>Profile</title>
 
     <style>
-      .nav-item{
+      .nav-item {
         font-size: 19px;
-      }
-
-      .navbar-nav{
-          position:relative;
-          right:-390px;
-      }
-
-      #icon{
-        position: relative;
-        right: -230px;
-      }
-      
-      #icon1{
-        font-size : 30px;
-        position: absolute;
-        right:350px;
-        top:20px        
-    }
-
-    .details #profile {
-      list-style: none;
-    }
-    #profile {
-        margin-bottom:10px;
-    }
-   .tital{
-       text-align:right;
-   }
-   .contant_i{
-        color: #631e1e;
-        border-bottom: 1px solid #cea7a7;
-   }
-
-   .modal-dialog {
-  position: absolute;
-  top: 50px;
-  right: 100px;
-  bottom: 0;
-  left: 0;
-}
-
-.btn{
-    margin-left:900px;
-}
-
-
-
-
-      
+      }      
     </style>
   </head>
   <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-4">
-     <a class="navbar-brand" href="Home.html">Logo</a>
+    <!-- START NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+      <a class="navbar-brand" href="<?php echo site_url('Homepage'); ?>">
+        <img width="30" height="auto" src="<?= base_url('assets/img/logo.png'); ?>">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button> (SIAPA TAU BUTUH) --> 
-        
-        <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item active mx-4">
-              <a class="nav-link" href="<?= site_url('HomePage') ?>">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item mx-4">
-              <a class="nav-link" href="#">Features</a>
-            </li>
-            <li class="nav-item mx-4">
-              <a class="nav-link" href="#">Pricing</a>
-            </li>
-            <li class="nav-item mx-4">
-              <a class="nav-link" href="#">Disabled</a>
-            </li>
-            <!--START ICON-->
-            <li class="nav-item">
-              <a class="nav-link fa fa-fw fa-user" id="icon" href="#" ></a>
-              <a class="nav-link fa fa-shopping-cart" id="icon" href="<?= site_url('ControlCart') ?>"></a>
-            <!--END ICON-->
-            </li>
-          </ul>
-        </div>
-      </nav>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url('Homepage'); ?>">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?= site_url('ControlShop') ?>">Shop <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-shopping-cart"></i></a></li>
+          <li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-sign-in"></i> Login</a></li>
+          <li class="nav-item active"><a href="#" class="nav-link"><i class="fa fa-user"></i> Nama User</a></li>
+        </ul>
+      </div>
+    </nav>
+    <!-- END NAVBAR -->
       
       <!-- START USER PROFILE -->
       <div class="container">    
                 <div class="jumbotron">
                     
-                <a href="#" type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal">UPDATE DATA DIRI</a>
+                <a href="#" type="button" class="btn btn-info btn-sm mb-1 mt-5" data-toggle="modal" data-target="#myModal">UPDATE DATA DIRI</a>
                     
                   <div class="row">
                       <div class="col-md-3 col-xs-12 col-sm-6 col-lg-3">
-                        <div class="thumbnail text-center photo_view_postion_b" >
+                        <div class="thumbnail photo_view_postion_b" >
                         <!-- GET FOTO-->
-                          <img src="https://1.bp.blogspot.com/-Z4udyQ92_Pk/XoK9UJkRlAI/AAAAAAAAIRc/89AwHjoIaaAVH_x1QQ2GlJwPhC5w1xk1QCNcBGAsYHQ/s1600/8VO262-ZLMGFz-sB.jpg" alt="stack photo" class="img">
+                          <img style="height:100%; width:auto; max-height:280px" src="https://1.bp.blogspot.com/-Z4udyQ92_Pk/XoK9UJkRlAI/AAAAAAAAIRc/89AwHjoIaaAVH_x1QQ2GlJwPhC5w1xk1QCNcBGAsYHQ/s1600/8VO262-ZLMGFz-sB.jpg" alt="stack photo" class="img">
                         
                         </div>
                       </div>
@@ -152,15 +99,15 @@
                     </div>
 
                     <!-- HEWAN -->
-                    <a href="#" type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal2">UPDATE DATA HEWAN</a>
+                    <a href="#" type="button" class="btn btn-info btn-sm mb-1 mt-5" data-toggle="modal" data-target="#myModal2">UPDATE DATA HEWAN</a>
                     <div class="row">
                     
                       <div class="col-md-3 col-xs-12 col-sm-6 col-lg-3">
                       
-                        <div class="thumbnail text-center photo_view_postion_b" >
+                        <div class="thumbnail photo_view_postion_b" >
                         
                         <!-- GET FOTO-->
-                          <img src="https://1.bp.blogspot.com/-Z4udyQ92_Pk/XoK9UJkRlAI/AAAAAAAAIRc/89AwHjoIaaAVH_x1QQ2GlJwPhC5w1xk1QCNcBGAsYHQ/s1600/8VO262-ZLMGFz-sB.jpg" alt="stack photo" class="img">
+                          <img style="height:100%; width:auto; max-height:280px" src="https://1.bp.blogspot.com/-Z4udyQ92_Pk/XoK9UJkRlAI/AAAAAAAAIRc/89AwHjoIaaAVH_x1QQ2GlJwPhC5w1xk1QCNcBGAsYHQ/s1600/8VO262-ZLMGFz-sB.jpg" alt="stack photo" class="img">
                         
                         </div>
                         

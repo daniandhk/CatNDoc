@@ -18,11 +18,6 @@
         font-size: 19px;
       }
 
-      #icon{
-        position: relative;
-        right: -230px;
-      }
-
       #pic1{
         height: 400px;
         width: 4000px;
@@ -36,12 +31,7 @@
         width: 4000px;
       }
       
-      #icon1{
-        font-size : 30px;
-        position: absolute;
-        right:350px;
-        top:20px        
-    }
+
       
     </style>
   
@@ -49,34 +39,30 @@
   <body>
 
     <!-- START NAVBAR -->
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-4">
-      <a class="navbar-brand" href="Home.html">Logo</a>
-
-  <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+      <a class="navbar-brand" href="<?php echo site_url('Homepage'); ?>">
+        <img width="30" height="auto" src="<?= base_url('assets/img/logo.png'); ?>">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-      </button> (SIAPA TAU BUTUH) --> 
-      
-      <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item active mx-4">
-            <a class="nav-link" href="<?= site_url('HomePage') ?>">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item mx-4">
-            <a class="nav-link" href="#">Features</a>
-          </li>
-          <li class="nav-item mx-4">
-            <a class="nav-link" href="#">Pricing</a>
-          </li>
-          <li class="nav-item mx-4">
-            <a class="nav-link" href="#">Disabled</a>
-          </li>
-          <!--START ICON-->
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item">
-            <a class="nav-link fa fa-fw fa-user" id="icon" href="<?= site_url('ControlProfile') ?>" ></a>
-            <a class="nav-link fa fa-shopping-cart" id="icon1" href="<?= site_url('ControlCart') ?>"></a>
-          <!--END ICON-->
+            <a class="nav-link" href="<?php echo site_url('Homepage'); ?>">Home</a>
           </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Shop <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-shopping-cart"></i></a></li>
+          <li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-sign-in"></i> Login</a></li>
+          <li class="nav-item"><a href="<?= site_url('ControlProfile'); ?>" class="nav-link"><i class="fa fa-user"></i> Nama User</a></li>
         </ul>
       </div>
     </nav>

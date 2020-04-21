@@ -74,6 +74,7 @@
 										<th>Nama</th>
 										<th>Email</th>
 										<th>Password</th>
+										<th>Aksi</th>
 									</tr>
 						    	</thead>
 							    <?php 
@@ -81,12 +82,16 @@
 								//foreach($user as $u){ 
 								?>
 								<tr>
-									<td><?php //echo  ?></td>
-									<td><?php //echo  ?></td>
-									<td>
-									      <?php //echo EDIT; ?>
-						                              <?php //echo HAPUS ?>
-									</td>
+									<td>Dummy 1</td>
+									<td>dummy1@example.com</td>
+									<td>emangpassworddiliatin?</td>
+									<td><a href="" class="btn btn-primary">Edit</a></td>
+								</tr>
+								<tr>
+									<td>Dummy 2</td>
+									<td>dummy2@example.com</td>
+									<td>emangpassworddiliatin?</td>
+									<td><a href="" class="btn btn-primary">Edit</a></td>
 								</tr>
 								<?php//  } ?>
 							</table>
@@ -103,12 +108,31 @@
     						<table class="table table-hover table-bordered" style="">
 						    	<thead>
 						    		<tr>
-										<th>Nama</th>
+										<th>Nama Hewan</th>
 										<th>Email</th>
 										<th>No.Telp</th>
 							            <th>Date</th>
 							            <th>Jenis Hewan</th>
 							            <th>Keluhan</th>
+							            <th>Aksi</th>
+									</tr>
+									<tr>
+										<td>Doggies1</td>
+										<td>dummy1@example.com</td>
+										<td>0761</td>
+										<td>2020/04/14</td>
+										<td>Anjing</td>
+										<td>complaint1</td>
+										<td><a href="" class="btn btn-success">Acc</a></td>
+									</tr>
+									<tr>
+										<td>Kitties</td>
+										<td>dummy2@example.com</td>
+										<td>0761</td>
+										<td>2020/04/14</td>
+										<td>Kucing</td>
+										<td>complaint2</td>
+										<td><a href="" class="btn btn-success">Acc</a></td>
 									</tr>
 						    	</thead>
 									
