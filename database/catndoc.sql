@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 21, 2020 at 02:50 AM
+-- Generation Time: Apr 21, 2020 at 01:56 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -25,6 +25,29 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `appointment`
+--
+
+CREATE TABLE `appointment` (
+  `email` varchar(100) NOT NULL,
+  `id_ap` int(5) NOT NULL,
+  `notelp` int(100) NOT NULL,
+  `tanggal` date NOT NULL,
+  `nama_pet` varchar(100) NOT NULL,
+  `jenis_pet` varchar(100) NOT NULL,
+  `keluhan` varchar(10000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `appointment`
+--
+
+INSERT INTO `appointment` (`email`, `id_ap`, `notelp`, `tanggal`, `nama_pet`, `jenis_pet`, `keluhan`) VALUES
+('daniandhika03@gmail.com', 1, 123, '2020-04-07', 'Joni', 'Kucing', 'Sakit kepala');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -39,17 +62,45 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`nama`, `email`, `password`) VALUES
-('admin', 'admin@admin', 'admin');
+('admin', 'admin@admin', 'admin'),
+('Dani Andhika', 'daniandhika03@gmail.com', 'password');
 
 --
 -- Indexes for dumped tables
 --
 
 --
+-- Indexes for table `appointment`
+--
+ALTER TABLE `appointment`
+  ADD PRIMARY KEY (`id_ap`),
+  ADD KEY `email` (`email`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `appointment`
+--
+ALTER TABLE `appointment`
+  MODIFY `id_ap` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `appointment`
+--
+ALTER TABLE `appointment`
+  ADD CONSTRAINT `email` FOREIGN KEY (`email`) REFERENCES `user` (`email`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
