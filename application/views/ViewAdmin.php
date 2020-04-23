@@ -15,6 +15,7 @@
 	  $("#tblregister").hide;
 	  $("#tblhewan").hide;
 	  $("#tblaponmen").hide;
+	  $("#tblproduct").hide;
 	  
 	  $("#btn1").click(function(){
 	    $("#tblregister").toggle();
@@ -29,11 +30,15 @@
 	  $("#btn3").click(function(){
 	    $("#tblhewan").toggle();
 	  });
+
+	  $("#btn3").click(function(){
+	    $("#tblproduct").toggle();
+	  });
 	  
 	});
 	</script>
 	<style type="text/css">
-		#tblregister, #tblaponmen, #tblhewan {
+		#tblregister, #tblaponmen, #tblhewan, #tblproduct {
 			display: none;
 		}
 	</style>
@@ -60,6 +65,7 @@
    				<button id="btn1" class="btn btn-secondary my-1">DATA REGISTER</button>
    				<button id="btn2" class="btn btn-secondary my-1">DATA APPOINMENT</button> 
    				<button id="btn3" class="btn btn-secondary my-1">DATA HEWAN</button>
+   				<button id="btn4" class="btn btn-secondary my-1">DATA PRODUCT</button>
    			</div>
    			<div class="col-9">
    				<div id="tblregister">
@@ -183,6 +189,59 @@
 							</table>
 						</div>
 					</div>			    			
+   				</div>
+   				<div class="my-2" id="tblproduct">
+   					<div class="card">
+   						<div class="container text-right">
+							<a href="<?= site_url('produk/form_tambah') ?>" class="btn btn-primary">Tambah Produk</a>
+						</div>
+   						<div class="card-header">DATA PRODUCT</div>
+   						<div class="card-body">
+   							<table class="table table-hover table-bordered" style="">
+   								<thead>
+   									<tr>
+   										<th>ID</th>
+   										<th>Nama Product</th>
+   										<th>Deskripsi</th>
+   										<th>Harga</th>
+   									</tr>
+   								</thead>
+   								<?php
+   						// 			$template = array(
+									// 	'table_open' => '<table id="tbProduk" class="table table-striped table-bordered">',
+									// 	'thead_open' => '<thead class="text-center">',
+									// );
+									// $this->table->set_template($template);
+									// $this->table->set_heading('ID','Nama','Deskripsi','Harga');
+									// foreach ($product as $dp) {
+										
+									// 	$this->table->add_row(
+									// 		$dp['id_product'],
+									// 		$dp['nama'],
+									// 		$dp['deskripsi'],
+									// 		'Rp '.number_format($dp['harga']),
+									// 		'<a href="'.site_url('produk/form_ubah/'.$dp['id_product'])
+									// 		.'"class="btn btn-warning btn-sm">'
+									// 		.'<i class="fa fa-edit"></i>'
+									// 		.'</a> &nbsp;'
+									// 		."<button href=\"#\"onclick=\"del('".$url."')\"class=\"btn btn-danger btn-sm\">"
+									// 		.'<i class="fa fa-trash"></i>'
+									// 		.'</button>'
+									// 	);
+									// }
+									// echo $this->table->generate();
+									// $this->table->clear();
+   								?>
+   								<tr>
+   									<td><?php  ?></td>
+   									<td><?php  ?></td>
+   									<td><?php  ?></td>
+   									<td><?php  ?></td>
+   								</tr>
+   								<?php  ?>
+   							</table>
+   						</div>
+   					</div>
    				</div>
    			</div>
    		</div>
