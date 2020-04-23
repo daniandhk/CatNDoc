@@ -31,7 +31,7 @@
 	    $("#tblhewan").toggle();
 	  });
 
-	  $("#btn3").click(function(){
+	  $("#btn4").click(function(){
 	    $("#tblproduct").toggle();
 	  });
 	  
