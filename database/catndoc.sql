@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 21, 2020 at 01:56 PM
+-- Generation Time: Apr 23, 2020 at 04:45 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -48,6 +48,26 @@ INSERT INTO `appointment` (`email`, `id_ap`, `notelp`, `tanggal`, `nama_pet`, `j
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `product`
+--
+
+CREATE TABLE `product` (
+  `id_product` int(11) NOT NULL,
+  `nama` varchar(100) NOT NULL,
+  `deskripsi` text NOT NULL,
+  `harga` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`id_product`, `nama`, `deskripsi`, `harga`) VALUES
+(1, 'Makanan Anjing', 'Enak bgt buat anjing', 50000);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -75,6 +95,12 @@ INSERT INTO `user` (`nama`, `email`, `password`) VALUES
 ALTER TABLE `appointment`
   ADD PRIMARY KEY (`id_ap`),
   ADD KEY `email` (`email`);
+
+--
+-- Indexes for table `product`
+--
+ALTER TABLE `product`
+  ADD PRIMARY KEY (`id_product`);
 
 --
 -- Indexes for table `user`
