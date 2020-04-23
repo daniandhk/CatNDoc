@@ -7,30 +7,30 @@ class ModelShop extends CI_Model{
     }
     
     public function get_all(){
-		return $this->db->get('produk')->result_array();
+		return $this->db->get('product')->result_array();
 	}
 
 	
-	public function get_produk($id_produk){
-		$this->db->where('id_produk', $id_produk);
-		return $this->db->get('produk')->row_array();
+	public function get_product($id_product){
+		$this->db->where('id_product', $id_product);
+		return $this->db->get('product')->row_array();
 	}
 	
 
-	public function insert_produk($data){
-		return $this->db->insert('produk',$data);
+	public function insert_product($data){
+		return $this->db->insert('product',$data);
 	}
 	
 
 	
-	public function update_produk($id_produk, $data){
-		$this->db->where('id_produk', $id_produk);
-		return $this->db->update('produk',$data);
+	public function update_product($id_product, $data){
+		$this->db->where('id_product', $id_product);
+		return $this->db->update('product',$data);
 	}
 	
 	
-	public function delete_produk($id_produk){
-		$this->db->where('id_produk', $id_produk);
-		return $this->db->delete('produk');
+	public function delete_product($id_produk){
+		$this->db->where('id_product', $id_product);
+		return $this->db->delete('product');
 	}
 }
