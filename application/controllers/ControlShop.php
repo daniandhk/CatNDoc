@@ -10,6 +10,6 @@ class ControlShop extends CI_Controller{
 	public function index()
 	{
 		$data['product'] = $this->ModelShop->get_all();
-		$this->load->view('ViewShop');
+		$this->load->view('ViewShop', $data);
 	}
 }

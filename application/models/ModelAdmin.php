@@ -6,4 +6,8 @@ class ModelAdmin extends CI_Model{
         parent::__construct();
     }
 
+    public function get_products(){
+		return $this->db->get('product')->result_array();
+	}
+
 }

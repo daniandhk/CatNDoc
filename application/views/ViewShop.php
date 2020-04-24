@@ -117,54 +117,26 @@
     </div>
 
     <div class="row">
-
+      <?php 
+      foreach($product as $p) {
+       ?>
       <div class="col-lg-4 col-md-6 mb-4">
         <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full/MTA-2405799/bolt-dog_cppetfood-beef-dog-food-makanan-anjing--20-kg-_full05.jpg?output-format=webp" alt=""></a>
+          <a href="#"><img class="card-img-top" src="<?php echo base_url("assets/img/Sale/").$p['foto']; ?>" alt=""></a>
           <div class="card-body">
             <h4 class="card-title">
-              <a href="#">MAKANAN ANJING</a>
+              <a href="#"><?php echo $p['nama']; ?></a>
             </h4>
-            <h5>Rp60.000,-</h5>
-            <p class="card-text">Makanan yang diformulasikan khusus untuk anjing dan mengandung nutrisi yang dibutuhkan oleh anjing</p>
+            <h5>Rp <?php echo $p['harga'] ?></h5>
+            <p class="card-text"><?php echo $p['deskripsi'] ?></p>
           </div>
           <div class="card-footer">
-            <button class="btn btn-primary btn-lg" style="position: relative;left: 70px;">Beli</button>
+            <a href="<?php echo base_url('ControlShop/beli/').$p['id_product']; ?>" class="text-center btn btn-primary btn-lg">Beli</a>
           </div>
         </div>
       </div>
-
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="https://cdn.elevenia.co.id/g/4/8/7/6/8/3/28487683_B.jpg" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">MAKANAN KUCING</a>
-            </h4>
-            <h5>Rp60.000,-</h5>
-            <p class="card-text">Makanan yang diformulasikan khusus untuk kucing dan mengandung nutrisi dan zat makanan terbaik untuk kucing</p>
-          </div>
-          <div class="card-footer">
-            <button class="btn btn-primary btn-lg" style="position: relative;left: 70px;">Beli</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="https://s0.bukalapak.com/img/517111053/w-1000/Bioline_Cat_shampoo_250_ml___Spray_Kucing___Shampoo_Kucing__.jpg" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">SHAMPOO KUCING</a>
-            </h4>
-            <h5>Rp150.000,-</h5>
-            <p class="card-text">Produk yang paling penting untuk menjaga agar kucing tetap bersih dan sehat</p>
-          </div>
-          <div class="card-footer">
-            <button class="btn btn-primary btn-lg" style="position: relative;left: 70px;">Beli</button>
-          </div>
-        </div>
-      </div>
+    <?php } ?>
+      
     </div>
   </div>
  </div>

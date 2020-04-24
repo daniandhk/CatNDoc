@@ -11,6 +11,7 @@ class ControlAdmin extends CI_Controller{
 
 	public function index()
 	{
-		$this->load->view('ViewAdmin');
+		$data['product'] = $this->ModelAdmin->get_products();
+		$this->load->view('ViewAdmin', $data);
 	}
 }

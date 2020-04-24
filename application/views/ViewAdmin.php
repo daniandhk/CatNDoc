@@ -41,6 +41,9 @@
 		#tblregister, #tblaponmen, #tblhewan, #tblproduct {
 			display: none;
 		}
+		.imageModal {
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		}
 	</style>
   </head>
   <body>
@@ -200,45 +203,23 @@
    							<table class="table table-hover table-bordered" style="">
    								<thead>
    									<tr>
-   										<th>ID</th>
+   										<th>ID product</th>
    										<th>Nama Product</th>
-   										<th>Deskripsi</th>
    										<th>Harga</th>
+   										<th>Action</th>
    									</tr>
    								</thead>
-   								<?php
-   						// 			$template = array(
-									// 	'table_open' => '<table id="tbProduk" class="table table-striped table-bordered">',
-									// 	'thead_open' => '<thead class="text-center">',
-									// );
-									// $this->table->set_template($template);
-									// $this->table->set_heading('ID','Nama','Deskripsi','Harga');
-									// foreach ($product as $dp) {
-										
-									// 	$this->table->add_row(
-									// 		$dp['id_product'],
-									// 		$dp['nama'],
-									// 		$dp['deskripsi'],
-									// 		'Rp '.number_format($dp['harga']),
-									// 		'<a href="'.site_url('produk/form_ubah/'.$dp['id_product'])
-									// 		.'"class="btn btn-warning btn-sm">'
-									// 		.'<i class="fa fa-edit"></i>'
-									// 		.'</a> &nbsp;'
-									// 		."<button href=\"#\"onclick=\"del('".$url."')\"class=\"btn btn-danger btn-sm\">"
-									// 		.'<i class="fa fa-trash"></i>'
-									// 		.'</button>'
-									// 	);
-									// }
-									// echo $this->table->generate();
-									// $this->table->clear();
-   								?>
+   								<?php 
+   								$no = 1;
+   								foreach ($product as $p) {
+   								 ?>
    								<tr>
-   									<td><?php  ?></td>
-   									<td><?php  ?></td>
-   									<td><?php  ?></td>
-   									<td><?php  ?></td>
+   									<td><?php echo $p['id_product']; ?></td>
+   									<td><?php echo $p['nama']; ?></td>
+   									<td><?php echo $p['harga']; ?></td>
+   									<td><a href="" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#modalDetailProduct<?php echo $p['id_product'] ?>">Detail</a></td>
    								</tr>
-   								<?php  ?>
+   								<?php } ?>
    							</table>
    						</div>
    					</div>
@@ -248,6 +229,50 @@
    	</div>
     
     
+  	<?php foreach ($product as $p ) {?>
+  	<div class="modal fade" id="modalDetailProduct<?php echo $p['id_product']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	    <div class="modal-dialog" role="document">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	        <center><h2>DETAIL BARANG</h2></center>
+	        </div>
+	        <div class="modal-body">
+	        <!-- isi form ini -->
+	        <form method="post" action="">
+	        <input type="hidden" class="form-control" placeholder="ID Product" name="id_product" value="<?php echo $p['id_product']; ?>"  required>
+	          <div class="form-group">
+	            <label for="nama">Nama</label>
+	            <input type="text" class="form-control" id="nama" placeholder="Nama" name="nama"  value="<?php echo $p['nama']; ?>" required>
+	          </div>
+	          <div class="form-group">
+	            <label for="harga">Harga</label>
+	            <input type="text" class="form-control" id="harga" placeholder="Kelas" name="harga" value="<?php echo $p['harga']; ?>" required>
+	          </div>
+	          <div class="form-group">
+	            <label for="deskripsi">Deskripsi</label>
+	            <input type="textarea" id="deskripsi" class="form-control" placeholder="Deskripsi" name="deskripsi">
+	          </div>
+	        </div>
+	        <div class="form-group">
+	        	<label for="Foto">Foto</label>
+	        	<div>
+	        		<img class="imageModal" style="width:100%;max-width: 200px;height: auto" src="<?php echo base_url('assets/img/sale/').$p['foto']; ?>">
+	        	</div>
+	        </div>
+	        <div class="form-group">
+	        	<label for="upload_foto">Upload Foto</label>
+	        	<input type="file" id="upload_foto" class="form-control" name="foto">
+	        </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        <input  type="submit" class="btn btn-primary" id="hapus" value="Submit" placeholder="Simpan">
+	        </div>
+	        </form>
+	      </div>
+	    </div>
+	  </div>
+	<?php } ?>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
