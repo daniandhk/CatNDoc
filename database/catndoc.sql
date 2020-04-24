@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 23, 2020 at 04:45 AM
+-- Generation Time: Apr 24, 2020 at 09:00 AM
 -- Server version: 10.4.8-MariaDB
--- PHP Version: 7.3.11
+-- PHP Version: 7.3.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -55,15 +55,18 @@ CREATE TABLE `product` (
   `id_product` int(11) NOT NULL,
   `nama` varchar(100) NOT NULL,
   `deskripsi` text NOT NULL,
-  `harga` int(11) NOT NULL
+  `harga` int(11) NOT NULL,
+  `foto` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`id_product`, `nama`, `deskripsi`, `harga`) VALUES
-(1, 'Makanan Anjing', 'Enak bgt buat anjing', 50000);
+INSERT INTO `product` (`id_product`, `nama`, `deskripsi`, `harga`, `foto`) VALUES
+(1, 'Makanan Anjing', 'Enak bgt buat anjing', 50000, 'makanananjing1.jpg'),
+(2, 'Makanan Kucing', 'Makanan ini dibuat spesial untuk kucing anda! rasa ayam bawang!', 60000, 'makanankucing1.jpg'),
+(3, 'Shampoo Kucing', 'Shampoo ini membuat bulu kucing lebat dan kuat', 150000, 'shampookucing1.jpg');
 
 -- --------------------------------------------------------
 
@@ -117,6 +120,12 @@ ALTER TABLE `user`
 --
 ALTER TABLE `appointment`
   MODIFY `id_ap` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `product`
+--
+ALTER TABLE `product`
+  MODIFY `id_product` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
