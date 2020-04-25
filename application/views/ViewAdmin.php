@@ -55,7 +55,13 @@
 	  <div class="collapse navbar-collapse" id="navbarNav">
 	    <ul class="navbar-nav">
 	      <li class="nav-item">
-	        <a class="nav-link" href="<?php echo site_url('HomePage'); ?>">Home <span class="sr-only">(current)</span></a>
+	        <a class="nav-link" href="<?php echo site_url('HomePage'); ?>">Home</a>
+	      </li>
+	      <li class="nav-item active">
+	        <a class="nav-link" href="<?php echo site_url('ControlAdmin'); ?>">Lihat Data</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="<?php echo site_url('ControlProduct'); ?>">Product</a>
 	      </li>
 	    </ul>
 	  </div>
@@ -68,7 +74,6 @@
    				<button id="btn1" class="btn btn-secondary my-1">DATA REGISTER</button>
    				<button id="btn2" class="btn btn-secondary my-1">DATA APPOINMENT</button> 
    				<button id="btn3" class="btn btn-secondary my-1">DATA HEWAN</button>
-   				<button id="btn4" class="btn btn-secondary my-1">DATA PRODUCT</button>
    			</div>
    			<div class="col-9">
    				<div id="tblregister">
@@ -193,86 +198,10 @@
 						</div>
 					</div>			    			
    				</div>
-   				<div class="my-2" id="tblproduct">
-   					<div class="card">
-   						<div class="container text-right">
-							<a href="<?= site_url('produk/form_tambah') ?>" class="btn btn-primary">Tambah Produk</a>
-						</div>
-   						<div class="card-header">DATA PRODUCT</div>
-   						<div class="card-body">
-   							<table class="table table-hover table-bordered" style="">
-   								<thead>
-   									<tr>
-   										<th>ID product</th>
-   										<th>Nama Product</th>
-   										<th>Harga</th>
-   										<th>Action</th>
-   									</tr>
-   								</thead>
-   								<?php 
-   								$no = 1;
-   								foreach ($product as $p) {
-   								 ?>
-   								<tr>
-   									<td><?php echo $p['id_product']; ?></td>
-   									<td><?php echo $p['nama']; ?></td>
-   									<td><?php echo $p['harga']; ?></td>
-   									<td><a href="" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#modalDetailProduct<?php echo $p['id_product'] ?>">Detail</a></td>
-   								</tr>
-   								<?php } ?>
-   							</table>
-   						</div>
-   					</div>
-   				</div>
    			</div>
    		</div>
    	</div>
     
-    
-  	<?php foreach ($product as $p ) {?>
-  	<div class="modal fade" id="modalDetailProduct<?php echo $p['id_product']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	    <div class="modal-dialog" role="document">
-	      <div class="modal-content">
-	        <div class="modal-header">
-	        <center><h2>DETAIL BARANG</h2></center>
-	        </div>
-	        <div class="modal-body">
-	        <!-- isi form ini -->
-	        <form method="post" action="">
-	        <input type="hidden" class="form-control" placeholder="ID Product" name="id_product" value="<?php echo $p['id_product']; ?>"  required>
-	          <div class="form-group">
-	            <label for="nama">Nama</label>
-	            <input type="text" class="form-control" id="nama" placeholder="Nama" name="nama"  value="<?php echo $p['nama']; ?>" required>
-	          </div>
-	          <div class="form-group">
-	            <label for="harga">Harga</label>
-	            <input type="text" class="form-control" id="harga" placeholder="Kelas" name="harga" value="<?php echo $p['harga']; ?>" required>
-	          </div>
-	          <div class="form-group">
-	            <label for="deskripsi">Deskripsi</label>
-	            <input type="textarea" id="deskripsi" class="form-control" placeholder="Deskripsi" name="deskripsi">
-	          </div>
-	        </div>
-	        <div class="form-group">
-	        	<label for="Foto">Foto</label>
-	        	<div>
-	        		<img class="imageModal" style="width:100%;max-width: 200px;height: auto" src="<?php echo base_url('assets/img/sale/').$p['foto']; ?>">
-	        	</div>
-	        </div>
-	        <div class="form-group">
-	        	<label for="upload_foto">Upload Foto</label>
-	        	<input type="file" id="upload_foto" class="form-control" name="foto">
-	        </div>
-	        <div class="modal-footer">
-	          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-	        <input  type="submit" class="btn btn-primary" id="hapus" value="Submit" placeholder="Simpan">
-	        </div>
-	        </form>
-	      </div>
-	    </div>
-	  </div>
-	<?php } ?>
-
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

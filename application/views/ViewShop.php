@@ -126,6 +126,7 @@
           <div class="card-body">
             <h4 class="card-title">
               <a href="#"><?php echo $p['nama']; ?></a>
+              <small style="font-size:12px"><?php echo $p['jenis'] ?></small>
             </h4>
             <h5>Rp <?php echo $p['harga'] ?></h5>
             <p class="card-text"><?php echo $p['deskripsi'] ?></p>
