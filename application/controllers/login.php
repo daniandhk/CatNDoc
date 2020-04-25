@@ -13,7 +13,7 @@ class Login extends CI_Controller {
       $data = $this->loginModel->get_profile($_SESSION['email']);
       $check = $data->email;
       if($check === "admin@admin"){
-        $this->load->view('ViewAdmin');
+        redirect('/ControlAdmin');
       }else{
         $this->load->view('ViewProfile',$data);
       }
