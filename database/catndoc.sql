@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 25, 2020 at 02:05 PM
+-- Generation Time: Apr 25, 2020 at 05:17 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.10
 
@@ -89,9 +89,10 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id_product`, `nama`, `jenis`, `deskripsi`, `harga`, `foto`) VALUES
-(1, 'Makanan Anjing', 'Makanan', 'Enak bgt buat anjing', 50000, 'makanananjing1.jpg'),
-(2, 'Makanan Kucing', 'Makanan', 'Makanan ini dibuat spesial untuk kucing anda! rasa ayam bawang!', 60000, 'makanankucing1.jpg'),
-(3, 'Shampoo Kucing', 'Peralatan', 'Shampoo ini membuat bulu kucing lebat dan kuat', 150000, 'shampookucing1.jpg');
+(1, 'Makanan Anjing', 'Makanan', 'Makanan anjing yang lezat anjing anda pasti suka', 6000, 'makanananjing1.jpg'),
+(2, 'Makanan Kucing', 'Makanan', 'Kucing anda akan sangat gembira!', 7000, 'makanankucing1.jpg'),
+(3, 'Shampoo Kucing', 'Lain-lain', 'Shampoo yang membuat rambut kucing anda halus', 40000, 'shampookucing1.jpg'),
+(4, 'Sikat Kucing', '', 'Sikat jos !', 50000, 'sikatkucing1.jpg');
 
 -- --------------------------------------------------------
 
@@ -168,7 +169,7 @@ ALTER TABLE `hewan`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id_product` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_product` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user`
