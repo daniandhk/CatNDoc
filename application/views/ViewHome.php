@@ -140,6 +140,8 @@
   </style>
 </head>
 <body>
+        <?php echo $this->session->flashdata('berhasil'); ?>
+        <?php echo $this->session->flashdata('gagal'); ?>
         <!--COVER-->
         <img src="<?php echo base_url('assets/img/homepic.jpg'); ?>" id="img1" />
         <!--<img src="<?php echo base_url('assets/img/gray.jpg'); ?>" id="img2" />-->
@@ -217,7 +219,7 @@
         </button>
       </div>
       
-    <form action="<?= site_url('registrasi/registrasi') ?>" method="post">
+    <form id="formregis" action="<?= site_url('registrasi/registrasi') ?>" method="post">
       <div class="modal-body mx-3">
           <!-- NAMA -->
           <div class="md-form mb-4">
@@ -324,8 +326,6 @@
   </div>
 </div>
 <!--END REQUEST APPOINMENT-->
-    
-
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
