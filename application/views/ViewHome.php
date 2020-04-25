@@ -216,30 +216,30 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body mx-3">
-        <!-- NAMA -->
-        <div class="md-form mb-4">
-          <input type="text" id="orangeForm-name" class="form-control validate" placeholder="Nama anda" required>
+      <form action="" method="post">
+        <div class="modal-body mx-3">
+          <!-- NAMA -->
+          <div class="md-form mb-4">
+            <input type="text" id="orangeForm-name" class="form-control validate" placeholder="Nama anda" required>
+          </div>
+
+          <!-- EMAIL -->
+          <div class="md-form mb-4">
+            <input type="email" id="orangeForm-email" class="form-control validate" placeholder="Email" required>
+          </div>
+
+          <!-- PASSWORD -->
+          <div class="md-form mb-4">
+            <input type="password" id="orangeForm-pass" class="form-control validate" placeholder="Password" required>
+          </div>
+
         </div>
-
-        <!-- EMAIL -->
-        <div class="md-form mb-4">
-          <input type="email" id="orangeForm-email" class="form-control validate" placeholder="Email" required>
+        <div class="modal-footer d-flex justify-content-center">
+          <!-- LEMPAR KE DATABASE -->
+          <button class="btn btn-secondary">Sign up</button>
+          <!-- LEMPAR KE DATABASE -->
         </div>
-
-        <!-- PASSWORD -->
-        <div class="md-form mb-4">
-          <input type="password" id="orangeForm-pass" class="form-control validate" placeholder="Password" required>
-        </div>
-
-      </div>
-      <div class="modal-footer d-flex justify-content-center">
-
-        <!-- LEMPAR KE DATABASE -->
-        <button class="btn btn-secondary">Sign up</button>
-        <!-- LEMPAR KE DATABASE -->
-      
-      </div>
+      </form>
     </div>
   </div>
 </div>
