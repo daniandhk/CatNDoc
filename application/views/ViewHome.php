@@ -216,30 +216,31 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="" method="post">
-        <div class="modal-body mx-3">
+      
+
+      <div class="modal-body mx-3">
+        <form action="<?php site_url("registrasi/registrasi")?>" method="post">
+
           <!-- NAMA -->
           <div class="md-form mb-4">
-            <input type="text" id="orangeForm-name" class="form-control validate" placeholder="Nama anda" required>
+            <input name="nama" type="text" id="orangeForm-name" class="form-control" placeholder="Nama anda" required>
           </div>
 
           <!-- EMAIL -->
           <div class="md-form mb-4">
-            <input type="email" id="orangeForm-email" class="form-control validate" placeholder="Email" required>
+            <input name="email" type="email" id="orangeForm-email" class="form-control" placeholder="Email" required>
           </div>
 
           <!-- PASSWORD -->
           <div class="md-form mb-4">
-            <input type="password" id="orangeForm-pass" class="form-control validate" placeholder="Password" required>
+            <input name="password" type="password" id="orangeForm-pass" class="form-control" placeholder="Password" required>
           </div>
+      </div>
 
-        </div>
         <div class="modal-footer d-flex justify-content-center">
-          <!-- LEMPAR KE DATABASE -->
-          <button class="btn btn-secondary">Sign up</button>
-          <!-- LEMPAR KE DATABASE -->
+          <input type="submit" class="btn btn-primary" value="Sign Up" placeholder="Simpan">
         </div>
-      </form>
+        </form>
     </div>
   </div>
 </div>
