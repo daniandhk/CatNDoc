@@ -217,13 +217,11 @@
         </button>
       </div>
       
-
+    <form action="<?= site_url('registrasi/registrasi') ?>" method="post">
       <div class="modal-body mx-3">
-        <form action="<?php site_url("registrasi/registrasi")?>" method="post">
-
           <!-- NAMA -->
           <div class="md-form mb-4">
-            <input name="nama" type="text" id="orangeForm-name" class="form-control" placeholder="Nama anda" required>
+            <input name="nama" type="text" id="orangeForm-name" class="form-control" placeholder="Nama" required>
           </div>
 
           <!-- EMAIL -->
@@ -236,12 +234,11 @@
             <input name="password" type="password" id="orangeForm-pass" class="form-control" placeholder="Password" required>
           </div>
       </div>
-
         <div class="modal-footer d-flex justify-content-center">
-          <input type="submit" class="btn btn-primary" value="Sign Up" placeholder="Simpan">
+          <button class="btn btn-info">Sign Up</button>
         </div>
-        </form>
-    </div>
+      </div>
+    </form>
   </div>
 </div>
 

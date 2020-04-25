@@ -1,9 +1,10 @@
 <?php 
 class ModelRegistrasi extends CI_Model{
     
-    public function add_akun($data)
+    public function add_akun($nama,$email,$password)
 	{
-        return $this->db->insert('user', $data);
+        $data = $this->db->query("INSERT INTO user(nama, email, password) VALUES ('$nama','$email','$password')");
+        return $data;
     }
     
     public function cek_email($email)
