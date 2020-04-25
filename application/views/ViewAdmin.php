@@ -7,6 +7,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- Fontawesome -->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
     <title>VIEW ADMIN</title>
 
@@ -71,7 +73,7 @@
    		<div class="row">
    			<div class="col-3">
    				<h3 style="font-weight: bolder">Lihat Data</p>
-   				<button id="btn1" class="btn btn-secondary my-1">DATA REGISTER</button>
+   				<button id="btn1" class="btn btn-secondary my-1">DATA USER</button>
    				<button id="btn2" class="btn btn-secondary my-1">DATA APPOINMENT</button> 
    				<button id="btn3" class="btn btn-secondary my-1">DATA HEWAN</button>
    			</div>
@@ -79,35 +81,31 @@
    				<div id="tblregister">
    					<div class="card">
   						<div class="card-header">
-    						DATA REGISTER
+    						DATA USER
   						</div>
   						<div class="card-body">
     						<table class="table table-hover table-bordered" style="">
 						    	<thead>
 						    		<tr>
+						    			<th>No</th>
 										<th>Nama</th>
-										<th>Email</th>
-										<th>Password</th>
 										<th>Aksi</th>
 									</tr>
 						    	</thead>
 							    <?php 
-								//$no = 1;
-								//foreach($user as $u){ 
+								$no = 0;
+								foreach($users as $u){ 
+									if($u['email'] != "admin@admin") {
+									$no++;
 								?>
 								<tr>
-									<td>Dummy 1</td>
-									<td>dummy1@example.com</td>
-									<td>emangpassworddiliatin?</td>
-									<td><a href="" class="btn btn-primary">Edit</a></td>
+									<td><?php echo $no; ?></td>
+									<td><?php echo $u['nama']; ?></td>
+									<td><a href="" data-toggle="modal" data-target="#detailUser<?php echo $no ?>" class="btn btn-primary"><i class="fa fa-eye"></i> Detail</a>
+										<a href="" data-toggle="modal" data-target="#deleteUser<?php echo $no; ?>" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
+									</td>
 								</tr>
-								<tr>
-									<td>Dummy 2</td>
-									<td>dummy2@example.com</td>
-									<td>emangpassworddiliatin?</td>
-									<td><a href="" class="btn btn-primary">Edit</a></td>
-								</tr>
-								<?php//  } ?>
+								<?php } } ?>
 							</table>
 						</div>
 					</div>	    
@@ -122,6 +120,7 @@
     						<table class="table table-hover table-bordered" style="">
 						    	<thead>
 						    		<tr>
+						    			<th>No</th>
 										<th>Nama Hewan</th>
 										<th>Email</th>
 										<th>No.Telp</th>
@@ -130,39 +129,27 @@
 							            <th>Keluhan</th>
 							            <th>Aksi</th>
 									</tr>
+								</thead>
+									<?php 
+									$no = 1;
+									foreach ($ap as $a) {	
+									?>
 									<tr>
-										<td>Doggies1</td>
-										<td>dummy1@example.com</td>
-										<td>0761</td>
-										<td>2020/04/14</td>
-										<td>Anjing</td>
-										<td>complaint1</td>
-										<td><a href="" class="btn btn-success">Acc</a></td>
-									</tr>
-									<tr>
-										<td>Kitties</td>
-										<td>dummy2@example.com</td>
-										<td>0761</td>
-										<td>2020/04/14</td>
-										<td>Kucing</td>
-										<td>complaint2</td>
-										<td><a href="" class="btn btn-success">Acc</a></td>
-									</tr>
-						    	</thead>
-									
-							    <?php 
-								//$no = 1;
-								//foreach($user as $u){ 
-								?>
-								<tr>
-									<td><?php //echo  ?></td>
-									<td><?php //echo  ?></td>
-						            <td><?php //echo  ?></td>
-						            <td><?php //echo  ?></td>
-						            <td><?php //echo  ?></td>
-						            <td><?php //echo  ?></td>
-								</tr>
-								<?php//  } ?>
+										<td><?php echo $no++; ?></td>
+										<td><?php echo $a['nama_pet'] ?></td>
+										<td><?php echo $a['email']; ?></td>
+										<td><?php echo $a['notelp'] ?></td>
+										<td><?php echo $a['tanggal']; ?></td>
+										<td><?php echo $a['jenis_pet']; ?></td>
+										<td><?php echo $a['keluhan']; ?></td>
+										<td><?php if($a['status'] == "Belum") {?>
+											<a href="<?php echo base_url('index.php/ControlAdmin/acceptAppointment/').$a['id_ap']; ?>" class="btn btn-success">Accept</a>
+											<?php } else { ?>
+											<a href="<?php echo base_url('index.php/ControlAdmin/cancelAppointment/').$a['id_ap']; ?>" class="btn btn-danger">Cancel</a>
+											<?php } ?>
+										</td>
+									</tr>								
+							    <?php  } ?>
 							</table>
 						</div>
 					</div>	     
@@ -177,6 +164,9 @@
     						<table class="table table-hover table-bordered" style="">
 			    				<thead>
 			    					<tr>
+			    						<th>No</th>
+			    						<th>Pemilik</th>
+			    						<th>Nama Hewan</th>
 										<th>Jenis</th>
 										<th>Berat</th>
 										<th>Tinggi</th>
@@ -184,16 +174,19 @@
 									</tr>
 			    				</thead>
 							    <?php 
-								//$no = 1;
-								//foreach($user as $u){ 
+								$no = 1;
+								foreach ($hewan as $h) {
 								?>
 								<tr>
-									<td><?php //echo  ?></td>
-									<td><?php //echo  ?></td>
-									<td><?php //echo  ?></td>
-						            <td><?php //echo  ?></td>
+									<td><?php echo $no++; ?></td>
+									<td><?php echo $h['nama']; ?></td>
+									<td><?php echo $h['nama_pet']; ?></td>
+									<td><?php echo $h['jenis'];  ?></td>
+									<td><?php echo $h['berat']; ?></td>
+									<td><?php echo $h['tinggi'];  ?></td>
+						            <td><?php echo $h['warna'];  ?></td>
 								</tr>
-								<?php//  } ?>
+								<?php  } ?>
 							</table>
 						</div>
 					</div>			    			
@@ -202,6 +195,59 @@
    		</div>
    	</div>
     
+   	<?php $no = 0; foreach ($users as $u) { if($u['email'] != "admin@admin" ) { $no++?>
+  	<div class="modal fade" id="detailUser<?php echo $no; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	    <div class="modal-dialog" role="document">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	        <center><h2>DETAIL USER</h2></center>
+	        </div>
+	        <div class="modal-body">
+	        <!-- isi form ini -->
+	        <form method="post" action="">
+	        	<input type="hidden" name="emailNow" value="<?php echo $u['email']; ?>">
+	          <div class="form-group">
+	            <label for="nama">Nama</label>
+	            <input type="text" class="form-control" id="nama" placeholder="Nama" name="nama"  value="<?php echo $u['nama']; ?>" required>
+	          </div>
+	          <div class="form-group">
+	            <label for="email">Email</label>
+	            <input type="email" class="form-control" id="email" placeholder="Email" name="email" value="<?php echo $u['email']; ?>" required>
+	          </div>
+	          <div class="form-group">
+	            <label for="password">Password</label>
+	            <input type="text" id="password" class="form-control" placeholder="Password" name="password" value="<?php echo $u['password']; ?>">
+	          </div>
+	        </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        </div>
+	        </form>
+	      </div>
+	    </div>
+	  </div>
+
+
+	  <div class="modal fade" id="deleteUser<?php echo $no; ?>" tabindex="-1" role="dialog">
+	  	<div class="modal-dialog" role="document">
+	    	<div class="modal-content">
+	      		<div class="modal-header">
+		        	<h5 class="modal-title">Konfirmasi Delete Akun</h5>
+	        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          			<span aria-hidden="true">&times;</span>
+	        		</button>
+	      		</div>
+	      	<div class="modal-body">
+	        	<p>Apakah anda yakin untuk menghapus akun <b><?php echo $u['nama']; ?></b>?</p>
+	      	</div>
+	      	<div class="modal-footer">
+	      		<a class="btn btn-danger" href="<?php echo base_url('index.php/ControlAdmin/deleteUser/').$u['id_user']; ?>"><i class="fa fa-trash"></i> Ya, Hapus</a>
+	        	<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	      	</div>
+	    	</div>
+	  	</div>
+	</div>
+	<?php } } ?>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
