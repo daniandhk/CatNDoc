@@ -257,17 +257,11 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <form action="<?= site_url('appointment/appointment') ?>" method="post">
       <div class="bootstrap-iso">
        <div class="container-fluid">
         <div class="row">
          <div class="col-md-12 col-sm-6 col-xs-12">
-          <form method="post">
-           <div class="form-group ">
-            <label class="control-label " for="nama">
-             Nama
-            </label>
-            <input class="form-control" id="nama" name="nama" type="text"/>
-           </div>
            <div class="form-group ">
             <label class="control-label requiredField" for="email">
              Email
@@ -278,23 +272,29 @@
             <input class="form-control" id="email" name="email" type="text"/>
            </div>
            <div class="form-group ">
-            <label class="control-label " for="telepon">
+            <label class="control-label " for="notelp">
              No. Telp
             </label>
-            <input class="form-control" id="telepon" name="telepon" type="text"/>
+            <input class="form-control" id="notelp" name="notelp" type="text"/>
            </div>
            <div class="form-group ">
             <label class="control-label " for="date">
              Date
             </label>
-            <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
+            <input class="form-control" id="date" name="date" placeholder="DD/MM/YYYY" type="text"/>
+           </div>
+           <div class="form-group ">
+            <label class="control-label " for="nama_pet">
+             Nama Peliharaan
+            </label>
+            <input class="form-control" id="nama_pet" name="nama_pet" type="text"/>
            </div>
            <div class="form-group ">
             <label class="control-label " for="select">
              Jenis Hewan Peliharaan
             </label>
-            <select class="select form-control" id="select" name="select">
-             <option selected="selected" value="">
+            <select class="select form-control" id="jenis" name="jenis">
+             <option selected="jenis" value="">
              </option>
              <option value="Kucing">
               Kucing
@@ -305,10 +305,10 @@
             </select>
            </div>
            <div class="form-group ">
-            <label class="control-label " for="message">
+            <label class="control-label " for="keluhan">
              Keluhan
             </label>
-            <textarea class="form-control" cols="40" id="message" name="message" rows="6"></textarea>
+            <textarea class="form-control" cols="40" id="keluhan" name="keluhan" rows="6"></textarea>
            </div>
            <div class="form-group">
             <div>
@@ -317,11 +317,11 @@
              </button>
             </div>
            </div>
-          </form>
          </div>
         </div>
        </div>
       </div>
+      </form>
     </div>
   </div>
 </div>
