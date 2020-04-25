@@ -36,10 +36,12 @@ class ControlShop extends CI_Controller{
 	}
 
 	public function logout(){
-		unset(
-        $_SESSION['email'],
-        $_SESSION['logged_in']
-        );
+		if(isset($_SESSION['email'])){
+			unset($_SESSION['email']);
+		}
+		if(isset($_SESSION['logged_in'])){
+			unset($_SESSION['logged_in']);
+		}
         redirect('ControlShop');
 	}
 }

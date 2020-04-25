@@ -171,10 +171,10 @@
                 <ul class="dropdown-menu">
                     <?php if (!isset($_SESSION['logged_in'])){ ?>
                     <li><a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalLoginForm">Login</a></li>
+                    <li><a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalRegisterForm">Register</a></li>
                     <?php } else{ ?>
                     <li><a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalLogout">Logout</a></li>
                     <?php } ?>
-                    <li><a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalRegisterForm">Register</a></li>
                     <li><a href="<?= site_url('ControlShop') ?>" class="btn btn-default btn-rounded mb-4" data-toggle="" data-target="">Shop</a></li>
                     <li><a href="<?= site_url('ControlAdmin') ?>" class="btn btn-default btn-rounded mb-4" data-toggle="" data-target="">CEK ADMIN</a></li>
                 </ul>
@@ -192,7 +192,7 @@
             </button>
           </div>
           <div class="modal-footer d-flex justify-content-center">
-              <button onclick="location.href='index.php/HomePage/logout'" class="btn btn-primary">Logout</button>
+              <button onclick="location.href='HomePage/logout'" class="btn btn-primary">Logout</button>
           </div>
         </div>
   </div>

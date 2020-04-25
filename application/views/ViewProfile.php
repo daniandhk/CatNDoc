@@ -36,28 +36,42 @@
           <li class="nav-item">
             <a class="nav-link" href="<?php echo site_url('Homepage'); ?>">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<?= site_url('ControlShop') ?>">Shop <span class="sr-only">(current)</span></a>
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Shop <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link disabled" href="#">Disabled</a>
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-shopping-cart"></i></a></li>
-          <li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-sign-in"></i> Login</a></li>
-          <li class="nav-item active"><a href="#" class="nav-link"><i class="fa fa-user"></i> Nama User</a></li>
+          <?php if (isset($_SESSION['logged_in'])){ ?>
+          <li class="nav-item"><a href="<?= site_url('ControlCart'); ?>" class="nav-link"><i class="fa fa-shopping-cart"></i></a></li>
+          <li class="nav-item"><a href="<?= site_url('ControlProfile'); ?>" class="nav-link"><i class="fa fa-user"></i> <?php echo $nama; ?></a></li>
+          <li class="nav-item"><a href="" class="nav-link" data-target="#modalLogout" data-toggle="modal"><i class="fa fa-sign-out"></i> Logout</a></li>
+          <?php }?>
         </ul>
       </div>
     </nav>
     <!-- END NAVBAR -->
       
+<div class="modal fade" id="modalLogout" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <h4 class="modal-title w-100 font-weight-bold">Yakin ingin Log Out?</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-footer d-flex justify-content-center">
+              <button onclick="location.href='ControlProfile/logout'" class="btn btn-primary">Logout</button>
+          </div>
+        </div>
+  </div>
+</div>
+
       <!-- START USER PROFILE -->
-      <div class="container">    
-                <div class="jumbotron">
-                    
-                <a href="#" type="button" class="btn btn-info btn-sm mb-1 mt-5" data-toggle="modal" data-target="#myModal">UPDATE DATA DIRI</a>
-                    
+      <div class="container">
                   <div class="row">
                       <div class="col-md-3 col-xs-12 col-sm-6 col-lg-3">
                         <div class="thumbnail photo_view_postion_b" >
@@ -67,181 +81,210 @@
                         </div>
                       </div>
                       <div class="col-md-9 col-xs-12 col-sm-6 col-lg-9">
-                          <div class="" style="border-bottom:1px solid black">
-                            <!-- GET NAMA-->
-                            <h2>MANUSIAWI</h2>
-                            
+                          <div class="">
+                            <h2><?php echo $nama; ?></h2>
+                            <h3><?php echo $email; ?></h3>
+                          </div>
+                          <div style="border-top:1px border-bottom:1px solid black">
+                            <a href="#" class="btn btn-dark btn-rounded mt-2 mb-2 button2" style="color: white;" data-toggle="modal" data-target="#modalContactForm">REQUEST APPOINTMENT</a>
                           </div>
                             <hr>
+                          <?php 
+                          $no = 0;
+                          foreach($appointment as $a) {
+                            if($a['email'] == $email){
+                            $no++;
+                           ?>
+                           <h4>Appointment <?php echo $no ?></h4>
                           <div class="col-md-8">  
-                            <ul class=" details">
-                              <!-- GET NOTELP-->
-                              <li id="profil"><p><span class="glyphicon glyphicon-earphone one" style="width:50px;"></span>086969696</p></li>
-
-                              <!-- GET EMAIL-->
-                              <li id="profil"><p><span class="glyphicon glyphicon-envelope one" style="width:50px;"></span>somerandom@email.com</p></li>
-
-                              <!-- GET KOTA ASAL-->
-                              <li id="profil"><p><span class="glyphicon glyphicon-map-marker one" style="width:50px;"></span>ANAPTANI</p></li>
-                            </ul>
+                            <table width="100%">
+                              <tr>
+                                <th>Tanggal </th>
+                                <td><?php echo $a['tanggal'] ?></td>
+                              </tr>
+                              <tr>
+                                <th>Kontak </th>
+                                <td><?php echo $a['notelp'] ?></td>
+                              </tr>
+                              <tr>
+                                <th>Nama Peliharaan </th>
+                                <td><?php echo $a['nama_pet'] ?></td>
+                              </tr>
+                              <tr>
+                                <th>Jenis Peliharaan </th>
+                                <td><?php echo $a['jenis_pet'] ?></td>
+                              </tr>
+                              <tr>
+                                <th>Keluhan </th>
+                                <td><?php echo $a['keluhan'] ?></td>
+                              </tr>
+                              <?php if($a['status'] == "belum" || $a['status'] == "Belum"){ ?>
+                                <tr>
+                                  <th>Status </th>
+                                  <td style="font-weight: bold; color: red;">Processing</td>
+                                </tr>
+                              <?php } else{ ?>
+                                <tr>
+                                  <th>Status </th>
+                                  <td style="font-weight: bold; color: green;">Done</td>
+                                </tr>
+                              <?php } ?>
+                            </table>
                           </div>
-                          <!-- INCASE BUTUH BUAT DATA DIRI TAMBAHAN
-                          <div class="col-md-4">  
-                            <div class="col-sm-5 col-xs-6 tital " >Birthday:</div><div class="col-sm-7 col-xs-6 ">2018/2/15</div>
-                            <div class="clearfix"></div><div class="bot-border"></div>
-                            <div class="col-sm-5 col-xs-6 tital " >Gender:</div><div class="col-sm-7 col-xs-6 ">Prasad</div>
-                            <div class="clearfix"></div><div class="bot-border"></div>
-                            <div class="col-sm-5 col-xs-6 tital " >Ethnicity:</div><div class="col-sm-7 col-xs-6 ">sdfsdfsdfsdfsdf</div>
-                            <div class="clearfix"></div><div class="bot-border"></div>
+                          <br>
+                          <div>
+                              <tr><a href="" data-toggle="modal" data-target="#detailAppointment<?php echo $no; ?>" class="btn btn-primary"><i class="fa fa-folder"></i> Update</a>
+                                <a href="" data-toggle="modal" data-target="#deleteUser<?php echo $no; ?>" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
+                              </tr>
                           </div>
-                          -->
+                          <hr>
+                          <?php } }?>
                       </div>
-                    </div>
-
-                    <!-- HEWAN -->
-                    <a href="#" type="button" class="btn btn-info btn-sm mb-1 mt-5" data-toggle="modal" data-target="#myModal2">UPDATE DATA HEWAN</a>
-                    <div class="row">
-                    
-                      <div class="col-md-3 col-xs-12 col-sm-6 col-lg-3">
-                      
-                        <div class="thumbnail photo_view_postion_b" >
-                        
-                        <!-- GET FOTO-->
-                          <img style="height:100%; width:auto; max-height:280px" src="https://1.bp.blogspot.com/-Z4udyQ92_Pk/XoK9UJkRlAI/AAAAAAAAIRc/89AwHjoIaaAVH_x1QQ2GlJwPhC5w1xk1QCNcBGAsYHQ/s1600/8VO262-ZLMGFz-sB.jpg" alt="stack photo" class="img">
-                        
-                        </div>
-                        
-                      </div>
-                      
-                      <div class="col-md-9 col-xs-12 col-sm-6 col-lg-9">
-                      
-                          <div class="" style="border-bottom:1px solid black">
-                          
-                            <!-- GET NAMA-->
-                            <h2>HEWANI</h2>
-                            
-                          </div>
-                          
-                            <hr>
-                          <div class="col-md-8">  
-                          
-                        <div class="col-2 col-xs-4 tital " >Jenis:</div><div class="col-sm-6 col-xs-6 contant_i">-</div>
-                        <div class="clearfix"></div><div class="bot-border"></div>
-                        <div class="col-2 col-xs-4 tital " >Berat:</div><div class="col-sm-6 col-xs-6 contant_i">-</div>
-                        <div class="clearfix"></div><div class="bot-border"></div>
-                        <div class="col-2 col-xs-4 tital " >Tinggi:</div><div class="col-sm-6 col-xs-6 contant_i">-</div>
-                        <div class="clearfix"></div><div class="bot-border"></div>
-                        <div class="col-2 col-xs-4 tital " >Warna:</div><div class="col-sm-6 col-xs-6 contant_i">-</div>
-                        <div class="clearfix"></div><div class="bot-border"></div>
-                          </div>
-                      </div>
-                    </div>
-                    <!-- HEWAN -->
-
-                    
-        <!-- END USER PROFILE -->
-
-        <!-- EDIT DIRI -->
-
-             <!-- Modal Edit Diri-->
-             <div class="modal fade" id="myModal<?php //echo $data['id']; ?>" role="dialog">
-              <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                  <div class="modal-header">
-                     <h4 class="modal-title font-weight-bold">Update Data Diri</h4>
                   </div>
-                  
-                  <div class="modal-body">
-                    <form role="form" action="" method="">
-                        
-                        <?php
-                        //$id = $data['id']; 
-                        //$query_edit = mysqli_query($koneksi, "SELECT * FROM cust WHERE id='$id'");
-                        //while ($row = mysqli_fetch_array($query_edit)) {  
-                        ?>
+      </div>
 
-                        <input type="hidden" name="id_cust" value="<?php// echo $row['id']; ?>">
-                        <div class="form-group">
-                          <label>Nama</label>
-                          <input type="text" name="nama_cust" class="form-control" value="<?php// echo $row['nama']; ?>">      
-                        </div>
-                        <div class="form-group">
-                          <label>No Telp</label>
-                          <input type="text" name="fakultas_mhs" class="form-control" value="<?php// echo $row['Notelp']; ?>">      
-                        </div>
-                        <div class="form-group">
-                          <label>Email</label>
-                          <input type="text" name="fakultas_mhs" class="form-control" value="<?php// echo $row['email']; ?>">      
-                        </div>
-                        <div class="form-group">
-                          <label>Asal</label>
-                          <input type="text" name="fakultas_mhs" class="form-control" value="<?php// echo $row['asal']; ?>">      
-                        </div>
-                        <div class="modal-footer">  
-                          <button type="submit" class="btn btn-success">Update</button>
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                        <?php 
-                        //}
-                        ?>        
-                      </form>
-                  </div>
-                </div>
-              </div>
+    <?php $no = 0; foreach ($appointment as $a) { if($a['email'] == $email) { $no++?>
+    <div class="modal fade" id="detailAppointment<?php echo $no; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+          <center><h2>Appointment <?php echo $no ?></h2></center>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+          </div>
+          <form action="<?= site_url('ControlProfile/updateAppointment') ?>" method="post" >
+          <div class="modal-body">
+          <!-- isi form ini -->
+            <div class="form-group">
+            <input type="hidden" name="id_ap" value="<?php echo $a['id_ap']; ?>">
+            <div class="form-group">
+              <label for="tanggal">Tanggal</label>
+              <input type="text" class="form-control" id="tanggal" placeholder="DD/MM/YYYY" name="tanggal"  value="<?php echo $a['tanggal']; ?>" disabled>
             </div>
-        <!-- EDIT DIRINI-->
+            <div class="form-group">
+              <label for="notelp">No. Telepon</label>
+              <input type="notelp" class="form-control" id="notelp" placeholder="<?php echo $a['notelp']; ?>" value="<?php echo $a['notelp']; ?>" name="notelp" required>
+            </div>
+            <div class="form-group">
+              <label for="nama_pet">Nama Peliharaan</label>
+              <input type="text" id="nama_pet" class="form-control" placeholder="Nama Peliharaan" name="nama_pet" value="<?php echo $a['nama_pet']; ?>" disabled>
+            </div>
+            <div class="form-group">
+              <label for="jenis_pet">Jenis Peliharaan</label>
+              <input type="text" id="jenis_pet" class="form-control" placeholder="Jenis Peliharaan" name="jenis_pet" value="<?php echo $a['jenis_pet']; ?>" disabled>
+            </div>
+            <div class="form-group">
+              <label for="keluhan">Keluhan</label>
+              <input type="text" id="keluhan" class="form-control" placeholder="<?php echo $a['keluhan']; ?>" value="<?php echo $a['keluhan']; ?>" name="keluhan" required>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
 
-        <!--EDIT HEWANI-->
-            <!-- Modal Edit Diri-->
-            <div class="modal fade" id="myModal2<?php //echo $data['id']; ?>" role="dialog">
-              <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                  <div class="modal-header">
-                     <h4 class="modal-title font-weight-bold">Update Data Hewan</h4>
-                  </div>
-                  
-                  <div class="modal-body">
-                    <form role="form" action="" method="">
-                        
-                        <?php
-                        //$id = $data['id']; 
-                        //$query_edit = mysqli_query($koneksi, "SELECT * FROM ngews WHERE id='$id'");
-                        //while ($row = mysqli_fetch_array($query_edit)) {  
-                        ?>
+    <div class="modal fade" id="deleteUser<?php echo $no; ?>" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Konfirmasi Delete Appointment</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          <div class="modal-body">
+            <p>Apakah anda yakin untuk menghapus riwayat <b>Appointment <?php echo $no ?></b>?</p>
+          </div>
+          <div class="modal-footer">
+            <a class="btn btn-danger" href="<?php echo base_url('index.php/ControlProfile/deleteAppointment/').$a['id_ap']; ?>"><i class="fa fa-trash"></i> Ya, Hapus</a>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <?php } } ?>
 
-                        <input type="hidden" name="id_hewan" value="<?php// echo $row['id']; ?>">
-                        <div class="form-group">
-                          <label>Jenis</label>
-                          <input type="text" name="jenis_hewan" class="form-control" value="<?php// echo $row['jenis']; ?>">      
-                        </div>
-                        <div class="form-group">
-                          <label>Berat</label>
-                          <input type="text" name="berat_hewan" class="form-control" value="<?php// echo $row['berat']; ?>">      
-                        </div>
-                        <div class="form-group">
-                          <label>Tinggi</label>
-                          <input type="text" name="tinggi_hewan" class="form-control" value="<?php// echo $row['tinggi']; ?>">      
-                        </div>
-                        <div class="form-group">
-                          <label>Warna</label>
-                          <input type="text" name="warna_hewan" class="form-control" value="<?php// echo $row['warna']; ?>">      
-                        </div>
-                        <div class="modal-footer">  
-                          <button type="submit" class="btn btn-success">Update</button>
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                        <?php 
-                        //}
-                        ?>        
-                      </form>
-                  </div>
-                </div>
-              </div>
-            </div>              
-    
-        <!-- EDIT HEWANO-->
+<div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Request Appoinment</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="<?= site_url('ControlProfile/appointment') ?>" method="post">
+      <div class="bootstrap-iso">
+       <div class="container-fluid">
+        <div class="row">
+         <div class="col-md-12 col-sm-6 col-xs-12">
+           <div class="form-group ">
+            <label class="control-label" for="email">
+             Email
+            </label>
+            <input type="hidden" name="email" value="<?php echo $a['email']; ?>">
+            <input class="form-control" id="email" placeholder="<?php echo $a['email']; ?>" value="<?php echo $a['email']; ?>" type="text"/ disabled>
+           </div>
+           <div class="form-group ">
+            <label class="control-label " for="notelp">
+             No. Telp
+            </label>
+            <input class="form-control" id="notelp" name="notelp" type="text"/>
+           </div>
+           <div class="form-group ">
+            <label class="control-label " for="date">
+             Date
+            </label>
+            <input class="form-control" id="date" name="date" placeholder="DD/MM/YYYY" type="text"/>
+           </div>
+           <div class="form-group ">
+            <label class="control-label " for="nama_pet">
+             Nama Peliharaan
+            </label>
+            <input class="form-control" id="nama_pet" name="nama_pet" type="text"/>
+           </div>
+           <div class="form-group ">
+            <label class="control-label " for="select">
+             Jenis Hewan Peliharaan
+            </label>
+            <select class="select form-control" id="jenis" name="jenis">
+             <option selected="jenis" value="">
+             </option>
+             <option value="Kucing">
+              Kucing
+             </option>
+             <option value="Anjing">
+              Anjing
+             </option>
+            </select>
+           </div>
+           <div class="form-group ">
+            <label class="control-label " for="keluhan">
+             Keluhan
+            </label>
+            <textarea class="form-control" cols="40" id="keluhan" name="keluhan" rows="6"></textarea>
+           </div>
+           <div class="form-group">
+            <div>
+             <button class="btn btn-primary " name="submit" type="submit">
+              Submit
+             </button>
+            </div>
+           </div>
+         </div>
+        </div>
+       </div>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
