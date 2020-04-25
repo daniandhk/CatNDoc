@@ -24,6 +24,16 @@
 		.imageModal {
 			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 		}
+		/* Firefox */
+		input[type=number] {
+  			-moz-appearance: textfield;
+		}
+		/* Chrome, Safari, Edge, Opera */
+		input::-webkit-outer-spin-button,
+		input::-webkit-inner-spin-button {
+		  -webkit-appearance: none;
+		  margin: 0;
+		}
 	</style>
   </head>
   <body>
@@ -50,7 +60,7 @@
    	<div class="container my-3">
    		<div class="row">
    			<div class="col-3">
-   				<h3 style="font-weight: bolder">Kelola Product</p>
+   				<h3 style="font-weight: bolder">Kelola Product</h3>
    				<button id="btn4" class="btn btn-secondary my-1">DATA PRODUCT</button>
    			</div>
    			<div class="col-9">
@@ -74,7 +84,8 @@
    								<tr>
    									<td><?php echo $p['nama']; ?></td>
    									<td><?php echo $p['harga']; ?></td>
-   									<td><a href="" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#modalDetailProduct<?php echo $p['id_product'] ?>">Detail</a></td>
+   									<td><a href="" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#modalDetailProduct<?php echo $p['id_product'] ?>">Detail</a>
+   										<a href="" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#modalGantiFoto<?php echo $p['id_product'] ?>">Ganti Foto</a></td>
    								</tr>
    								<?php } ?>
    							</table>
@@ -87,7 +98,7 @@
    						<div class="card-header inline-block" style="font-weight: bolder;">ADD PRODUCT
 						</div>
    						<div class="card-body">
-   							<form method="post" action="">
+   							<?php echo form_open_multipart('ControlProduct/addProduct');?>
 						        <input type="hidden" class="form-control" placeholder="ID Product" name="id_product" value=""  required>
 						          <div class="form-group">
 						            <label for="nama">Nama</label>
@@ -95,18 +106,25 @@
 						          </div>
 						          <div class="form-group">
 						            <label for="harga">Harga</label>
-						            <input type="text" class="form-control" id="harga" placeholder="Harga" name="harga" value="" required>
+						            <input type="number" class="form-control" id="harga" placeholder="Harga" name="harga" value="" required>
 						          </div>
 						          <div class="form-group">
 						            <label for="deskripsi">Deskripsi</label>
 						            <input type="textarea" id="deskripsi" class="form-control" placeholder="Deskripsi" name="deskripsi" value="">
+						          </div>
+						          <div class="form-group">
+						            <label for="jenis">Jenis</label>
+						            <select class="form-control" name="jenis">
+						            	<option value="Makanan">Makanan</option>
+						            	<option value="Peralatan">Peralatan</option>
+						            	<option value="Lain-lain">Lain-lain</option>
+						            </select>
 						          </div>
 						        <div class="form-group">
 						        	<label for="upload_foto">Upload Foto</label>
 						        	<input type="file" id="upload_foto" class="form-control" name="foto">
 						        </div>
 						        <div class="modal-footer">
-						          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 						        <input  type="submit" class="btn btn-primary" id="hapus" value="Submit" placeholder="Simpan">
 						        </div>
 						        </form>
@@ -121,45 +139,68 @@
   	<?php foreach ($product as $p ) {?>
   	<div class="modal fade" id="modalDetailProduct<?php echo $p['id_product']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	    <div class="modal-dialog" role="document">
-	      <div class="modal-content">
-	        <div class="modal-header">
-	        <center><h2>DETAIL BARANG</h2></center>
-	        </div>
-	        <div class="modal-body">
-	        <!-- isi form ini -->
-	        <form method="post" action="">
-	        <input type="hidden" class="form-control" placeholder="ID Product" name="id_product" value="<?php echo $p['id_product']; ?>"  required>
-	          <div class="form-group">
-	            <label for="nama">Nama</label>
-	            <input type="text" class="form-control" id="nama" placeholder="Nama" name="nama"  value="<?php echo $p['nama']; ?>" required>
-	          </div>
-	          <div class="form-group">
-	            <label for="harga">Harga</label>
-	            <input type="text" class="form-control" id="harga" placeholder="Harga" name="harga" value="<?php echo $p['harga']; ?>" required>
-	          </div>
-	          <div class="form-group">
-	            <label for="deskripsi">Deskripsi</label>
-	            <input type="textarea" id="deskripsi" class="form-control" placeholder="Deskripsi" name="deskripsi" value="<?php echo $p['deskripsi']; ?>">
-	          </div>
-	        </div>
-	        <div class="form-group">
-	        	<label for="Foto">Foto</label>
-	        	<div>
-	        		<img class="imageModal" style="width:100%;max-width: 200px;height: auto" src="<?php echo base_url('assets/img/sale/').$p['foto']; ?>">
+	      	<div class="modal-content">
+	        	<div class="modal-header">
+	        		<center><h2>DETAIL BARANG</h2></center>
 	        	</div>
-	        </div>
-	        <div class="form-group">
-	        	<label for="upload_foto">Upload Foto</label>
-	        	<input type="file" id="upload_foto" class="form-control" name="foto">
-	        </div>
-	        <div class="modal-footer">
-	          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-	        <input  type="submit" class="btn btn-primary" id="hapus" value="Submit" placeholder="Simpan">
-	        </div>
-	        </form>
-	      </div>
+	        	<div class="modal-body">
+	        <!-- isi form ini -->
+	        		<?php echo form_open_multipart('ControlProduct/editProduct/');?>
+	        			<input type="hidden" class="form-control" placeholder="ID Product" name="id_product" value="<?php echo $p['id_product']; ?>"  required>
+	          			<div class="form-group">
+	            			<label for="nama">Nama</label>
+	            			<input type="text" class="form-control" id="nama" placeholder="Nama" name="nama"  value="<?php echo $p['nama']; ?>" required>
+	          			</div>
+	          			<div class="form-group">
+	            			<label for="harga">Harga</label>
+	            			<input type="text" class="form-control" id="harga" placeholder="Harga" name="harga" value="<?php echo $p['harga']; ?>" required>
+	          			</div>
+	          			<div class="form-group">
+	            			<label for="deskripsi">Deskripsi</label>
+	            			<input type="textarea" id="deskripsi" class="form-control" placeholder="Deskripsi" name="deskripsi" value="<?php echo $p['deskripsi']; ?>">
+	          			</div>
+	        		</div>
+	        		<div class="modal-footer">
+	          			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        			<input  type="submit" class="btn btn-primary" id="hapus" value="Submit" placeholder="Simpan">
+	        		</div>
+	        		</form>
+	      		</div>
+	    	</div>
+	 	</div>
+
+	 <div class="modal fade" id="modalGantiFoto<?php echo $p['id_product']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	    <div class="modal-dialog" role="document">
+	      	<div class="modal-content">
+	        	<div class="modal-header">
+	        		<center><h2>FOTO BARANG</h2></center>
+	        	</div>
+	        	<div class="modal-body">
+	        		<?php echo form_open_multipart('ControlProduct/editProductFoto/');?>
+	        			<input type="hidden" class="form-control" placeholder="ID Product" name="id_product" value="<?php echo $p['id_product']; ?>"  required>
+	          			<div class="form-group">
+	            			<label for="nama">Nama</label>
+	            			<input type="text" class="form-control" id="nama" placeholder="Nama" disabled value="<?php echo $p['nama']; ?>" required>
+	          			</div>
+	          			<div class="form-group">
+	        				<label for="Foto">Foto</label>
+	        				<div>
+	        					<img class="imageModal" style="width:100%;max-width: 200px;height: auto" src="<?php echo base_url('assets/img/sale/').$p['foto']; ?>">
+	        				</div>
+	        			</div>
+	        			<div class="form-group">
+	        				<label for="upload_foto">Upload Foto</label>
+	        				<input type="file" id="upload_foto" class="form-control" name="foto">
+	        			</div>
+	        	</div>
+	        	<div class="modal-footer">
+	          		<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        		<input  type="submit" class="btn btn-primary" id="hapus" value="Submit" placeholder="Simpan">
+	        	</div>
+	        	</form>
+	      	</div>
 	    </div>
-	  </div>
+	 </div>
 	<?php } ?>
 
     <!-- Optional JavaScript -->

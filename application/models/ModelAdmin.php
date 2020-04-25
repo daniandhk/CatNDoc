@@ -39,4 +39,15 @@ class ModelAdmin extends CI_Model{
 		$this->db->set($data)->where('id_ap', $id_ap)->update('appointment');
 	}
 
+	public function addProduct($data) {
+		$this->db->insert('product', $data);
+	}
+
+	public function editProduct($data,$id_product) {
+		$this->db->where('id_product', $id_product)->update('product', $data);
+	}
+
+	public function editProductFoto($data,$id_product) {
+		$this->db->where('id_product', $id_product)->update('product', $data);
+	}
 }

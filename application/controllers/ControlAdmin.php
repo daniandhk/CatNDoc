@@ -35,4 +35,5 @@ class ControlAdmin extends CI_Controller{
 		$this->ModelAdmin->cancelAppointment($id_ap);
 		redirect('ControlAdmin');
 	}
+
 }
