@@ -13,7 +13,10 @@ class registrasi extends CI_Controller {
         $nama = $this->input->post('nama');
         $email = $this->input->post('email');
         $password = $this->input->post('password');
-        $this->ModelRegistrasi->add_akun($nama,$email,$password);
+        $check = $this->ModelRegistrasi->cek_email($email);
+        if($check == false){
+            $this->ModelRegistrasi->add_akun($nama,$email,$password);
+        }
         redirect('HomePage');
     }
 }
