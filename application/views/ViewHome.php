@@ -192,7 +192,7 @@
             </button>
           </div>
           <div class="modal-footer d-flex justify-content-center">
-              <button onclick="location.href='HomePage/logout'" class="btn btn-primary">Logout</button>
+              <button onclick="location.href='index.php/HomePage/logout'" class="btn btn-primary">Logout</button>
           </div>
         </div>
   </div>
