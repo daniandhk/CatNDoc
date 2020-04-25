@@ -167,7 +167,11 @@
                 <button class="btn btn-lg btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">Menu
                 <span class="caret"></span></button>
                 <ul class="dropdown-menu">
+                    <?php if (!isset($_SESSION['logged_in'])){ ?>
                     <li><a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalLoginForm">Login</a></li>
+                    <?php } else{ ?>
+                    <li><a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalLogout">Logout</a></li>
+                    <?php } ?>
                     <li><a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalRegisterForm">Register</a></li>
                     <li><a href="<?= site_url('ControlShop') ?>" class="btn btn-default btn-rounded mb-4" data-toggle="" data-target="">Shop</a></li>
                     <li><a href="<?= site_url('ControlAdmin') ?>" class="btn btn-default btn-rounded mb-4" data-toggle="" data-target="">CEK ADMIN</a></li>
@@ -176,15 +180,31 @@
         </div>
         <!--ENDNAVBAR DROPDOWN-->
 
+<div class="modal fade" id="modalLogout" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <h4 class="modal-title w-100 font-weight-bold">Yakin ingin Log Out?</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-footer d-flex justify-content-center">
+              <button onclick="location.href='HomePage/logout'" class="btn btn-primary">Logout</button>
+          </div>
+        </div>
+  </div>
+</div>
+
         <!-- INI BUAT FORM POP UP LOGIN-->
 <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header text-center">
-              <h4 class="modal-title w-100 font-weight-bold" style="margin-left:8%;">Sign in</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
-              </button>
+            </button>
           </div>
           <form action="<?= site_url('login/login') ?>" method="post">
             <div class="modal-body mx-3">

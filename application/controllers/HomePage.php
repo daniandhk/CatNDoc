@@ -13,4 +13,12 @@ class HomePage extends CI_Controller{
 	{
 		$this->load->view('ViewHome');
 	}
+
+	public function logout(){
+		unset(
+        $_SESSION['email'],
+        $_SESSION['logged_in']
+        );
+        redirect('HomePage');
+	}
 }

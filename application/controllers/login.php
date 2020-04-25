@@ -15,11 +15,11 @@ class Login extends CI_Controller {
       if($check === "admin@admin"){
         redirect('/ControlAdmin');
       }else{
-        $this->load->view('ViewProfile',$data);
+        $this->load->view('ViewHome',$data);
       }
     }
     else {
-      $this->load->view('HomePage');
+      $this->load->view('ViewHome');
     }
   }
    
@@ -31,6 +31,7 @@ class Login extends CI_Controller {
     $login = $this->loginModel->login($data);
     if($login == TRUE) {
       $this->session->set_userdata('email', $data['email']);
+      $this->session->set_userdata('logged_in', TRUE);
       redirect('/login');
     }else{
       $this->session->set_flashdata('error_message', 'email atau password salah');
