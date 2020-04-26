@@ -76,8 +76,12 @@
 	<table id="cart" class="table table-hover">
     				<thead>
 						<tr>
-							<th style="width:65%">Produk</th>
-							<th style="width:10%">Harga</th>
+							<th width="10%"></th>
+            						<th width="25%">Product</th>
+            						<th width="15%">Harga</th>
+            						<th width="13%">Quantity</th>
+            						<th width="20%">Subtotal</th>
+            						<th width="12%"></th>
 						</tr>
 					</thead>
 					<tbody>
