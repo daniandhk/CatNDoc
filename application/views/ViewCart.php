@@ -15,8 +15,8 @@
     <style>
         
         .nav-item{
-          font-size: 140%;
-        }
+        font-size: 19px;
+      }
   
         #icon{
           position: relative;
@@ -50,25 +50,23 @@
             <a class="nav-link" href="<?php echo site_url('Homepage'); ?>">Home</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#">Shop <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="#">Cart <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link disabled" href="#">Disabled</a>
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
+          <?php if (!isset($_SESSION['logged_in'])){ ?>
           <li class="nav-item"><a href="<?= site_url('ControlCart'); ?>" class="nav-link"><i class="fa fa-shopping-cart"></i></a></li>
-          <li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-sign-in"></i> Login</a></li>
-          <li class="nav-item"><a href="<?= site_url('ControlProfile'); ?>" class="nav-link"><i class="fa fa-user"></i> Nama User</a></li>
+          <li class="nav-item"><a href="" class="nav-link" data-target="#modalLoginForm" data-toggle="modal"><i class="fa fa-sign-in"></i> Login</a></li>
+          <?php } else{ ?>
+          <li class="nav-item"><a href="<?= site_url('ControlProfile'); ?>" class="nav-link"><i class="fa fa-user"></i> <?php echo $nama; ?></a></li>
+          <li class="nav-item"><a href="" class="nav-link" data-target="#modalLogout" data-toggle="modal"><i class="fa fa-sign-out"></i> Logout</a></li>
+          <?php }?>
         </ul>
       </div>
-    </nav>
-      <br>
-      <br>
-      <h2 style="position: absolute;left: 50px;">Item belanjaan anda :</h2>
-      <br>
-      <br>
-      <li class="nav-link fa fa-shopping-cart" id="iconCart"></li>
+</nav>
       
       
       <!-- BUAT GET APA AJA YG UDAH DIBELI-->
@@ -138,6 +136,50 @@
       </div>
     </div>
 
+  </div>
+</div>
+
+<div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form action="<?= site_url('ControlCart/login') ?>" method="post">
+            <div class="modal-body mx-3">
+              <div class="md-form mb-4">
+                <input type="email" id="defaultForm-email" class="form-control validate" name="email" placeholder="Email" required>
+              </div>
+
+              <div class="md-form mb-4">
+                <input type="password" id="defaultForm-pass" class="form-control validate" name="password" placeholder="Password" required>
+              </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary">Login</button>
+            </div>
+          </form>
+        </div>
+    </div>
+</div>
+<!-- END BUAT FORM POP UP LOGIN-->
+
+<div class="modal fade" id="modalLogout" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <h4 class="modal-title w-100 font-weight-bold">Yakin ingin Log Out?</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-footer d-flex justify-content-center">
+              <button onclick="location.href='ControlCart/logout'" class="btn btn-primary">Logout</button>
+          </div>
+        </div>
   </div>
 </div>
         
