@@ -76,8 +76,9 @@
                       <div class="col-md-3 col-xs-12 col-sm-6 col-lg-3">
                         <div class="thumbnail photo_view_postion_b" >
                         <!-- GET FOTO-->
-                          <img style="height:100%; width:auto; max-height:280px" src="https://1.bp.blogspot.com/-Z4udyQ92_Pk/XoK9UJkRlAI/AAAAAAAAIRc/89AwHjoIaaAVH_x1QQ2GlJwPhC5w1xk1QCNcBGAsYHQ/s1600/8VO262-ZLMGFz-sB.jpg" alt="stack photo" class="img">
-                        
+
+                          <img style="padding-top: 8%; height:100%; width:auto; max-height:280px" src="<?php if ($foto != NULL) { echo base_url("assets/img/Profile/").$foto; } else{echo base_url('assets/img/blank.png');} ?>" alt="stack photo" class="img">
+                          <a href="#" class="btn btn-dark btn-rounded mt-2 mb-2 button2" style="color: white;" data-toggle="modal" data-target="#modalEditProfile">Edit Profile</a>
                         </div>
                       </div>
                       <div class="col-md-9 col-xs-12 col-sm-6 col-lg-9">
@@ -126,7 +127,7 @@
                               <?php } else{ ?>
                                 <tr>
                                   <th>Status </th>
-                                  <td style="font-weight: bold; color: green;">Done</td>
+                                  <td style="font-weight: bold; color: green;">Finished</td>
                                 </tr>
                               <?php } ?>
                             </table>
@@ -227,8 +228,8 @@
             <label class="control-label" for="email">
              Email
             </label>
-            <input type="hidden" name="email" value="<?php echo $a['email']; ?>">
-            <input class="form-control" id="email" placeholder="<?php echo $a['email']; ?>" value="<?php echo $a['email']; ?>" type="text"/ disabled>
+            <input type="hidden" name="email" value="<?php echo $email; ?>">
+            <input class="form-control" id="email" placeholder="<?php echo $email; ?>" value="<?php echo $email; ?>" type="text"/ disabled>
            </div>
            <div class="form-group ">
             <label class="control-label " for="notelp">
@@ -281,6 +282,50 @@
        </div>
       </div>
       </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalEditProfile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">My Profile</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+    <?php echo form_open_multipart('ControlProfile/editprofile/');?>
+      <input type="hidden" name="Myemail" value="<?php echo $email; ?>">
+      <input type="hidden" name="Mynama" value="<?php echo $nama; ?>">
+      <input type="hidden" name="Mypassword" value="<?php echo $password; ?>">
+      <input type="hidden" name="id" value="<?php echo $id; ?>">
+      <div class="modal-body mx-3">
+          <!-- NAMA -->
+          <div class="md-form mb-4">
+            <input name="nama" type="text" id="orangeForm-name" class="form-control" placeholder="<?php echo $nama ?>">
+          </div>
+
+          <!-- EMAIL -->
+          <div class="md-form mb-4">
+            <input name="email" type="email" id="orangeForm-email" class="form-control" placeholder="<?php echo $email ?>">
+          </div>
+
+          <!-- PASSWORD -->
+          <div class="md-form mb-4">
+            <input name="password" type="password" id="orangeForm-pass" class="form-control" placeholder="Password">
+          </div>
+          <div class="form-group">
+              <label for="upload_foto">Upload Foto</label>
+              <input type="file" id="upload_foto" class="form-control" name="foto">
+          </div>
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button type="submit" class="btn btn-info">Submit</button>
+      </div>
+    </form>
     </div>
   </div>
 </div>

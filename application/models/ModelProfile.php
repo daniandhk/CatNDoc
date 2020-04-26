@@ -46,4 +46,15 @@ class ModelProfile extends CI_Model{
         }
     }
 
+    public function edit_pro($id,$nama,$email,$password) {
+    	unset($_SESSION['email']);
+		$data = $this->db->query("UPDATE user SET nama = '$nama', email = '$email', password = '$password' WHERE id_user = '$id'");
+		$this->session->set_userdata('email', $email);
+        return $data;
+	}
+
+	public function editFoto($data,$id) {
+		$this->db->where('id_user', $id)->update('user', $data);
+	}
+
 }

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 25, 2020 at 05:17 PM
+-- Generation Time: Apr 26, 2020 at 10:03 PM
 -- Server version: 10.4.8-MariaDB
--- PHP Version: 7.3.10
+-- PHP Version: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -44,7 +44,9 @@ CREATE TABLE `appointment` (
 --
 
 INSERT INTO `appointment` (`email`, `id_ap`, `notelp`, `tanggal`, `nama_pet`, `jenis_pet`, `keluhan`, `status`) VALUES
-('daniandhika03@gmail.com', 1, 123, '2020-04-07', 'Goliath', 'Kucing', 'Sakit kepala', 'Belum');
+('daniandhika03@gmail.com', 1, 1231234, '2020-04-07', 'Goliath', 'Kucing', 'qwertyq', 'Belum'),
+('daniandhika03@gmail.com', 4, 4321, '2012-12-12', 'Heli', 'Anjing', 'UwU', 'belum'),
+('sya@heggi', 6, 123, '2012-12-12', 'zz', 'Kucing', 'aw', 'belum');
 
 -- --------------------------------------------------------
 
@@ -92,7 +94,8 @@ INSERT INTO `product` (`id_product`, `nama`, `jenis`, `deskripsi`, `harga`, `fot
 (1, 'Makanan Anjing', 'Makanan', 'Makanan anjing yang lezat anjing anda pasti suka', 6000, 'makanananjing1.jpg'),
 (2, 'Makanan Kucing', 'Makanan', 'Kucing anda akan sangat gembira!', 7000, 'makanankucing1.jpg'),
 (3, 'Shampoo Kucing', 'Lain-lain', 'Shampoo yang membuat rambut kucing anda halus', 40000, 'shampookucing1.jpg'),
-(4, 'Sikat Kucing', '', 'Sikat jos !', 50000, 'sikatkucing1.jpg');
+(4, 'Sikat Kucing', '', 'Sikat jos !', 50000, 'sikatkucing1.jpg'),
+(5, 'Kucing Anggora', 'Lain-lain', 'Kucing aggora impor', 2500000, 'AnggoraTurki.jpg');
 
 -- --------------------------------------------------------
 
@@ -104,18 +107,21 @@ CREATE TABLE `user` (
   `id_user` int(11) NOT NULL,
   `nama` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL
+  `password` varchar(100) NOT NULL,
+  `foto` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id_user`, `nama`, `email`, `password`) VALUES
-(4, 'Polisi Amoral', 'acabcops@gmal.com', 'dandinu12'),
-(5, 'admin', 'admin@admin', 'admin'),
-(2, 'Dani Andhika', 'daniandhika03@gmail.com', 'password'),
-(3, 'Rendra Surendra', 'rendranara@gmail.com', 'gustitidaktidur');
+INSERT INTO `user` (`id_user`, `nama`, `email`, `password`, `foto`) VALUES
+(4, 'Polisi Amoral', 'acabcops@gmal.com', 'dandinu12', ''),
+(5, 'admin', 'admin@admin', 'admin', ''),
+(2, 'Dani Andhika', 'daniandhika03@gmail.com', 'password', ''),
+(3, 'Rendra Surendra', 'rendranara@gmail.com', 'gustitidaktidur', ''),
+(12, 'sya', 'sya@heggi', 'sya', 'Pas_Foto_Heggi.jpg'),
+(13, 'zz', 'zz@zz', 'zz', '');
 
 --
 -- Indexes for dumped tables
@@ -157,7 +163,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `id_ap` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_ap` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `hewan`
@@ -169,13 +175,13 @@ ALTER TABLE `hewan`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id_product` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_product` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables

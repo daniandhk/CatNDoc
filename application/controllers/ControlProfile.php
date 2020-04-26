@@ -17,6 +17,9 @@ class ControlProfile extends CI_Controller{
 			$email = $this->session->userdata('email');
 			$user = $this->ModelProfile->get_profile($email);
 			$data['nama'] = $user->nama;
+			$data['password'] = $user->password;
+			$data['foto'] = $user->foto;
+			$data['id'] = $user->id_user;
 		}
 		$this->load->view('ViewProfile', $data);
 	}
@@ -52,5 +55,52 @@ class ControlProfile extends CI_Controller{
           $this->ModelProfile->add_appointment($email,$notelp,$date,$nama_pet,$jenis,$keluhan);
         }
         redirect('ControlProfile');
+    }
+
+    public function editprofile()
+	{   
+		$config['upload_path'] = './assets/img/Profile/';
+		$config['allowed_types'] = 'jpg|png|jpeg';
+		$config['max_size']  = '0';
+		$config['max_width']  = '0';
+		$config['max_height']  = '0';
+		$this->load->library('upload', $config);
+		$myemail = $this->input->post('Myemail');
+		$mynama = $this->input->post('Mynama');
+		$mypassword = $this->input->post('Mypassword');
+		$email = $this->input->post('email');
+		$nama = $this->input->post('nama');
+		$password = $this->input->post('password');
+		if($email == ""){
+			$email = $myemail;
+		}
+		if($password == ""){
+			$password = $mypassword;
+		}
+		if($nama == ""){
+			$nama = $mynama;
+		}
+		$check = $this->ModelProfile->cek_email($email);
+		$id = $this->input->post('id');
+		if ( $check != true or $myemail == $email){
+			$this->ModelProfile->edit_pro($id,$nama,$email,$password);
+			//klo berhasil $this->session->set_userdata('email', $email);
+			if ( ! $this->upload->do_upload('foto')){
+					$error = array('error' => $this->upload->display_errors());
+					echo $error['error'];
+			} else{
+					$file = $this->upload->data();
+					$img_name = $this->upload->file_name;
+					$data = array(
+						'foto' => $img_name
+					);
+					$this->ModelProfile->editFoto($data,$id);
+					echo 'Success';
+					redirect("ControlProfile");
+			}
+		} else{
+			echo 'email sudah ada!';
+		}
+		
     }
 }

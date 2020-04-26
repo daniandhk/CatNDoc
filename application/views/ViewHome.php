@@ -256,11 +256,11 @@
             <input name="password" type="password" id="orangeForm-pass" class="form-control" placeholder="Password" required>
           </div>
       </div>
-        <div class="modal-footer d-flex justify-content-center">
+      <div class="modal-footer d-flex justify-content-center">
           <button class="btn btn-info">Sign Up</button>
-        </div>
       </div>
     </form>
+    </div>
   </div>
 </div>
 
