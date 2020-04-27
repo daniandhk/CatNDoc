@@ -89,9 +89,9 @@
                   </tr>
                 </tbody>
               </table>
-              <div><button>Upload bukti tf</button></div>
-            </div>
           <?php } } } } } ?>
+<div><button>Upload bukti tf</button></div>
+</div>
 
 <div>
   <table>
