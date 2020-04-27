@@ -15,6 +15,7 @@ class ControlShop extends CI_Controller{
 			$email = $this->session->userdata('email');
 			$user = $this->ModelShop->get_profile($email);
 			$data['nama'] = $user->nama;
+			$data['id_user'] = $user->id_user;
 		}
 		$this->load->view('ViewShop', $data);
 	}
@@ -43,5 +44,13 @@ class ControlShop extends CI_Controller{
 			unset($_SESSION['logged_in']);
 		}
         redirect('ControlShop');
+	}
+
+	public function beli(){
+		$id_product = $this->input->post('id_product');
+		$id_user = $this->input->post('id_user');
+		$quantity = $this->input->post('quantity');
+		$this->ModelShop->tambah($id_product,$id_user, $quantity);
+		redirect('ControlShop');
 	}
 }

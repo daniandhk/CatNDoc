@@ -16,6 +16,10 @@ class ModelCart extends CI_Model{
 	    }
 	}
 
+	public function get_all(){
+		return $this->db->get('keranjang')->result_array();
+	}
+
     public function login($data) {
 	    $this->db->where('email', $data['email']);
 	    $this->db->where('password', $data['password']);
@@ -27,4 +31,9 @@ class ModelCart extends CI_Model{
 	    }
 	}
 
+	public function get_products(){
+		return $this->db->get('product')->result_array();
+	}
+
 }
+?>

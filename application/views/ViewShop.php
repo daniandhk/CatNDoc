@@ -53,7 +53,7 @@
             <a class="nav-link" href="<?php echo site_url('Homepage'); ?>">Home</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#">Shop <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="#"><b>Shop</b><span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link disabled" href="#">Disabled</a>
@@ -61,7 +61,6 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <?php if (!isset($_SESSION['logged_in'])){ ?>
-          <li class="nav-item"><a href="<?= site_url('ControlCart'); ?>" class="nav-link"><i class="fa fa-shopping-cart"></i></a></li>
           <li class="nav-item"><a href="" class="nav-link" data-target="#modalLoginForm" data-toggle="modal"><i class="fa fa-sign-in"></i> Login</a></li>
           <?php } else{ ?>
           <li class="nav-item"><a href="<?= site_url('ControlCart'); ?>" class="nav-link"><i class="fa fa-shopping-cart"></i></a></li>
@@ -167,7 +166,10 @@
 
     <div class="row">
       <?php 
+      $no = 0;
       foreach($product as $p) {
+        $no++;
+        $id = $p['id_product'];
        ?>
       <div class="col-lg-4 col-md-6 mb-4">
         <div class="card h-100">
@@ -180,19 +182,59 @@
             <h5>Rp <?php echo $p['harga'] ?></h5>
             <p class="card-text"><?php echo $p['deskripsi'] ?></p>
           </div>
+          <?php if(isset($_SESSION['logged_in'])){ ?>
           <div class="card-footer">
-            <a href="<?php echo base_url('ControlShop/beli/').$p['id_product']; ?>" class="text-center btn btn-primary btn-lg">Beli</a>
+            <a href="" data-target="#modalbeli<?php echo $no; ?>" data-toggle="modal" class="text-center btn btn-primary btn-lg">Beli</a>
           </div>
+          <?php } else{ ?>
+            <div class="card-footer">
+            <a href="" data-target="#modalLoginForm" data-toggle="modal" class="text-center btn btn-primary btn-lg">Beli</a>
+          </div>
+        <?php } ?>
         </div>
       </div>
-    <?php } ?>
-      
+      <?php } ?>
     </div>
+
   </div>
  </div>
 </div>
 
     <!-- END PRODUK -->
+<?php $no = 0; foreach ($product as $p) { $no++?>
+<div class="modal fade" id="modalbeli<?php echo $no; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    <form action="<?= site_url('ControlShop/beli') ?>" method="post">
+      <input type="hidden" name="id_user" value="<?php echo $id_user; ?>">
+      <input type="hidden" name="id_product" value="<?php echo $id; ?>">
+        <div class="card h-100">
+          <a href="#"><img class="card-img-top" src="<?php echo base_url("assets/img/Sale/").$p['foto']; ?>" alt=""></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="#"><?php echo $p['nama']; ?></a>
+              <small style="font-size:12px"><?php echo $p['jenis'] ?></small>
+            </h4>
+            <h5>Rp <?php echo $p['harga'] ?></h5>
+            <p class="card-text"><?php echo $p['deskripsi'] ?></p>
+          </div>
+          <div class="col-auto my-1">
+            <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Jumlah</label>
+            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="quantity">
+              <option selected value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<?php  } ?>
 
     
 

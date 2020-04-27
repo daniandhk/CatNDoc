@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 26, 2020 at 10:03 PM
+-- Generation Time: Apr 27, 2020 at 05:51 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `appointment` (
   `email` varchar(100) NOT NULL,
-  `id_ap` int(5) NOT NULL,
+  `id_ap` int(11) NOT NULL,
   `notelp` int(100) NOT NULL,
   `tanggal` date NOT NULL,
   `nama_pet` varchar(100) NOT NULL,
@@ -70,6 +70,30 @@ CREATE TABLE `hewan` (
 
 INSERT INTO `hewan` (`id_hewan`, `email`, `nama_pet`, `jenis`, `berat`, `tinggi`, `warna`) VALUES
 (1, 'daniandhika03@gmail.com', 'Goliath', 'Kucing', '4', '23', 'Orenj');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `keranjang`
+--
+
+CREATE TABLE `keranjang` (
+  `id_keranjang` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `id_product` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `bukti` int(11) DEFAULT NULL,
+  `status` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `keranjang`
+--
+
+INSERT INTO `keranjang` (`id_keranjang`, `id_user`, `id_product`, `quantity`, `bukti`, `status`) VALUES
+(1, 12, 1, 1, NULL, 'proses'),
+(2, 12, 3, 2, NULL, 'done'),
+(7, 12, 2, 1, NULL, 'belum');
 
 -- --------------------------------------------------------
 
@@ -142,6 +166,14 @@ ALTER TABLE `hewan`
   ADD KEY `email` (`email`);
 
 --
+-- Indexes for table `keranjang`
+--
+ALTER TABLE `keranjang`
+  ADD PRIMARY KEY (`id_keranjang`),
+  ADD KEY `id_product` (`id_product`),
+  ADD KEY `id_user` (`id_user`);
+
+--
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
@@ -163,13 +195,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `id_ap` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_ap` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `hewan`
 --
 ALTER TABLE `hewan`
   MODIFY `id_hewan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `keranjang`
+--
+ALTER TABLE `keranjang`
+  MODIFY `id_keranjang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -198,6 +236,13 @@ ALTER TABLE `appointment`
 --
 ALTER TABLE `hewan`
   ADD CONSTRAINT `emailFK` FOREIGN KEY (`email`) REFERENCES `user` (`email`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `keranjang`
+--
+ALTER TABLE `keranjang`
+  ADD CONSTRAINT `id_product` FOREIGN KEY (`id_product`) REFERENCES `product` (`id_product`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `id_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

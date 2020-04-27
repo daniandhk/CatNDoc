@@ -17,19 +17,6 @@
         .nav-item{
         font-size: 19px;
       }
-  
-        #icon{
-          position: relative;
-          right: -200%;
-        }
-
-        #iconCart{
-            font-size: 25vw;
-        }
-
-        #btnbuy{
-          margin-left:-40%;
-        }
 
         
               
@@ -50,15 +37,15 @@
             <a class="nav-link" href="<?php echo site_url('Homepage'); ?>">Home</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#">Cart <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="#"><b>Cart</b><span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link disabled" href="#">Disabled</a>
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
+          <li class="nav-item"><a href="<?= site_url('ControlShop'); ?>" class="nav-link"><i class="fas fa-store"></i>Shop </a></li>
           <?php if (!isset($_SESSION['logged_in'])){ ?>
-          <li class="nav-item"><a href="<?= site_url('ControlCart'); ?>" class="nav-link"><i class="fa fa-shopping-cart"></i></a></li>
           <li class="nav-item"><a href="" class="nav-link" data-target="#modalLoginForm" data-toggle="modal"><i class="fa fa-sign-in"></i> Login</a></li>
           <?php } else{ ?>
           <li class="nav-item"><a href="<?= site_url('ControlProfile'); ?>" class="nav-link"><i class="fa fa-user"></i> <?php echo $nama; ?></a></li>
@@ -70,54 +57,82 @@
       
       
       <!-- BUAT GET APA AJA YG UDAH DIBELI-->
-      <div class="container" style="position:absolute;top:23%;left:28%;width:80%;">
-	<table id="cart" class="table table-hover">
-    				<thead>
-						<tr>
-							<th width="10%"></th>
-            						<th width="25%">Product</th>
-            						<th width="15%">Harga</th>
-            						<th width="13%">Quantity</th>
-            						<th width="20%">Subtotal</th>
-            						<th width="12%"></th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td data-th="Product">
-								<div class="row">
-                <!-- LOOP LOOP LOOP-->
+<div>
+  <table>
+    <thead>
+      <h4>Chart</h4>
+        <tr>
+          <th>No.</th>
+          <th>Nama Barang</th>
+          <th>Harga</th>
+          <th>Jumlah</th>
+          <th>Total</th>
+          <th>Status</th>
+        </tr>
+    </thead>
+<?php 
+  $no = 0;
+  foreach($keranjang as $k) {
+  //if($k['id_user'] == $id_user)
+    if((isset($_SESSION['logged_in'])) && ($k['id_user'] == $id_user)){
+      foreach ($product as $p) {
+        if($p['id_product'] == $k['id_product']){ 
+          if($k['status'] == 'belum'){ $no++;?>
+                <tbody>
+                  <tr>
+                    <td><?php echo $no ?></td>
+                    <td><?php echo $p['nama'] ?></td>
+                    <td>Rp. <?php echo $p['harga'] ?></td>
+                    <td><?php echo $k['quantity'] ?></td>
+                    <td>Rp. <?php echo $p['harga']*$k['quantity'] ?></td>
+                    <td>Menunggu Pembayaran</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div><button>Upload bukti tf</button></div>
+            </div>
+          <?php } } } } } ?>
 
-                <!-- GET FOTO -->
-									<div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
-									<div class="col-sm-8">
-                  <!-- GET NAMA PRODUK -->
-										<h4 class="nomargin">Product 1</h4>
-                    <!-- GET DESKRIPSI PRODUK -->
-										<p>Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet.</p>
-									</div>
-								</div>
-							</td>
-							<!-- GET HARGA -->
-              <td data-th="Price">$150.00</td>
-							<!-- LOOP LOOP LOOP-->
-							
-							<td class="actions" data-th="">
-              <!-- BUAT DELETE -->
-								<button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>								
-							<!-- END BUAT DELETE -->
-              </td>
-						</tr>
-					</tbody>
-					<tfoot>
-						<tr>
-							<td><a href="<?= site_url('ControlShop') ?>" class="btn btn-warning"><i class="fa fa-angle-left"></i> BACK</a></td>
-							<td colspan="0" class="hidden-xs"></td>         
-							<td><button id="btnbuy" type="button" class="btn btn-success btn-lg " data-toggle="modal" data-target="#myModal">CHECKOUT</button></td>
-						</tr>
-					</tfoot>
-				</table>
-</div>
+<div>
+  <table>
+    <thead>
+      <h4>History</h4>
+        <tr>
+          <th>No.</th>
+          <th>Nama Barang</th>
+          <th>Harga</th>
+          <th>Jumlah</th>
+          <th>Total</th>
+          <th>Status</th>
+        </tr>
+    </thead>
+<?php 
+  $no = 0;
+  foreach($keranjang as $k) {
+  //if($k['id_user'] == $id_user)
+    if((isset($_SESSION['logged_in'])) && ($k['id_user'] == $id_user)){
+      foreach ($product as $p) {
+        if($p['id_product'] == $k['id_product']){ 
+          $no++;
+          if($k['status'] != 'belum'){ ?>
+            
+                <tbody>
+                  <tr>
+                    <td><?php echo $no ?></td>
+                    <td><?php echo $p['nama'] ?></td>
+                    <td>Rp. <?php echo $p['harga'] ?></td>
+                    <td><?php echo $k['quantity'] ?></td>
+                    <td>Rp. <?php echo $p['harga']*$k['quantity'] ?></td>
+                    <?php if($k['status'] == 'proses'){ ?>
+                      <td>Validating</td>
+                    <?php }else{ ?>
+                      <td>Delivering</td>
+                    <?php } ?>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          <?php } } } } } ?>
 
 <!-- Modal -->
 <div  id="myModal" class="modal fade" role="dialog">

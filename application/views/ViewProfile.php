@@ -37,15 +37,15 @@
             <a class="nav-link" href="<?php echo site_url('Homepage'); ?>">Home</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#">Shop <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="#"><b>Profile</b><span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link disabled" href="#">Disabled</a>
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <?php if (isset($_SESSION['logged_in'])){ ?>
           <li class="nav-item"><a href="<?= site_url('ControlCart'); ?>" class="nav-link"><i class="fa fa-shopping-cart"></i></a></li>
+          <?php if (isset($_SESSION['logged_in'])){ ?>
           <li class="nav-item"><a href="<?= site_url('ControlProfile'); ?>" class="nav-link"><i class="fa fa-user"></i> <?php echo $nama; ?></a></li>
           <li class="nav-item"><a href="" class="nav-link" data-target="#modalLogout" data-toggle="modal"><i class="fa fa-sign-out"></i> Logout</a></li>
           <?php }?>
@@ -127,7 +127,7 @@
                               <?php } else{ ?>
                                 <tr>
                                   <th>Status </th>
-                                  <td style="font-weight: bold; color: green;">Finished</td>
+                                  <td style="font-weight: bold; color: green;">Processed</td>
                                 </tr>
                               <?php } ?>
                             </table>

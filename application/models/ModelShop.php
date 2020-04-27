@@ -54,4 +54,10 @@ class ModelShop extends CI_Model{
       return false;
     }
   }
+
+  public function tambah($id_product,$id_user,$quantity){
+  	$data = $this->db->query("INSERT INTO keranjang(id_product, id_user, quantity, status) VALUES ('$id_product', '$id_user', '$quantity', 'belum')");
+  	return $data;
+  }
 }
+?>
