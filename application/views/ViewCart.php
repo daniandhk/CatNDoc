@@ -70,39 +70,39 @@
 <!--ba jing-->
 <div class="container my-2" >
 <table id="tablecart" class="table table-hover table-bordered">
-						    	<thead>
-                    <tr>
-                      <th colspan="8" style="background-color:#03adfc;">CART</th>
-                    </tr>
-						    		<tr>
-                      <th>No.</th>
-                      <th>Nama Barang</th>
-                      <th>Harga</th>
-                      <th>Jumlah</th>
-                      <th>Total</th>
-                      <th>Status</th> 
-									  </tr>
-								</thead>
+  <thead>
+    <tr>
+      <th colspan="8" style="background-color:#03adfc;">CART</th>
+    </tr>
+    <tr>
+      <th>No.</th>
+      <th>Nama Barang</th>
+      <th>Harga</th>
+      <th>Jumlah</th>
+      <th>Total</th>
+      <th>Status</th> 
+    </tr>
+  </thead>
 								
-									<?php 
-                  $no = 0;
-                  foreach($keranjang as $k) {
-                  //if($k['id_user'] == $id_user)
-                    if((isset($_SESSION['logged_in'])) && ($k['id_user'] == $id_user)){
-                      foreach ($product as $p) {
-                        if($p['id_product'] == $k['id_product']){ 
-                          if($k['status'] == 'belum'){ $no++; 
-                    	
-									?>
-									<tr>
-                  <td><?php echo $no ?></td>
+  <?php 
+    $no = 0;
+    foreach($keranjang as $k) {
+    //if($k['id_user'] == $id_user)
+      if((isset($_SESSION['logged_in'])) && ($k['id_user'] == $id_user)){
+        foreach ($product as $p) {
+          if($p['id_product'] == $k['id_product']){ 
+            if($k['status'] == 'belum'){ $no++; 
+  ?>
+                  <tr>
+                    <td><?php echo $no ?></td>
                     <td><?php echo $p['nama'] ?></td>
                     <td>Rp. <?php echo $p['harga'] ?></td>
                     <td><?php echo $k['quantity'] ?></td>
                     <td>Rp. <?php echo $p['harga']*$k['quantity'] ?></td>
                     <td>Menunggu Pembayaran</td>
-									</tr>								
-							    <?php } } } } } ?>
+                  </tr>								
+                <?php } } } } } ?>
+
                   <th colspan="4">TOTAL   :<span style="opacity:0;">ddd</span>HITUNG TOTAL DISINI</th>
                   <th colspan="4">Bukti   :<span style="opacity:0;">ddd</span><button class="btn btn-xs"><input type="file" id="upload_foto" class="form-control" name="foto"></button></th>
               </table>
@@ -115,99 +115,49 @@
 <br>
 <br>
 <table id="tablehistory" class="table table-hover table-bordered">
-
-    				    	<thead>
-						    		<tr>
-                      <th colspan="6" style="background-color:#fcd303;">HISTORY</th>
-                    </tr>
-                    <tr>
-                      <th>No.</th>
-                      <th>Nama Barang</th>
-                      <th>Harga</th>
-                      <th>Jumlah</th>
-                      <th>Total</th>
-                      <th>Status</th>   
-									</tr>
-								</thead>
+  <thead>
+      <tr>
+        <th colspan="6" style="background-color:#fcd303;">HISTORY</th>
+      </tr>
+    <tr>
+      <th>No.</th>
+      <th>Nama Barang</th>
+      <th>Harga</th>
+      <th>Jumlah</th>
+      <th>Total</th>
+      <th>Status</th>   
+    </tr>
+  </thead>
 								
-									<?php 
-                  $no = 0;
-                  foreach($keranjang as $k) { 
-                  //if($k['id_user'] == $id_user)
-                  if((isset($_SESSION['logged_in'])) && ($k['id_user'] == $id_user)){
-                    foreach ($product as $p) {
-                      if($p['id_product'] == $k['id_product']){ 
-                        $no++;
-                        if($k['status'] != 'belum'){ 
-                    	
-									?>
-									<tr>
-                  <td><?php echo $no ?></td>
-                    <td><?php echo $p['nama'] ?></td>
-                    <td>Rp. <?php echo $p['harga'] ?></td>
-                    <td><?php echo $k['quantity'] ?></td>
-                    <td>Rp. <?php echo $p['harga']*$k['quantity'] ?></td>
-                    <?php if($k['status'] == 'proses'){ ?>
-                      <td>Validating</td>
-                    <?php }else{ ?>
-                      <td>Delivering</td>
-                    <?php } ?>
-									</tr>								
-							    <?php } } } } } ?>
-							</table>      
+  <?php 
+  $no = 0;
+  foreach($keranjang as $k) { 
+  //if($k['id_user'] == $id_user)
+  if((isset($_SESSION['logged_in'])) && ($k['id_user'] == $id_user)){
+    foreach ($product as $p) {
+      if($p['id_product'] == $k['id_product']){ 
+        $no++;
+        if($k['status'] != 'belum'){ 
+  ?>
+          <tr>
+            <td><?php echo $no ?></td>
+            <td><?php echo $p['nama'] ?></td>
+            <td>Rp. <?php echo $p['harga'] ?></td>
+            <td><?php echo $k['quantity'] ?></td>
+            <td>Rp. <?php echo $p['harga']*$k['quantity'] ?></td>
+            <?php if($k['status'] == 'proses'){ ?>
+              <td>Validating</td>
+            <?php }else{ ?>
+              <td>Delivering</td>
+            <?php } ?>
+          </tr>								
+			   <?php } } } } } ?>
+			 </table>      
 			</div>
 		</div>	     
   </div>
 </div>
-<!-- AWDA -->
-      
-<!-- Modal -->
-<div  id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">SUCCESS</h4>
-      </div>
-      <div class="modal-body">
-        <p>PEMBELIAN BERHASIL</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header text-center">
-            <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <form action="<?= site_url('ControlCart/login') ?>" method="post">
-            <div class="modal-body mx-3">
-              <div class="md-form mb-4">
-                <input type="email" id="defaultForm-email" class="form-control validate" name="email" placeholder="Email" required>
-              </div>
-
-              <div class="md-form mb-4">
-                <input type="password" id="defaultForm-pass" class="form-control validate" name="password" placeholder="Password" required>
-              </div>
-            </div>
-            <div class="modal-footer d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary">Login</button>
-            </div>
-          </form>
-        </div>
-    </div>
-</div>
-<!-- END BUAT FORM POP UP LOGIN-->
 
 <div class="modal fade" id="modalLogout" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
