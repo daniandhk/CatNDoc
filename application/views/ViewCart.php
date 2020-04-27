@@ -21,8 +21,6 @@
       #tablecart {
         
         text-align:center;
-        
-        
 
       }
       #tablehistory{
