@@ -30,7 +30,7 @@ class ControlCart extends CI_Controller{
 		if(isset($_SESSION['logged_in'])){
 			unset($_SESSION['logged_in']);
 		}
-        redirect('ControlCart');
+        redirect('ControlShop');
 	}
 
 	public function login(){

@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Bentham|Playfair+Display|Raleway:400,500|Suranna|Trocchi" rel="stylesheet">
     <title>Shopping Cart</title>
 
@@ -17,12 +17,25 @@
         .nav-item{
         font-size: 19px;
       }
-
+      
+      #tablecart {
         
-              
+        text-align:center;
+        
+        
+
+      }
+      #tablehistory{
+        width:72%;
+        margin-left:14%;
+        text-align:center;
+        
+      }
+       
       </style>
   </head>
   <body>
+
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
       <a class="navbar-brand" href="<?php echo site_url('Homepage'); ?>">
         <img width="30" height="auto" src="<?= base_url('assets/img/logo.png'); ?>">
@@ -44,81 +57,92 @@
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li class="nav-item"><a href="<?= site_url('ControlShop'); ?>" class="nav-link"><i class="fas fa-store"></i>Shop </a></li>
-          <?php if (!isset($_SESSION['logged_in'])){ ?>
-          <li class="nav-item"><a href="" class="nav-link" data-target="#modalLoginForm" data-toggle="modal"><i class="fa fa-sign-in"></i> Login</a></li>
-          <?php } else{ ?>
-          <li class="nav-item"><a href="<?= site_url('ControlProfile'); ?>" class="nav-link"><i class="fa fa-user"></i> <?php echo $nama; ?></a></li>
-          <li class="nav-item"><a href="" class="nav-link" data-target="#modalLogout" data-toggle="modal"><i class="fa fa-sign-out"></i> Logout</a></li>
-          <?php }?>
+          <li class="nav-item"><a href="<?= site_url('ControlShop'); ?>" class="nav-link"><i class="fas fa-store"></i> Shop </a></li>
+          <?php if (isset($_SESSION['logged_in'])){ ?>
+            <li class="nav-item"><a href="<?= site_url('ControlProfile'); ?>" class="nav-link"><i class="fa fa-user"></i> <?php echo $nama; ?></a></li>
+            <li class="nav-item"><a href="" class="nav-link" data-target="#modalLogout" data-toggle="modal"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+          <?php } ?>
         </ul>
       </div>
 </nav>
-      
-      
-      <!-- BUAT GET APA AJA YG UDAH DIBELI-->
-<div>
-  <table>
-    <thead>
-      <h4>Chart</h4>
-        <tr>
-          <th>No.</th>
-          <th>Nama Barang</th>
-          <th>Harga</th>
-          <th>Jumlah</th>
-          <th>Total</th>
-          <th>Status</th>
-        </tr>
-    </thead>
-<?php 
-  $no = 0;
-  foreach($keranjang as $k) {
-  //if($k['id_user'] == $id_user)
-    if((isset($_SESSION['logged_in'])) && ($k['id_user'] == $id_user)){
-      foreach ($product as $p) {
-        if($p['id_product'] == $k['id_product']){ 
-          if($k['status'] == 'belum'){ $no++;?>
-                <tbody>
-                  <tr>
-                    <td><?php echo $no ?></td>
+
+
+<!--ba jing-->
+<div class="container my-2" >
+<table id="tablecart" class="table table-hover table-bordered">
+						    	<thead>
+                    <tr>
+                      <th colspan="8" style="background-color:#03adfc;">CART</th>
+                    </tr>
+						    		<tr>
+                      <th>No.</th>
+                      <th>Nama Barang</th>
+                      <th>Harga</th>
+                      <th>Jumlah</th>
+                      <th>Total</th>
+                      <th>Status</th> 
+									  </tr>
+								</thead>
+								
+									<?php 
+                  $no = 0;
+                  foreach($keranjang as $k) {
+                  //if($k['id_user'] == $id_user)
+                    if((isset($_SESSION['logged_in'])) && ($k['id_user'] == $id_user)){
+                      foreach ($product as $p) {
+                        if($p['id_product'] == $k['id_product']){ 
+                          if($k['status'] == 'belum'){ $no++; 
+                    	
+									?>
+									<tr>
+                  <td><?php echo $no ?></td>
                     <td><?php echo $p['nama'] ?></td>
                     <td>Rp. <?php echo $p['harga'] ?></td>
                     <td><?php echo $k['quantity'] ?></td>
                     <td>Rp. <?php echo $p['harga']*$k['quantity'] ?></td>
                     <td>Menunggu Pembayaran</td>
-                  </tr>
-                </tbody>
+									</tr>								
+							    <?php } } } } } ?>
+                  <th colspan="4">TOTAL   :<span style="opacity:0;">ddd</span>HITUNG TOTAL DISINI</th>
+                  <th colspan="4">Bukti   :<span style="opacity:0;">ddd</span><button class="btn btn-xs"><input type="file" id="upload_foto" class="form-control" name="foto"></button></th>
               </table>
-              <div><button>Upload bukti tf</button></div>
-            </div>
-          <?php } } } } } ?>
+						</div>
+					</div>	     
+   				</div>
+<!-- a sue-->
 
-<div>
-  <table>
-    <thead>
-      <h4>History</h4>
-        <tr>
-          <th>No.</th>
-          <th>Nama Barang</th>
-          <th>Harga</th>
-          <th>Jumlah</th>
-          <th>Total</th>
-          <th>Status</th>
-        </tr>
-    </thead>
-<?php 
-  $no = 0;
-  foreach($keranjang as $k) {
-  //if($k['id_user'] == $id_user)
-    if((isset($_SESSION['logged_in'])) && ($k['id_user'] == $id_user)){
-      foreach ($product as $p) {
-        if($p['id_product'] == $k['id_product']){ 
-          $no++;
-          if($k['status'] != 'belum'){ ?>
-            
-                <tbody>
-                  <tr>
-                    <td><?php echo $no ?></td>
+<!-- BAJING-->
+<br>
+<br>
+<table id="tablehistory" class="table table-hover table-bordered">
+
+    				    	<thead>
+						    		<tr>
+                      <th colspan="6" style="background-color:#fcd303;">HISTORY</th>
+                    </tr>
+                    <tr>
+                      <th>No.</th>
+                      <th>Nama Barang</th>
+                      <th>Harga</th>
+                      <th>Jumlah</th>
+                      <th>Total</th>
+                      <th>Status</th>   
+									</tr>
+								</thead>
+								
+									<?php 
+                  $no = 0;
+                  foreach($keranjang as $k) { 
+                  //if($k['id_user'] == $id_user)
+                  if((isset($_SESSION['logged_in'])) && ($k['id_user'] == $id_user)){
+                    foreach ($product as $p) {
+                      if($p['id_product'] == $k['id_product']){ 
+                        $no++;
+                        if($k['status'] != 'belum'){ 
+                    	
+									?>
+									<tr>
+                  <td><?php echo $no ?></td>
                     <td><?php echo $p['nama'] ?></td>
                     <td>Rp. <?php echo $p['harga'] ?></td>
                     <td><?php echo $k['quantity'] ?></td>
@@ -128,12 +152,15 @@
                     <?php }else{ ?>
                       <td>Delivering</td>
                     <?php } ?>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          <?php } } } } } ?>
-
+									</tr>								
+							    <?php } } } } } ?>
+							</table>      
+			</div>
+		</div>	     
+  </div>
+</div>
+<!-- AWDA -->
+      
 <!-- Modal -->
 <div  id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -198,6 +225,8 @@
   </div>
 </div>
         
+
+
 
 
     <!-- Optional JavaScript -->

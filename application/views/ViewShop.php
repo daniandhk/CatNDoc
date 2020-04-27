@@ -15,7 +15,7 @@
   
     <style>
       .nav-item{
-        font-size: 19px;
+        font-size: 21px;
       }
 
       #pic1{
@@ -37,7 +37,8 @@
   
   </head>
   <body>
-
+    <?php echo $this->session->flashdata('gagalshop'); ?>
+    <?php echo $this->session->flashdata('berhasilbeli'); ?> 
     <!-- START NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
       <a class="navbar-brand" href="<?php echo site_url('Homepage'); ?>">
@@ -63,7 +64,7 @@
           <?php if (!isset($_SESSION['logged_in'])){ ?>
           <li class="nav-item"><a href="" class="nav-link" data-target="#modalLoginForm" data-toggle="modal"><i class="fa fa-sign-in"></i> Login</a></li>
           <?php } else{ ?>
-          <li class="nav-item"><a href="<?= site_url('ControlCart'); ?>" class="nav-link"><i class="fa fa-shopping-cart"></i></a></li>
+          <li class="nav-item"><a href="<?= site_url('ControlCart'); ?>" class="nav-link"><i class="fa fa-shopping-cart"></i> Cart </a></li>
           <li class="nav-item"><a href="<?= site_url('ControlProfile'); ?>" class="nav-link"><i class="fa fa-user"></i> <?php echo $nama; ?></a></li>
           <li class="nav-item"><a href="" class="nav-link" data-target="#modalLogout" data-toggle="modal"><i class="fa fa-sign-out"></i> Logout</a></li>
           <?php }?>

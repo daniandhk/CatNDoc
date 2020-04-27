@@ -34,8 +34,12 @@ class Login extends CI_Controller {
       $this->session->set_userdata('logged_in', TRUE);
       redirect('/login');
     }else{
-      $this->session->set_flashdata('error_message', 'email atau password salah');
-      redirect('/HomePage');
+      $this->session->set_flashdata('gagallogin','
+          
+          <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading" style="text-align:center;margin-top:1%;">Login Failed</h4>
+          </div>');
+          redirect('HomePage');
     }
   }
 }

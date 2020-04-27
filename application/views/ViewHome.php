@@ -142,12 +142,13 @@
 <body>
         <?php echo $this->session->flashdata('berhasil'); ?>
         <?php echo $this->session->flashdata('gagal'); ?>
+        <?php echo $this->session->flashdata('gagallogin'); ?>
         <!--COVER-->
         <img src="<?php echo base_url('assets/img/homepic.jpg'); ?>" id="img1" />
         <!--<img src="<?php echo base_url('assets/img/gray.jpg'); ?>" id="img2" />-->
         <!--<img src="<?php echo base_url('assets/img/telpun.png'); ?>" id="img3"/>-->
         <!--END COVER-->
-
+        
         <!--TULISAN TULISAN DI COVER-->
         <div class="centered2">
             <img src="<?php echo base_url('assets/img/banner.png'); ?>"id="img4"/>
@@ -162,7 +163,7 @@
         </div>
 
         <!--END TULISAN TULISAN DI COVER-->
-
+        
         <!--NAVBAR DROPDOWN-->
         <div class="top-left">
             <div class="dropdown">

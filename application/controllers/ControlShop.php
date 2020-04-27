@@ -31,8 +31,12 @@ class ControlShop extends CI_Controller{
 	      $this->session->set_userdata('logged_in', TRUE);
 	      redirect('/ControlShop');
 	    }else{
-	      $this->session->set_flashdata('error_message', 'email atau password salah');
-	      redirect('/ControlShop');
+			$this->session->set_flashdata('gagalshop','
+          
+			<div class="alert alert-danger" role="alert">
+			  <h4 class="alert-heading" style="text-align:center;margin-top:1%;">Login Failed</h4>
+			</div>');
+			redirect('ControlShop');
 	    }
 	}
 
@@ -51,6 +55,11 @@ class ControlShop extends CI_Controller{
 		$id_user = $this->input->post('id_user');
 		$quantity = $this->input->post('quantity');
 		$this->ModelShop->tambah($id_product,$id_user, $quantity);
+		$this->session->set_flashdata('berhasilbeli','
+          
+          <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading" style="text-align:center;margin-top:1%;">Pembelian Berhasil</h4>
+          </div>');
 		redirect('ControlShop');
 	}
 }

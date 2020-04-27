@@ -17,7 +17,14 @@
     <style>
       .nav-item {
         font-size: 19px;
-      }      
+      }     
+
+      #buttonedit{
+        position:absolute;
+        right:35%;
+        bottom:27%;
+      }
+
     </style>
   </head>
   <body>
@@ -78,13 +85,13 @@
                         <!-- GET FOTO-->
 
                           <img style="padding-top: 8%; height:100%; width:auto; max-height:280px" src="<?php if ($foto != NULL) { echo base_url("assets/img/Profile/").$foto; } else{echo base_url('assets/img/blank.png');} ?>" alt="stack photo" class="img">
-                          <a href="#" class="btn btn-dark btn-rounded mt-2 mb-2 button2" style="color: white;" data-toggle="modal" data-target="#modalEditProfile">Edit Profile</a>
+                          <a id="buttonedit" href="#" class="btn btn-dark btn-rounded mt-2 mb-2 button2" style="color: white;" data-toggle="modal" data-target="#modalEditProfile">Edit Profile</a>
                         </div>
                       </div>
                       <div class="col-md-9 col-xs-12 col-sm-6 col-lg-9">
                           <div class="">
-                            <h2><?php echo $nama; ?></h2>
-                            <h3><?php echo $email; ?></h3>
+                            <h2><span class="fa fa-user"></span><span style="opacity:0;">a</span> <?php echo $nama; ?></h2>
+                            <h3><span class="fa fa-envelope"></span><span style="opacity:0;">a</span> <?php echo $email; ?></h3>
                           </div>
                           <div style="border-top:1px border-bottom:1px solid black">
                             <a href="#" class="btn btn-dark btn-rounded mt-2 mb-2 button2" style="color: white;" data-toggle="modal" data-target="#modalContactForm">REQUEST APPOINTMENT</a>
