@@ -85,19 +85,16 @@ class ControlProfile extends CI_Controller{
 		if ( $check != true or $myemail == $email){
 			$this->ModelProfile->edit_pro($id,$nama,$email,$password);
 			//klo berhasil $this->session->set_userdata('email', $email);
-			if ( ! $this->upload->do_upload('foto')){
-					$error = array('error' => $this->upload->display_errors());
-					echo $error['error'];
-			} else{
+			if ($this->upload->do_upload('foto')){
 					$file = $this->upload->data();
 					$img_name = $this->upload->file_name;
 					$data = array(
 						'foto' => $img_name
 					);
 					$this->ModelProfile->editFoto($data,$id);
-					echo 'Success';
-					redirect("ControlProfile");
 			}
+			echo 'Success';
+			redirect("ControlProfile");
 		} else{
 			echo 'email sudah ada!';
 		}

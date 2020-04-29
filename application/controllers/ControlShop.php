@@ -62,4 +62,28 @@ class ControlShop extends CI_Controller{
           </div>');
 		redirect('ControlShop');
 	}
+
+	public function registrasi()
+	{   
+        $nama = $this->input->post('nama');
+        $email = $this->input->post('email');
+        $password = $this->input->post('password');
+        $check = $this->ModelShop->cek_email($email);
+        if($check == false){
+          $this->ModelShop->add_akun($nama,$email,$password);
+          $this->session->set_flashdata('berhasil','
+          
+          <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading" style="text-align:center;margin-top:1%;">Register Success</h4>
+          </div>');
+        }else{
+          $this->session->set_flashdata('gagal','
+          
+          <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading" style="text-align:center;margin-top:1%;">Register Failed</h4>
+          </div>');
+        }
+          
+        redirect("ControlShop");
+    }
 }

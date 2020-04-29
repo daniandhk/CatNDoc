@@ -62,7 +62,7 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <?php if (!isset($_SESSION['logged_in'])){ ?>
-          <li class="nav-item"><a href="" class="nav-link" data-target="#modalLoginForm" data-toggle="modal"><i class="fa fa-sign-in"></i> Login</a></li>
+          <li class="nav-item"><a href="" class="nav-link" data-target="#modalLoginForm" data-toggle="modal"><i class="fa fa-sign-in-alt"></i> Login</a></li>
           <?php } else{ ?>
           <li class="nav-item"><a href="<?= site_url('ControlCart'); ?>" class="nav-link"><i class="fa fa-shopping-cart"></i> Cart </a></li>
           <li class="nav-item"><a href="<?= site_url('ControlProfile'); ?>" class="nav-link"><i class="fa fa-user"></i> <?php echo $nama; ?></a></li>
@@ -77,7 +77,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header text-center">
-            <h4 class="modal-title font-weight-bold">Sign in</h4>
+            <h4 class="modal-title font-weight-bold">Login</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -93,7 +93,8 @@
               </div>
             </div>
             <div class="modal-footer d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary">Login</button>
+                <button type="submit" class="btn btn-primary">Sign In</button>
+                <a href="" class="btn btn-secondary" data-toggle="modal" data-target="#modalRegisterForm">Sign Up</a>
             </div>
           </form>
         </div>
@@ -114,6 +115,42 @@
               <button onclick="location.href='ControlShop/logout'" class="btn btn-primary">Logout</button>
           </div>
         </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title font-weight-bold">Register</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+    <form id="formregis" action="<?= site_url('ControlShop/registrasi') ?>" method="post">
+      <div class="modal-body mx-3">
+          <!-- NAMA -->
+          <div class="md-form mb-4">
+            <input name="nama" type="text" id="orangeForm-name" class="form-control" placeholder="Nama" required>
+          </div>
+
+          <!-- EMAIL -->
+          <div class="md-form mb-4">
+            <input name="email" type="email" id="orangeForm-email" class="form-control" placeholder="Email" required>
+          </div>
+
+          <!-- PASSWORD -->
+          <div class="md-form mb-4">
+            <input name="password" type="password" id="orangeForm-pass" class="form-control" placeholder="Password" required>
+          </div>
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+          <button class="btn btn-info">Sign Up</button>
+      </div>
+    </form>
+    </div>
   </div>
 </div>
 

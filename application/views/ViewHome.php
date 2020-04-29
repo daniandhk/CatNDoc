@@ -205,7 +205,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header text-center">
-            <h4 class="modal-title font-weight-bold">Sign in</h4>
+            <h4 class="modal-title font-weight-bold">Login</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -221,7 +221,8 @@
               </div>
             </div>
             <div class="modal-footer d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary">Login</button>
+                <button type="submit" class="btn btn-primary">Sign In</button>
+                <a href="" class="btn btn-secondary" data-toggle="modal" data-target="#modalRegisterForm">Sign Up</a>
             </div>
           </form>
         </div>
@@ -235,7 +236,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title font-weight-bold">Sign up</h4>
+        <h4 class="modal-title font-weight-bold">Register</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -291,6 +292,7 @@
               *
              </span>
             </label>
+            <br><label>(Registered)</label>
             <input class="form-control" id="email" name="email" type="text"/>
            </div>
            <div class="form-group ">

@@ -303,28 +303,37 @@
       <input type="hidden" name="Mynama" value="<?php echo $nama; ?>">
       <input type="hidden" name="Mypassword" value="<?php echo $password; ?>">
       <input type="hidden" name="id" value="<?php echo $id; ?>">
-      <div class="modal-body mx-3">
+      <div class="bootstrap-iso">
+      <div class="container-fluid">
+      <div class="row">
+      <div class="col-md-12 col-sm-6 col-xs-12">
           <!-- NAMA -->
-          <div class="md-form mb-4">
+          <div class="form-group ">
+            <label>Nama</label>
             <input name="nama" type="text" id="orangeForm-name" class="form-control" placeholder="<?php echo $nama ?>">
           </div>
 
           <!-- EMAIL -->
-          <div class="md-form mb-4">
+          <div class="form-group ">
+            <label>Email</label>
             <input name="email" type="email" id="orangeForm-email" class="form-control" placeholder="<?php echo $email ?>">
           </div>
 
           <!-- PASSWORD -->
-          <div class="md-form mb-4">
+          <div class="form-group ">
+            <label>Password</label>
             <input name="password" type="password" id="orangeForm-pass" class="form-control" placeholder="Password">
           </div>
           <div class="form-group">
               <label for="upload_foto">Upload Foto</label>
               <input type="file" id="upload_foto" class="form-control" name="foto">
           </div>
-      </div>
       <div class="modal-footer d-flex justify-content-center">
         <button type="submit" class="btn btn-info">Submit</button>
+      </div>
+      </div>
+      </div>
+      </div>
       </div>
     </form>
     </div>
