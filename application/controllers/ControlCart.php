@@ -48,4 +48,32 @@ class ControlCart extends CI_Controller{
 	      redirect('/ControlCart');
 	    }
 	}
+
+	public function upload_bukti() {
+		$config['upload_path'] = './assets/img/Bukti Transfer/';
+		$config['allowed_types'] = 'jpg|png|jpeg';
+		$config['max_size']  = '0';
+		$config['max_width']  = '0';
+		$config['max_height']  = '0';
+		
+		$this->load->library('upload', $config);
+		
+		if ( ! $this->upload->do_upload('bukti')){
+			$error = array('error' => $this->upload->display_errors());
+			echo $error['error'];
+		}
+		else {
+			$file = $this->upload->data();
+			$img_name = $this->upload->file_name;
+			$data = array(
+				'bukti' => $img_name,
+				'status' => 'proses'
+			);
+			$id_user = $this->input->post('id_user');
+			$this->ModelCart->upload_bukti($data, $id_user);
+
+			echo 'Success';
+			redirect('ControlCart');
+		}
+	}
 }

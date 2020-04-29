@@ -9,7 +9,6 @@ class ModelShop extends CI_Model{
     public function get_all(){
 		return $this->db->get('product')->result_array();
 	}
-
 	
 	public function get_product($id_product){
 		$this->db->where('id_product', $id_product);
@@ -21,13 +20,10 @@ class ModelShop extends CI_Model{
 		return $this->db->insert('product',$data);
 	}
 	
-
-	
 	public function update_product($id_product, $data){
 		$this->db->where('id_product', $id_product);
 		return $this->db->update('product',$data);
 	}
-	
 	
 	public function delete_product($id_produk){
 		$this->db->where('id_product', $id_product);
@@ -56,7 +52,18 @@ class ModelShop extends CI_Model{
   }
 
   public function tambah($id_product,$id_user,$quantity){
-  	$data = $this->db->query("INSERT INTO keranjang(id_product, id_user, quantity, status) VALUES ('$id_product', '$id_user', '$quantity', 'belum')");
+    $this->db->where('id_product', $id_product);
+    $this->db->where('id_user', $id_user);
+    $this->db->where('status', 'belum');
+    $query = $this->db->get('keranjang');
+    if($query->num_rows() > 0) {
+      $found = $query->row();
+      $quantity_awal = $found->quantity;
+      $quantity += $quantity_awal;
+      $data = $this->db->query("UPDATE keranjang SET quantity = '$quantity' WHERE id_product = '$id_product' AND id_user = '$id_user'AND status = 'belum'");
+    }else{
+      $data = $this->db->query("INSERT INTO keranjang(id_product, id_user, quantity, status) VALUES ('$id_product', '$id_user', '$quantity', 'belum')");
+    }
   	return $data;
   }
 }

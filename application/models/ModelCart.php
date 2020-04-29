@@ -35,5 +35,11 @@ class ModelCart extends CI_Model{
 		return $this->db->get('product')->result_array();
 	}
 
+	public function upload_bukti($data,$id_user) {
+		$this->db->where('id_user', $id_user);
+		$this->db->where('status', 'belum');
+		return $this->db->update('keranjang', $data);
+	}
+
 }
 ?>

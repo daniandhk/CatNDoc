@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 27, 2020 at 05:51 PM
+-- Generation Time: Apr 29, 2020 at 05:48 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -44,7 +44,7 @@ CREATE TABLE `appointment` (
 --
 
 INSERT INTO `appointment` (`email`, `id_ap`, `notelp`, `tanggal`, `nama_pet`, `jenis_pet`, `keluhan`, `status`) VALUES
-('daniandhika03@gmail.com', 1, 1231234, '2020-04-07', 'Goliath', 'Kucing', 'qwertyq', 'Belum'),
+('daniandhika03@gmail.com', 1, 1231234, '2020-04-07', 'Goliath', 'Kucing', 'qwertyq', 'Sudah'),
 ('daniandhika03@gmail.com', 4, 4321, '2012-12-12', 'Heli', 'Anjing', 'UwU', 'belum'),
 ('sya@heggi', 6, 123, '2012-12-12', 'zz', 'Kucing', 'aw', 'belum');
 
@@ -93,7 +93,9 @@ CREATE TABLE `keranjang` (
 INSERT INTO `keranjang` (`id_keranjang`, `id_user`, `id_product`, `quantity`, `bukti`, `status`) VALUES
 (1, 12, 1, 1, NULL, 'proses'),
 (2, 12, 3, 2, NULL, 'done'),
-(7, 12, 2, 1, NULL, 'belum');
+(7, 12, 2, 1, 0, 'proses'),
+(10, 12, 5, 3, 0, 'proses'),
+(11, 12, 5, 1, NULL, 'belum');
 
 -- --------------------------------------------------------
 
@@ -144,7 +146,7 @@ INSERT INTO `user` (`id_user`, `nama`, `email`, `password`, `foto`) VALUES
 (5, 'admin', 'admin@admin', 'admin', ''),
 (2, 'Dani Andhika', 'daniandhika03@gmail.com', 'password', ''),
 (3, 'Rendra Surendra', 'rendranara@gmail.com', 'gustitidaktidur', ''),
-(12, 'sya', 'sya@heggi', 'sya', 'Pas_Foto_Heggi.jpg'),
+(12, 'sya', 'sya@heggi', 'sya', 'Pas_Foto_Heggi1.jpg'),
 (13, 'zz', 'zz@zz', 'zz', '');
 
 --
@@ -207,7 +209,7 @@ ALTER TABLE `hewan`
 -- AUTO_INCREMENT for table `keranjang`
 --
 ALTER TABLE `keranjang`
-  MODIFY `id_keranjang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_keranjang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `product`
