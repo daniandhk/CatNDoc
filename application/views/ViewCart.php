@@ -30,6 +30,10 @@
        
       </style>
 
+      <script type="text/javascript">
+
+      </script>
+
   </head>
   <body>
 
@@ -46,15 +50,15 @@
           <li class="nav-item">
             <a class="nav-link" href="<?php echo site_url('Homepage'); ?>">Home</a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="#"><b>Cart</b><span class="sr-only">(current)</span></a>
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url('ControlShop'); ?>">Shop<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link disabled" href="#">Disabled</a>
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li class="nav-item"><a href="<?= site_url('ControlShop'); ?>" class="nav-link"><i class="fas fa-store"></i> Shop </a></li>
+          <li class="nav-item active"><a href="<?= site_url('ControlCart'); ?>" class="nav-link"><i class="fa fa-shopping-cart"></i> Cart </a></li>
           <?php if (isset($_SESSION['logged_in'])){ ?>
             <li class="nav-item"><a href="<?= site_url('ControlProfile'); ?>" class="nav-link"><i class="fa fa-user"></i> <?php echo $nama; ?></a></li>
             <li class="nav-item"><a href="" class="nav-link" data-target="#modalLogout" data-toggle="modal"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
@@ -64,7 +68,7 @@
 </nav>
 
 <!--ba jing-->
-<div class="container my-2" >
+<div class="container my-4" >
 <table id="tablecart" class="table table-hover table-bordered">
   <thead>
     <tr>
@@ -84,25 +88,20 @@
   <?php 
     $no = 0;
     $total = 0;
-    foreach($keranjang as $k) {
-    //if($k['id_user'] == $id_user)
-      if((isset($_SESSION['logged_in'])) && ($k['id_user'] == $id_user)){
-        foreach ($product as $p) {
-          if($p['id_product'] == $k['id_product']){ 
-            if($k['status'] == 'belum'){ $no++; ?>
+    foreach($keranjang as $k) { $no++; ?>
                   <tr>
                     <td><?php echo $no ?></td>
-                    <td><?php echo $p['nama'] ?></td>
-                    <td>Rp. <?php echo number_format($p['harga'],2,",",".") ?></td>
+                    <td><?php echo $k['nama_barang'] ?></td>
+                    <td>Rp. <?php echo number_format($k['harga'],2,",",".") ?></td>
                     <td><?php echo $k['quantity'] ?></td>
-                    <td>Rp. <?php echo number_format($p['harga']*$k['quantity'],2,",",".") ?></td>
-                    <?php $total += ($p['harga']*$k['quantity']) ?>
+                    <td>Rp. <?php echo number_format($k['total'],2,",",".") ?></td>
+                    <?php $total += $k['total'] ?>
                     <td>Menunggu Pembayaran</td>
                     <td><a href="" data-toggle="modal" data-target="#updateBeli<?php echo $no; ?>" class="btn btn-secondary">Update</a>
                       <a href="" data-toggle="modal" data-target="#deleteBeli<?php echo $no; ?>" class="btn btn-danger">Delete</a>
                     </td>
                   </tr>							
-                <?php } } } } } ?>
+                <?php } ?>
                   <?php if($no != 0){?>
                   <th colspan="4">TOTAL   :<span style="opacity:0;">ddd</span>Rp. <?php echo number_format($total,2,",","."); ?></th>
                   <th colspan="4"><a href="" class="btn btn-sm btn-success" data-target="#modalUpload" data-toggle="modal">Upload Bukti Transfer</a><span style="opacity:0;">ddd</span><a href="" class="btn btn-sm btn-info" data-target="#modalTata" data-toggle="modal">Tata Cara Pembayaran</a></th>
@@ -132,21 +131,15 @@
   </thead>
 								
   <?php 
-  $no = 0;
+  $no = 1;
   foreach($keranjang as $k) { 
-  //if($k['id_user'] == $id_user)
-  if((isset($_SESSION['logged_in'])) && ($k['id_user'] == $id_user)){
-    foreach ($product as $p) {
-      if($p['id_product'] == $k['id_product']){ 
-        $no++;
-        if($k['status'] != 'belum'){ 
   ?>
           <tr>
-            <td><?php echo $no ?></td>
-            <td><?php echo $p['nama'] ?></td>
-            <td>Rp. <?php echo number_format($p['harga'],2,",",".") ?></td>
-            <td><?php echo $k['quantity'] ?></td>
-            <td>Rp. <?php echo number_format($p['harga']*$k['quantity'],2,",",".") ?></td>
+            <td><?php echo $no++ ?></td>
+            <td><?php echo $k['nama_barang'] ?></td>
+            <td id="harga">Rp. <?php echo number_format($k['harga'],2,",",".") ?></td>
+            <td id="quantity"><?php echo $k['quantity'] ?></td>
+            <td>Rp. <?php echo number_format($k['total'],2,",",".") ?></td>
             <?php if($k['status'] == 'proses'){ ?>
               <td>Validating</td>
             <?php }else{ ?>
@@ -155,7 +148,7 @@
             <td><a href="" data-toggle="modal" data-target="#updateBeli<?php echo $no; ?>" class="btn btn-secondary">Update</a>
               <a href="" data-toggle="modal" data-target="#deleteBeli<?php echo $no; ?>" class="btn btn-danger">Delete</a></td>
           </tr>								
-			   <?php } } } } } ?>
+			   <?php } ?>
 			 </table>      
 			</div>
 
@@ -176,7 +169,7 @@
   </div>
 </div>
 
-<?php $no = 0; foreach ($keranjang as $k) { if(($k['id_user'] == $id_user)){ $no++?>
+<?php $no = 0; foreach ($keranjang as $k) { $no++?>
 <div class="modal fade" id="deleteBeli<?php echo $no; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -198,7 +191,7 @@
         </div>
   </div>
 </div>
-<?php } } ?>
+<?php } ?>
 
 <div class="modal fade" id="modalTata" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -209,7 +202,7 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div>
+          <div class="modal-body">
             <p>ya gitu lah ya</p>
             <p>tf ke eug sesuai total yg hrs di byr</p>
             <p>upload bukti tf nye</p>
@@ -233,6 +226,32 @@
           <?php echo form_open_multipart('ControlCart/upload_bukti/');?>
             <input type="hidden" name="id_user" value="<?php echo $id_user; ?>">
           <div class="col-md-12 col-sm-6 col-xs-12">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>No.</th>
+                  <th>Nama Barang</th>
+                  <th>Jumlah</th>
+                  <th>Harga</th>
+                  <th>Total</th>
+                  <th>Pilih</th>
+                </tr>
+              </thead>
+              <tbody>
+              <?php $no = 1; foreach ($keranjang as $k) { ?>
+                <tr>
+                  <td><?php echo $no++ ?></td>
+                  <td><?php echo $k['nama_barang']; ?></td>
+                  <td><?php echo $k['quantity']; ?></td>
+                  <td><?php echo $k['harga']; ?></td>
+                  <td><?php echo $k['total']; ?></td>
+                  <td>
+                    <input type="checkbox" id="chk" name="checkboxBayar" value="<?php echo $k['id_keranjang']; ?>">
+                  </td>
+                </tr>
+              <?php } ?>
+              </tbody>
+            </table>
             <th>TOTAL   :<span style="opacity:0;">ddd</span>Rp. <?php echo number_format($total,2,",","."); ?></th>
             <br>
             <label for="upload_foto">Bukti Transfer</label>

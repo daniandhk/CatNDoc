@@ -56,32 +56,33 @@ class ModelShop extends CI_Model{
     $this->db->where('id_user', $id_user);
     $this->db->where('status', 'belum');
     $query = $this->db->get('keranjang');
+    $date = date("Y-m-d");
     if($query->num_rows() > 0) {
       $found = $query->row();
       $quantity_awal = $found->quantity;
       $quantity += $quantity_awal;
-      $data = $this->db->query("UPDATE keranjang SET quantity = '$quantity' WHERE id_product = '$id_product' AND id_user = '$id_user'AND status = 'belum'");
+      $data = $this->db->query("UPDATE keranjang SET quantity = '$quantity', tanggal = '$date' WHERE id_product = '$id_product' AND id_user = '$id_user'AND status = 'belum'");
     }else{
-      $data = $this->db->query("INSERT INTO keranjang(id_product, id_user, quantity, status) VALUES ('$id_product', '$id_user', '$quantity', 'belum')");
+      $data = $this->db->query("INSERT INTO keranjang(id_product, id_user, quantity, status, tanggal) VALUES ('$id_product', '$id_user', '$quantity', 'belum', '$date')");
     }
   	return $data;
   }
 
   public function add_akun($nama,$email,$password)
   {
-        $data = $this->db->query("INSERT INTO user(nama, email, password) VALUES ('$nama','$email','$password')");
-        return $data;
-    }
+      $data = $this->db->query("INSERT INTO user(nama, email, password) VALUES ('$nama','$email','$password')");
+      return $data;
+  }
     
-    public function cek_email($email)
-    {
-        $this->db->where('email',$email);
-        $query = $this->db->get('user');
-        if($query->num_rows() > 0){
-            return true;
-        }else{
-            return false;
-        }
-    }
+  public function cek_email($email)
+  {
+      $this->db->where('email',$email);
+      $query = $this->db->get('user');
+      if($query->num_rows() > 0){
+          return true;
+      }else{
+          return false;
+      }
+  }
 }
 ?>

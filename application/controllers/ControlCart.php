@@ -11,7 +11,6 @@ class ControlCart extends CI_Controller{
 
 	public function index()
 	{
-		$data['keranjang'] = $this->ModelCart->get_all();
 		$data['product'] = $this->ModelCart->get_products();
 		if(isset($_SESSION['logged_in'])){
 			$data['email'] = $this->session->userdata('email');
@@ -19,6 +18,7 @@ class ControlCart extends CI_Controller{
 			$user = $this->ModelCart->get_profile($email);
 			$data['nama'] = $user->nama;
 			$data['id_user'] = $user->id_user; 
+			$data['keranjang'] = $this->ModelCart->get_all($data['id_user']);
 		}
 		$this->load->view('ViewCart', $data);
 	}

@@ -50,4 +50,12 @@ class ModelAdmin extends CI_Model{
 	public function editProductFoto($data,$id_product) {
 		$this->db->where('id_product', $id_product)->update('product', $data);
 	}
+
+	public function get_all_penjualan() {
+		$this->db->select('user.nama as pembeli, product.nama as barang, quantity, bukti, status, tanggal')
+						->from('keranjang')
+						->join('user', 'user.id_user = keranjang.id_user')
+						->join('product', 'product.id_product = keranjang.id_product');
+		return $this->db->get()->result_array();
+	}
 }

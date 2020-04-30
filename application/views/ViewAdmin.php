@@ -34,13 +34,13 @@
 	  });
 
 	  $("#btn4").click(function(){
-	    $("#tblproduct").toggle();
+	    $("#tblPenjualan").toggle();
 	  });
 	  
 	});
 	</script>
 	<style type="text/css">
-		#tblregister, #tblaponmen, #tblhewan, #tblproduct {
+		#tblregister, #tblaponmen, #tblhewan, #tblproduct, #tblPenjualan {
 			display: none;
 		}
 		.imageModal {
@@ -76,6 +76,7 @@
    				<button id="btn1" class="btn btn-secondary my-1">DATA USER</button>
    				<button id="btn2" class="btn btn-secondary my-1">DATA APPOINMENT</button> 
    				<button id="btn3" class="btn btn-secondary my-1">DATA HEWAN</button>
+   				<button id="btn4" class="btn btn-secondary my-1">DATA PENJUALAN</button>
    			</div>
    			<div class="col-9">
    				<div id="tblregister">
@@ -185,6 +186,45 @@
 									<td><?php echo $h['berat']; ?></td>
 									<td><?php echo $h['tinggi'];  ?></td>
 						            <td><?php echo $h['warna'];  ?></td>
+								</tr>
+								<?php  } ?>
+							</table>
+						</div>
+					</div>			    			
+   				</div>
+
+   				<div class="my-2" id="tblPenjualan">
+   					<div class="card">
+  						<div class="card-header">
+    						DATA PENJUALAN
+  						</div>
+  						<div class="card-body">
+    						<table class="table table-hover table-bordered" style="">
+			    				<thead>
+			    					<tr>
+			    						<th>No</th>
+			    						<th>Pembeli</th>
+			    						<th>Barang</th>
+										<th>Qty</th>
+										<th>Tanggal Beli</th>
+										<th>Bukti</th>
+										<th>Status</th>
+							            <th>Aksi</th>
+									</tr>
+			    				</thead>
+							    <?php 
+								$no = 1;
+								foreach ($penjualan as $pen) {
+								?>
+								<tr>
+									<td><?php echo $no++; ?></td>
+									<td><?php echo $pen['pembeli']; ?></td>
+									<td><?php echo $pen['barang']; ?></td>
+									<td><?php echo $pen['quantity'];  ?></td>
+									<td><?php echo $pen['tanggal']; ?></td>
+									<td><?php echo $pen['bukti']; ?></td>
+									<td><?php echo $pen['status'];  ?></td>
+						            <td><a href="#" class="btn btn-success">Oke</a></td>
 								</tr>
 								<?php  } ?>
 							</table>

@@ -211,7 +211,7 @@
        ?>
       <div class="col-lg-4 col-md-6 mb-4">
         <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="<?php echo base_url("assets/img/Sale/").$p['foto']; ?>" alt=""></a>
+          <a href="#"><img style="width: 100%; height: auto; max-height: 250px;" class="card-img-top" src="<?php echo base_url("assets/img/Sale/").$p['foto']; ?>" alt=""></a>
           <div class="card-body">
             <h4 class="card-title">
               <a href="#"><?php echo $p['nama']; ?></a>
@@ -245,9 +245,9 @@
     <div class="modal-content">
     <form action="<?= site_url('ControlShop/beli') ?>" method="post">
       <input type="hidden" name="id_user" value="<?php echo $id_user; ?>">
-      <input type="hidden" name="id_product" value="<?php echo $id; ?>">
+      <input type="hidden" name="id_product" value="<?php echo $p['id_product']; ?>">
         <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="<?php echo base_url("assets/img/Sale/").$p['foto']; ?>" alt=""></a>
+          <a href="#"><img style="width: 100%;height: auto;max-width: 300px;" class="card-img-top" src="<?php echo base_url("assets/img/Sale/").$p['foto']; ?>" alt=""></a>
           <div class="card-body">
             <h4 class="card-title">
               <a href="#"><?php echo $p['nama']; ?></a>

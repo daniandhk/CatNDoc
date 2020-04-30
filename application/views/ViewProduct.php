@@ -24,6 +24,11 @@
 		.imageModal {
 			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 		}
+		.imageTableShow {
+			width: 100%;
+			height: auto;
+			max-width: 80px;
+		}
 		/* Firefox */
 		input[type=number] {
   			-moz-appearance: textfield;
@@ -61,7 +66,7 @@
    		<div class="row">
    			<div class="col-3">
    				<h3 style="font-weight: bolder">Kelola Product</h3>
-   				<button id="btn4" class="btn btn-secondary my-1">DATA PRODUCT</button>
+   				<button id="btn4" class="btn btn-secondary my-1">LIST PRODUCT</button>
    			</div>
    			<div class="col-9">
    				<div class="my-2">
@@ -73,6 +78,7 @@
    								<thead>
    									<tr>
    										<th>Nama Product</th>
+   										<th>Foto</th>
    										<th>Harga</th>
    										<th>Action</th>
    									</tr>
@@ -83,6 +89,7 @@
    								 ?>
    								<tr>
    									<td><?php echo $p['nama']; ?></td>
+   									<td><img class="text-center imageTableShow" src="<?php echo base_url('assets/img/sale/').$p['foto']; ?>"></td>
    									<td><?php echo $p['harga']; ?></td>
    									<td><a href="" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#modalDetailProduct<?php echo $p['id_product'] ?>">Detail</a>
    										<a href="" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#modalGantiFoto<?php echo $p['id_product'] ?>">Ganti Foto</a></td>

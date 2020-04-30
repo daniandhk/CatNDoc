@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 29, 2020 at 05:48 AM
+-- Generation Time: Apr 30, 2020 at 11:17 AM
 -- Server version: 10.4.8-MariaDB
--- PHP Version: 7.3.11
+-- PHP Version: 7.3.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -44,7 +44,7 @@ CREATE TABLE `appointment` (
 --
 
 INSERT INTO `appointment` (`email`, `id_ap`, `notelp`, `tanggal`, `nama_pet`, `jenis_pet`, `keluhan`, `status`) VALUES
-('daniandhika03@gmail.com', 1, 1231234, '2020-04-07', 'Goliath', 'Kucing', 'qwertyq', 'Sudah'),
+('daniandhika03@gmail.com', 1, 1231234, '2020-04-07', 'Goliath', 'Kucing', 'qwertyq', 'Belum'),
 ('daniandhika03@gmail.com', 4, 4321, '2012-12-12', 'Heli', 'Anjing', 'UwU', 'belum'),
 ('sya@heggi', 6, 123, '2012-12-12', 'zz', 'Kucing', 'aw', 'belum');
 
@@ -82,6 +82,7 @@ CREATE TABLE `keranjang` (
   `id_user` int(11) NOT NULL,
   `id_product` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
+  `tanggal` date NOT NULL,
   `bukti` int(11) DEFAULT NULL,
   `status` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -90,12 +91,14 @@ CREATE TABLE `keranjang` (
 -- Dumping data for table `keranjang`
 --
 
-INSERT INTO `keranjang` (`id_keranjang`, `id_user`, `id_product`, `quantity`, `bukti`, `status`) VALUES
-(1, 12, 1, 1, NULL, 'proses'),
-(2, 12, 3, 2, NULL, 'done'),
-(7, 12, 2, 1, 0, 'proses'),
-(10, 12, 5, 3, 0, 'proses'),
-(11, 12, 5, 1, NULL, 'belum');
+INSERT INTO `keranjang` (`id_keranjang`, `id_user`, `id_product`, `quantity`, `tanggal`, `bukti`, `status`) VALUES
+(1, 12, 1, 1, '2020-04-23', NULL, 'proses'),
+(2, 12, 3, 2, '2020-04-24', NULL, 'done'),
+(7, 12, 2, 1, '2020-04-24', NULL, 'belum'),
+(10, 12, 5, 4, '2020-04-29', NULL, 'belum'),
+(11, 12, 3, 3, '2020-04-30', NULL, 'belum'),
+(12, 12, 4, 2, '2020-04-29', NULL, 'belum'),
+(13, 12, 1, 3, '2020-04-29', NULL, 'belum');
 
 -- --------------------------------------------------------
 
@@ -146,7 +149,7 @@ INSERT INTO `user` (`id_user`, `nama`, `email`, `password`, `foto`) VALUES
 (5, 'admin', 'admin@admin', 'admin', ''),
 (2, 'Dani Andhika', 'daniandhika03@gmail.com', 'password', ''),
 (3, 'Rendra Surendra', 'rendranara@gmail.com', 'gustitidaktidur', ''),
-(12, 'sya', 'sya@heggi', 'sya', 'Pas_Foto_Heggi1.jpg'),
+(12, 'sya', 'sya@heggi', 'sya', 'Pas_Foto_Heggi.jpg'),
 (13, 'zz', 'zz@zz', 'zz', '');
 
 --
@@ -209,7 +212,7 @@ ALTER TABLE `hewan`
 -- AUTO_INCREMENT for table `keranjang`
 --
 ALTER TABLE `keranjang`
-  MODIFY `id_keranjang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_keranjang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `product`

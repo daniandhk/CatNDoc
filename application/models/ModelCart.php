@@ -16,7 +16,11 @@ class ModelCart extends CI_Model{
 	    }
 	}
 
-	public function get_all(){
+	public function get_all($id_user){
+		$this->db->select('id_keranjang, product.nama as nama_barang, quantity, harga, (quantity*harga) as total, bukti, status');
+		$this->db->join('product', 'product.id_product = keranjang.id_product');
+		$this->db->where('status', 'belum');
+		$this->db->where('id_user', $id_user);
 		return $this->db->get('keranjang')->result_array();
 	}
 
