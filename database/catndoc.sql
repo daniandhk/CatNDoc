@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 01, 2020 at 03:57 PM
+-- Generation Time: May 01, 2020 at 05:23 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.10
 
@@ -93,7 +93,7 @@ CREATE TABLE `keranjang` (
 
 INSERT INTO `keranjang` (`id_keranjang`, `id_user`, `id_product`, `quantity`, `tanggal`, `bukti`, `status`) VALUES
 (14, 12, 1, 1, '2020-05-01', 'buktitransfer.jpg', 'proses'),
-(15, 12, 2, 2, '2020-05-01', 'buktitransfer.jpg', 'proses'),
+(15, 12, 2, 2, '2020-05-01', 'buktitransfer.jpg', 'delivery'),
 (16, 12, 4, 2, '2020-05-01', NULL, 'belum'),
 (17, 12, 3, 1, '2020-05-01', NULL, 'belum'),
 (18, 12, 5, 1, '2020-05-01', NULL, 'belum');

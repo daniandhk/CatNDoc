@@ -40,11 +40,17 @@
 	});
 	</script>
 	<style type="text/css">
-		#tblregister, #tblaponmen, #tblhewan, #tblproduct, #tblPenjualan {
+		#tblregister, #tblaponmen, #tblhewan, #tblproduct {
 			display: none;
 		}
 		.imageModal {
 			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		}
+
+		.foto_bukti {
+			width: 100%;
+			max-width: 120px;
+			height: auto;
 		}
 	</style>
   </head>
@@ -217,14 +223,28 @@
 								foreach ($penjualan as $pen) {
 								?>
 								<tr>
-									<td><?php echo $no++; ?></td>
+									<td><?php echo $no; ?></td>
 									<td><?php echo $pen['pembeli']; ?></td>
 									<td><?php echo $pen['barang']; ?></td>
 									<td><?php echo $pen['quantity'];  ?></td>
 									<td><?php echo $pen['tanggal']; ?></td>
-									<td><?php echo $pen['bukti']; ?></td>
+									<td><?php if($pen['bukti'] != NULL) { ?>
+										<img class="foto_bukti" src="<?php echo base_url('assets/img/Bukti Transfer/').$pen['bukti']; ?>"></td>
+										<?php } else { ?>
+											<small><i>Tidak ada</i></small>
+										<?php } ?>
 									<td><?php echo $pen['status'];  ?></td>
-						            <td><a href="#" class="btn btn-success">Oke</a></td>
+						            <td><?php if($pen['status'] == "belum") { ?>
+						            	<a href="#" class="btn btn-secondary disabled"><i class="fa fa-check"></i> Terima</a>
+						            	<?php } else if($pen['status'] == "proses"){?>
+						            	<a href="#" data-toggle="modal" data-target="#penjualan<?php echo $no++; ?>" class="btn btn-success"><i class="fa fa-check"></i> Terima</a>
+						            	<?php } else if($pen['status'] == "packing"){?>
+						            	<a href="#" data-toggle="modal" data-target="#kirim<?php echo $no; ?>" class="btn btn-info"><i class="fa fa-truck"></i> Kirim</a>
+						            	<a href="#" data-toggle="modal" data-target="#cancelPembayaran<?php echo $no++; ?>" class="btn btn-danger my-1"><i class="fa fa-window-close"></i> Batal</a>
+						            	<?php } else if($pen['status'] == "delivery"){?>
+						            	<a href="#" data-toggle="modal" data-target="#cancelDeliv<?php echo $no++; ?>" class="btn btn-danger"><i class="fa fa-window-close"></i> Batal</a>
+						            	<?php } ?>
+						            </td>
 								</tr>
 								<?php  } ?>
 							</table>
@@ -288,6 +308,93 @@
 	  	</div>
 	</div>
 	<?php } } ?>
+
+	<?php 
+	$no = 1;
+	foreach ($penjualan as $pen) {
+		if($pen['status'] == "proses") { ?>
+			<div class="modal fade" id="penjualan<?php echo $no++; ?>" tabindex="-1" role="dialog">
+			  	<div class="modal-dialog" role="document">
+			    	<div class="modal-content">
+			      		<div class="modal-header">
+				        	<h5 class="modal-title">Konfirmasi Penerimaan Pembayaran</h5>
+			        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          			<span aria-hidden="true">&times;</span>
+			        		</button>
+			      		</div>
+			      	<div class="modal-body">
+			        	<p>Apakah anda yakin untuk menerima pembayaran dari <b><?php echo $pen['pembeli']; ?></b> untuk barang <b><?php echo $pen['barang']; ?></b> dengan jumlah <b><?php echo $pen['quantity']; ?></b>?</p>
+			        	<p>Selanjutnya dimohon untuk segera dipacking.</p>
+			      	</div>
+			      	<div class="modal-footer">
+			      		<a class="btn btn-success" href="<?php echo base_url('index.php/ControlAdmin/terimaPembayaran/').$pen['id_keranjang']; ?>"><i class="fa fa-check"></i> Ya, Terima & Packing</a>
+			        	<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			      	</div>
+			    	</div>
+			  	</div>
+			</div>
+		<?php } else if($pen['status'] == "packing") { ?>
+			<div class="modal fade" id="kirim<?php echo $no; ?>" tabindex="-1" role="dialog">
+			  	<div class="modal-dialog" role="document">
+			    	<div class="modal-content">
+			      		<div class="modal-header">
+				        	<h5 class="modal-title">Konfirmasi Dikirim</h5>
+			        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          			<span aria-hidden="true">&times;</span>
+			        		</button>
+			      		</div>
+			      	<div class="modal-body">
+			        	<p>Barang <b><?php echo $pen['barang']; ?></b> dengan jumlah <b><?php echo $pen['quantity']; ?></b> akan dikirim kepada <b><?php echo $pen['pembeli']; ?></b>  ?</p>
+			      	</div>
+			      	<div class="modal-footer">
+			      		<a class="btn btn-info" href="<?php echo base_url('index.php/ControlAdmin/kirimBarang/').$pen['id_keranjang']; ?>"><i class="fa fa-truck"></i> Ya, Kirim</a>
+			        	<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			      	</div>
+			    	</div>
+			  	</div>
+			</div>
+
+			<div class="modal fade" id="cancelPembayaran<?php echo $no++; ?>" tabindex="-1" role="dialog">
+			  	<div class="modal-dialog" role="document">
+			    	<div class="modal-content">
+			      		<div class="modal-header">
+				        	<h5 class="modal-title">Konfirmasi Batal Validasi Pembayaran</h5>
+			        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          			<span aria-hidden="true">&times;</span>
+			        		</button>
+			      		</div>
+			      	<div class="modal-body">
+			        	<p>Anda akan membatalkan validasi pembayaran dari <b><?php echo $pen['pembeli']; ?></b> untuk barang <b><?php echo $pen['barang']; ?></b> yang berjumlah <b><?php echo $pen['quantity']; ?></b> </p>
+			      	</div>
+			      	<div class="modal-footer">
+			      		<a class="btn btn-danger" href="<?php echo base_url('index.php/ControlAdmin/batalPembayaran/').$pen['id_keranjang']; ?>"><i class="fa fa-window-close"></i> Ya, Batalkan</a>
+			        	<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			      	</div>
+			    	</div>
+			  	</div>
+			</div>
+		<?php } else if($pen['status'] == "delivery") { ?>
+			<div class="modal fade" id="cancelDeliv<?php echo $no++; ?>" tabindex="-1" role="dialog">
+			  	<div class="modal-dialog" role="document">
+			    	<div class="modal-content">
+			      		<div class="modal-header">
+				        	<h5 class="modal-title">Konfirmasi Batal Dikirim</h5>
+			        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          			<span aria-hidden="true">&times;</span>
+			        		</button>
+			      		</div>
+			      	<div class="modal-body">
+			        	<p>Barang <b><?php echo $pen['barang']; ?></b> dengan jumlah <b><?php echo $pen['quantity']; ?></b> akan <b><u>BATAL DIKIRIM</u></b> kepada <b><?php echo $pen['pembeli']; ?></b>  ?</p>
+			      	</div>
+			      	<div class="modal-footer">
+			      		<a class="btn btn-danger" href="<?php echo base_url('index.php/ControlAdmin/batalKirim/').$pen['id_keranjang']; ?>"><i class="fa fa-window-close"></i> Ya, Batalkan</a>
+			        	<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			      	</div>
+			    	</div>
+			  	</div>
+			</div>
+		<?php }
+	} ?>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

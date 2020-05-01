@@ -52,10 +52,27 @@ class ModelAdmin extends CI_Model{
 	}
 
 	public function get_all_penjualan() {
-		$this->db->select('user.nama as pembeli, product.nama as barang, quantity, bukti, status, tanggal')
+		$this->db->select('id_keranjang, user.nama as pembeli, product.nama as barang, quantity, bukti, status, tanggal')
 						->from('keranjang')
 						->join('user', 'user.id_user = keranjang.id_user')
-						->join('product', 'product.id_product = keranjang.id_product');
+						->join('product', 'product.id_product = keranjang.id_product')
+						->order_by("status", "desc");
 		return $this->db->get()->result_array();
+	}
+
+	public function terimaPembayaran($id_keranjang) {
+		$this->db->where('id_keranjang', $id_keranjang)->set('status','packing')->update('keranjang');
+	}
+
+	public function kirimBarang($id_keranjang) {
+		$this->db->where('id_keranjang', $id_keranjang)->set('status','delivery')->update('keranjang');
+	}
+
+	public function batalKirim($id_keranjang) {
+		$this->db->where('id_keranjang', $id_keranjang)->set('status','packing')->update('keranjang');
+	}
+
+	public function batalPembayaran($id_keranjang) {
+		$this->db->where('id_keranjang', $id_keranjang)->set('status','proses')->update('keranjang');
 	}
 }

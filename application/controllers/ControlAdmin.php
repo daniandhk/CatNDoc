@@ -37,4 +37,27 @@ class ControlAdmin extends CI_Controller{
 		redirect('ControlAdmin');
 	}
 
+	public function terimaPembayaran() {
+		$id_keranjang = $this->uri->segment(3);
+		$this->ModelAdmin->terimaPembayaran($id_keranjang);
+		redirect('ControlAdmin');
+	}
+
+	public function kirimBarang() {
+		$id_keranjang = $this->uri->segment(3);
+		$this->ModelAdmin->kirimBarang($id_keranjang);
+		redirect('ControlAdmin');
+	}
+
+	public function batalKirim() {
+		$id_keranjang = $this->uri->segment(3);
+		$this->ModelAdmin->batalKirim($id_keranjang);
+		redirect('ControlAdmin');
+	}
+
+	public function batalPembayaran() {
+		$id_keranjang = $this->uri->segment(3);
+		$this->ModelAdmin->batalPembayaran($id_keranjang);
+		redirect('ControlAdmin');
+	}
 }
