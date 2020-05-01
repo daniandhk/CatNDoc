@@ -24,6 +24,14 @@ class ModelCart extends CI_Model{
 		return $this->db->get('keranjang')->result_array();
 	}
 
+	public function get_all_sudah_dibayar($id_user) {
+		$this->db->select('id_keranjang, product.nama as nama_barang, quantity, harga, (quantity*harga) as total, bukti, status');
+		$this->db->join('product', 'product.id_product = keranjang.id_product');
+		$this->db->where('status !=', 'belum');
+		$this->db->where('id_user', $id_user);
+		return $this->db->get('keranjang')->result_array();
+	}
+
     public function login($data) {
 	    $this->db->where('email', $data['email']);
 	    $this->db->where('password', $data['password']);
@@ -40,9 +48,10 @@ class ModelCart extends CI_Model{
 	}
 
 	public function upload_bukti($data,$id_user) {
-		$this->db->where('id_user', $id_user);
-		$this->db->where('status', 'belum');
-		return $this->db->update('keranjang', $data);
+		$this->db->where_in('id_keranjang',$data['id_keranjang']);
+		$this->db->set('bukti', $data['bukti']);
+		$this->db->set('status', $data['status']);
+		return $this->db->update('keranjang');
 	}
 
 }

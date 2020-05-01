@@ -31,7 +31,18 @@
       </style>
 
       <script type="text/javascript">
-
+        var total = 0;
+        var addItem = function(element) {
+          var str1 = "#T";
+          var id_total = str1.concat(element.value)
+          var total_hrg_item = parseInt($(id_total).html());
+          if(element.checked) {
+            total = total + total_hrg_item;
+          } else {
+            total = total - total_hrg_item;
+          }
+          $("#total_harga").text(total);
+        }
       </script>
 
   </head>
@@ -132,15 +143,15 @@
 								
   <?php 
   $no = 1;
-  foreach($keranjang as $k) { 
+  foreach($keranjang_sudah_dibayar as $ksd) {
   ?>
           <tr>
             <td><?php echo $no++ ?></td>
-            <td><?php echo $k['nama_barang'] ?></td>
-            <td id="harga">Rp. <?php echo number_format($k['harga'],2,",",".") ?></td>
-            <td id="quantity"><?php echo $k['quantity'] ?></td>
-            <td>Rp. <?php echo number_format($k['total'],2,",",".") ?></td>
-            <?php if($k['status'] == 'proses'){ ?>
+            <td><?php echo $ksd['nama_barang'] ?></td>
+            <td id="harga">Rp. <?php echo number_format($ksd['harga'],2,",",".") ?></td>
+            <td id="quantity"><?php echo $ksd['quantity'] ?></td>
+            <td>Rp. <?php echo number_format($ksd['total'],2,",",".") ?></td>
+            <?php if($ksd['status'] == 'proses'){ ?>
               <td>Validating</td>
             <?php }else{ ?>
               <td>Delivering</td>
@@ -244,15 +255,15 @@
                   <td><?php echo $k['nama_barang']; ?></td>
                   <td><?php echo $k['quantity']; ?></td>
                   <td><?php echo $k['harga']; ?></td>
-                  <td><?php echo $k['total']; ?></td>
+                  <td id="<?php echo 'T'.$k['id_keranjang']; ?>"><?php echo $k['total']; ?></td>
                   <td>
-                    <input type="checkbox" id="chk" name="checkboxBayar" value="<?php echo $k['id_keranjang']; ?>">
+                    <input type="checkbox" class="chckbox" name="checkboxBayar[]" onclick="addItem(this)" value="<?php echo $k['id_keranjang']; ?>">
                   </td>
                 </tr>
               <?php } ?>
               </tbody>
             </table>
-            <th>TOTAL   :<span style="opacity:0;">ddd</span>Rp. <?php echo number_format($total,2,",","."); ?></th>
+            <th>TOTAL   :<span style="opacity:0;"></span>Rp. <p id="total_harga">0</p></th>
             <br>
             <label for="upload_foto">Bukti Transfer</label>
             <input type="file" id="upload_foto" class="form-control" name="bukti">

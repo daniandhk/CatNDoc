@@ -19,6 +19,7 @@ class ControlCart extends CI_Controller{
 			$data['nama'] = $user->nama;
 			$data['id_user'] = $user->id_user; 
 			$data['keranjang'] = $this->ModelCart->get_all($data['id_user']);
+			$data['keranjang_sudah_dibayar'] = $this->ModelCart->get_all_sudah_dibayar($data['id_user']);
 		}
 		$this->load->view('ViewCart', $data);
 	}
@@ -63,15 +64,22 @@ class ControlCart extends CI_Controller{
 			echo $error['error'];
 		}
 		else {
-			$file = $this->upload->data();
-			$img_name = $this->upload->file_name;
-			$data = array(
-				'bukti' => $img_name,
-				'status' => 'proses'
-			);
-			$id_user = $this->input->post('id_user');
-			$this->ModelCart->upload_bukti($data, $id_user);
+			if(!empty($this->input->post('checkboxBayar'))) {
+				foreach ($this->input->post('checkboxBayar') as $obj) {
+					$checkboxBayar[] = $obj;
+				}
 
+				$file = $this->upload->data();
+				$img_name = $this->upload->file_name;
+				$data = array(
+					'id_keranjang' => $checkboxBayar,
+					'bukti' => $img_name,
+					'status' => 'proses'
+				);
+				echo "<script>console.log(".$data['id_keranjang'].")</script>";
+				$id_user = $this->input->post('id_user');
+				$this->ModelCart->upload_bukti($data, $id_user);
+			}
 			echo 'Success';
 			redirect('ControlCart');
 		}

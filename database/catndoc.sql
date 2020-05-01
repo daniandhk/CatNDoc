@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 30, 2020 at 11:17 AM
+-- Generation Time: May 01, 2020 at 03:57 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.10
 
@@ -83,7 +83,7 @@ CREATE TABLE `keranjang` (
   `id_product` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
   `tanggal` date NOT NULL,
-  `bukti` int(11) DEFAULT NULL,
+  `bukti` varchar(50) DEFAULT NULL,
   `status` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -92,13 +92,11 @@ CREATE TABLE `keranjang` (
 --
 
 INSERT INTO `keranjang` (`id_keranjang`, `id_user`, `id_product`, `quantity`, `tanggal`, `bukti`, `status`) VALUES
-(1, 12, 1, 1, '2020-04-23', NULL, 'proses'),
-(2, 12, 3, 2, '2020-04-24', NULL, 'done'),
-(7, 12, 2, 1, '2020-04-24', NULL, 'belum'),
-(10, 12, 5, 4, '2020-04-29', NULL, 'belum'),
-(11, 12, 3, 3, '2020-04-30', NULL, 'belum'),
-(12, 12, 4, 2, '2020-04-29', NULL, 'belum'),
-(13, 12, 1, 3, '2020-04-29', NULL, 'belum');
+(14, 12, 1, 1, '2020-05-01', 'buktitransfer.jpg', 'proses'),
+(15, 12, 2, 2, '2020-05-01', 'buktitransfer.jpg', 'proses'),
+(16, 12, 4, 2, '2020-05-01', NULL, 'belum'),
+(17, 12, 3, 1, '2020-05-01', NULL, 'belum'),
+(18, 12, 5, 1, '2020-05-01', NULL, 'belum');
 
 -- --------------------------------------------------------
 
@@ -212,7 +210,7 @@ ALTER TABLE `hewan`
 -- AUTO_INCREMENT for table `keranjang`
 --
 ALTER TABLE `keranjang`
-  MODIFY `id_keranjang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_keranjang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `product`
