@@ -164,7 +164,7 @@
   foreach($keranjang_sudah_dibayar as $ksd) {
   ?>
           <tr>
-            <td><?php echo $no++ ?></td>
+            <td><?php echo $no ?></td>
             <td><?php echo $ksd['nama_barang'] ?></td>
             <td id="harga">Rp. <?php echo number_format($ksd['harga'],2,",",".") ?></td>
             <td id="quantity"><?php echo $ksd['quantity'] ?></td>
@@ -174,16 +174,21 @@
               <td>Validating</td>
               <td><a href="" data-toggle="modal" data-target="#updateBeli<?php echo $no; ?>" class="btn btn-secondary">Update</a>
               <a href="" data-toggle="modal" data-target="#refundBeli<?php echo $no; ?>" class="btn btn-danger">Batal</a></td>
-            <?php }else if($ksd['status'] == 'done'){ ?>
+            <?php } else if($ksd['status'] == 'packing' || $ksd['status'] == 'delivery') { ?>
               <td>Delivering</td>
-              <td><a href="" data-toggle="modal" data-target="#cekResi<?php echo $no; ?>" class="btn btn-success">Cek Resi Pengiriman</a>
+              <td><a href="" data-toggle="modal" data-target="#updateBeli<?php echo $no; ?>" class="btn btn-secondary">Update</a>
+              <a href="" data-toggle="modal" data-target="#refundBeli<?php echo $no; ?>" class="btn btn-danger">Batal</a>
+              <a style="font-size: 11px;" href="" data-toggle="modal" data-target="#cekResi<?php echo $no; ?>" class="btn btn-success">Cek Resi Pengiriman</a></td>
+            <?php } else if($ksd['status'] == 'done'){ ?>
+              <td>Done</td>
+              <td><a style="font-size: 12px;" href="" data-toggle="modal" data-target="#cekResi<?php echo $no; ?>" class="btn btn-success">Cek Resi Pengiriman</a>
               </td>
             <?php }else if($ksd['status'] == 'refund'){ ?>
               <td>Refunding</td>
               <td>Harap Tunggu Proses Refund<br>2x24 Jam</td>
             <?php } ?>
           </tr>								
-			   <?php } ?>
+			   <?php $no++; } ?>
 			 </table>      
 			</div>
 
@@ -204,7 +209,7 @@
   </div>
 </div>
 
-<?php $no = 1; foreach ($keranjang_sudah_dibayar as $ksd) { $no++?>
+<?php $no = 0; foreach ($keranjang_sudah_dibayar as $ksd) { $no++?>
 <div class="modal fade" id="refundBeli<?php echo $no; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -228,7 +233,7 @@
 </div>
 <?php } ?>
 
-<?php $no = 1; foreach ($keranjang_sudah_dibayar as $ksd) { $no++?>
+<?php $no = 0; foreach ($keranjang_sudah_dibayar as $ksd) { $no++?>
 <div class="modal fade" id="updateBeli<?php echo $no; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -277,6 +282,56 @@
   </div>
 </div>
 <?php } ?>
+
+<?php $no = 0; foreach($keranjang_sudah_dibayar as $ksd) { $no++;  if ($ksd['status'] == 'done' || $ksd['status'] == 'packing' || $ksd['status'] == 'delivery') {?>
+<div class="modal fade" id="cekResi<?php echo $no; ?>" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Cek Resi</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group row">
+            <label for="barang" class="col-3 col-form-label"><b>Barang</b></label>
+            <div class="col-9">
+              <input type="text" class="form-control-plaintext" name="barang" placeholder="Penerima" value="<?php echo $ksd['nama_barang']; ?> (jumlah <?php echo $ksd['quantity']; ?>)" readonly>
+            </div>
+            <label for="alamat" class="col-3 col-form-label"><b>Alamat</b></label>
+            <div class="col-9">
+              <textarea class="form-control-plaintext" name="alamat" placeholder="Alamat" readonly><?php echo $ksd['alamat']; ?> </textarea>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="no_resi" class="col-3 col-form-label"><b>No. Resi</b></label>
+            <div class="col-9">
+              <input type="text" class="form-control" name="no_resi" placeholder="<?php if($ksd['resi'] == '') { echo 'Resi belum diisi';} ?>" value="<?php echo $ksd['resi']; ?>" readonly>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="status" class="col-3 col-form-label"><b>Status</b></label>
+            <div class="col-9">
+              <?php $status = '';
+              if($ksd['status'] == 'delivery' || $ksd['status'] == 'packing') {
+                $status = 'Delivering';
+              } else if($ksd['status'] == 'done') {
+                $status = 'Done';
+              } ?>
+              <input type="text" class="form-control-plaintext" name="status" placeholder="Penerima" value="<?php echo $status; ?>" readonly>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div></div>
+  
+<?php } }?>
 
 <div class="modal fade" id="modalTata" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">

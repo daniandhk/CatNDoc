@@ -17,7 +17,7 @@ class ModelCart extends CI_Model{
 	}
 
 	public function get_all($id_user){
-		$this->db->select('id_keranjang, product.nama as nama_barang, quantity, harga, (quantity*harga) as total, bukti, status');
+		$this->db->select('id_keranjang, product.nama as nama_barang, quantity, harga, (quantity*harga) as total, bukti, status, resi');
 		$this->db->join('product', 'product.id_product = keranjang.id_product');
 		$this->db->where('status', 'belum');
 		$this->db->where('id_user', $id_user);
@@ -25,7 +25,7 @@ class ModelCart extends CI_Model{
 	}
 
 	public function get_all_sudah_dibayar($id_user) {
-		$this->db->select('id_keranjang, product.nama as nama_barang, quantity, harga, (quantity*harga) as total, bukti, status, alamat');
+		$this->db->select('id_keranjang, product.nama as nama_barang, quantity, harga, (quantity*harga) as total, bukti, status, alamat, resi');
 		$this->db->join('product', 'product.id_product = keranjang.id_product');
 		$this->db->where('status !=', 'belum');
 		$this->db->where('id_user', $id_user);
@@ -56,8 +56,9 @@ class ModelCart extends CI_Model{
 	}
 
 	public function refundItem($id) {
-		$this->db->where_in('id_keranjang',$id);
+		$this->db->where('id_keranjang',$id);
 		$this->db->set('status','refund');
+		$this->db->set('resi', '');
 		return $this->db->update('keranjang');
 	}
 
