@@ -98,6 +98,11 @@ class ControlProfile extends CI_Controller{
 		} else{
 			echo 'email sudah ada!';
 		}
-		
     }
+
+    public function deleteAppointment() {
+		$id_user = $this->uri->segment(3);
+		$this->ModelProfile->deleteAppointment($id_user);
+		redirect('ControlProfile');
+	}
 }

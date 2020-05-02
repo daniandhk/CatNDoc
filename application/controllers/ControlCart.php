@@ -74,7 +74,8 @@ class ControlCart extends CI_Controller{
 				$data = array(
 					'id_keranjang' => $checkboxBayar,
 					'bukti' => $img_name,
-					'status' => 'proses'
+					'status' => 'proses',
+					'alamat' => $this->input->post('alamat')
 				);
 				echo "<script>console.log(".$data['id_keranjang'].")</script>";
 				$id_user = $this->input->post('id_user');
@@ -83,5 +84,28 @@ class ControlCart extends CI_Controller{
 			echo 'Success';
 			redirect('ControlCart');
 		}
+	}
+
+	public function deleteItem() {
+		$id = $this->uri->segment(3);
+		$this->ModelCart->deleteItem($id);
+		redirect('ControlCart');
+	}
+	
+	public function refundItem() {
+		$id = $this->uri->segment(3);
+		$this->ModelCart->refundItem($id);
+		redirect('ControlCart');
+	}
+
+	public function updateItem(){
+		$id = $this->input->post('Myid');
+		$myalamat = $this->input->post('Myalamat');
+		$alamat = $this->input->post('alamat');
+		if($alamat == ""){
+			$alamat = $myalamat;
+		}
+		$this->ModelCart->updateItem($id,$alamat);
+		redirect('ControlCart');
 	}
 }

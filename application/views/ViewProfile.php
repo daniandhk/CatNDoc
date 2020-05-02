@@ -165,7 +165,7 @@
               <input type="text" class="form-control" id="tanggal" placeholder="DD/MM/YYYY" name="tanggal"  value="<?php echo $a['tanggal']; ?>" disabled>
             </div>
             <div class="form-group">
-              <label for="notelp">No. Telepon</label>
+              <label for="notelp">No. Telp</label>
               <input type="notelp" class="form-control" id="notelp" placeholder="<?php echo $a['notelp']; ?>" value="<?php echo $a['notelp']; ?>" name="notelp" required>
             </div>
             <div class="form-group">
@@ -234,7 +234,7 @@
            </div>
            <div class="form-group ">
             <label class="control-label " for="notelp">
-             No. Telp
+             No. Telp 
             </label>
             <input class="form-control" id="notelp" name="notelp" type="text"/>
            </div>

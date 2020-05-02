@@ -41,7 +41,24 @@
           } else {
             total = total - total_hrg_item;
           }
-          $("#total_harga").text(total);
+          $("#total_harga").text("Rp. "+addCommas(total,2,",","."));
+        }
+
+        function addCommas(number, decimals, dec_point, thousands_sep)
+        {
+            number = number.toFixed(decimals);
+
+            var nstr = number.toString();
+            nstr += '';
+            x = nstr.split('.');
+            x1 = x[0];
+            x2 = x.length > 1 ? dec_point + x[1] : '';
+            var rgx = /(\d+)(\d{3})/;
+
+            while (rgx.test(x1))
+                x1 = x1.replace(rgx, '$1' + thousands_sep + '$2');
+
+            return x1 + x2;
         }
       </script>
 
@@ -108,8 +125,8 @@
                     <td>Rp. <?php echo number_format($k['total'],2,",",".") ?></td>
                     <?php $total += $k['total'] ?>
                     <td>Menunggu Pembayaran</td>
-                    <td><a href="" data-toggle="modal" data-target="#updateBeli<?php echo $no; ?>" class="btn btn-secondary">Update</a>
-                      <a href="" data-toggle="modal" data-target="#deleteBeli<?php echo $no; ?>" class="btn btn-danger">Delete</a>
+                    <td>
+                      <a href="" data-toggle="modal" data-target="#deleteBeli<?php echo $no; ?>" class="btn btn-danger">Batal</a>
                     </td>
                   </tr>							
                 <?php } ?>
@@ -136,6 +153,7 @@
       <th>Harga</th>
       <th>Jumlah</th>
       <th>Total</th>
+      <th>Alamat Tujuan</th>
       <th>Status</th>  
       <th>More</th> 
     </tr>
@@ -151,13 +169,19 @@
             <td id="harga">Rp. <?php echo number_format($ksd['harga'],2,",",".") ?></td>
             <td id="quantity"><?php echo $ksd['quantity'] ?></td>
             <td>Rp. <?php echo number_format($ksd['total'],2,",",".") ?></td>
+            <td><?php echo $ksd['alamat'] ?></td>
             <?php if($ksd['status'] == 'proses'){ ?>
               <td>Validating</td>
-            <?php }else{ ?>
+              <td><a href="" data-toggle="modal" data-target="#updateBeli<?php echo $no; ?>" class="btn btn-secondary">Update</a>
+              <a href="" data-toggle="modal" data-target="#refundBeli<?php echo $no; ?>" class="btn btn-danger">Batal</a></td>
+            <?php }else if($ksd['status'] == 'done'){ ?>
               <td>Delivering</td>
+              <td><a href="" data-toggle="modal" data-target="#cekResi<?php echo $no; ?>" class="btn btn-success">Cek Resi Pengiriman</a>
+              </td>
+            <?php }else if($ksd['status'] == 'refund'){ ?>
+              <td>Refunding</td>
+              <td>Harap Tunggu Proses Refund<br>2x24 Jam</td>
             <?php } ?>
-            <td><a href="" data-toggle="modal" data-target="#updateBeli<?php echo $no; ?>" class="btn btn-secondary">Update</a>
-              <a href="" data-toggle="modal" data-target="#deleteBeli<?php echo $no; ?>" class="btn btn-danger">Delete</a></td>
           </tr>								
 			   <?php } ?>
 			 </table>      
@@ -179,6 +203,56 @@
         </div>
   </div>
 </div>
+
+<?php $no = 1; foreach ($keranjang_sudah_dibayar as $ksd) { $no++?>
+<div class="modal fade" id="refundBeli<?php echo $no; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <h4 class="modal-title font-weight-bold">Batalkan Pembelian?</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <div>
+            <p>Pembelian yang sudah di bayar dan sudah di kirim tak dapat di refund</p>
+            <p>Pembelian yang sudah di bayar dan masih dalam proses validasi akan di refund 2x24 jam</p>
+            <p>beneran ga jadi beli nic?</p>
+          </div>
+          </div>
+          <div class="modal-footer d-flex justify-content-center">
+              <a class="btn btn-danger" href="<?php echo base_url('index.php/ControlCart/refundItem/').$ksd['id_keranjang']; ?>"><i class="fa fa-trash"></i> Ya, Batal</a>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+  </div>
+</div>
+<?php } ?>
+
+<?php $no = 1; foreach ($keranjang_sudah_dibayar as $ksd) { $no++?>
+<div class="modal fade" id="updateBeli<?php echo $no; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <h4 class="modal-title font-weight-bold">Update Alamat Tujuan</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form action="<?= site_url('ControlCart/updateItem') ?>" method="post">
+          <input type="hidden" name="Myalamat" value="<?php echo $ksd['alamat']; ?>">
+          <input type="hidden" name="Myid" value="<?php echo $ksd['id_keranjang']; ?>">
+          <div class="form-group ">
+            <label>Alamat Tujuan</label>
+              <textarea class="form-control" cols="40" id="alamat" name="alamat" rows="1" placeholder="<?php echo $ksd['alamat'] ?>" value=""></textarea>
+          </div>
+          <div class="modal-footer d-flex justify-content-center">
+            <button type="submit" class="btn btn-info">Submit</button>
+          </div>
+          </form>
+        </div>
+  </div>
+</div>
+<?php } ?>
 
 <?php $no = 0; foreach ($keranjang as $k) { $no++?>
 <div class="modal fade" id="deleteBeli<?php echo $no; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -257,16 +331,21 @@
                   <td><?php echo $k['harga']; ?></td>
                   <td id="<?php echo 'T'.$k['id_keranjang']; ?>"><?php echo $k['total']; ?></td>
                   <td>
-                    <input type="checkbox" class="chckbox" name="checkboxBayar[]" onclick="addItem(this)" value="<?php echo $k['id_keranjang']; ?>">
+                    <input type="checkbox" class="chckbox" name="checkboxBayar[]" onclick="addItem(this)" required value="<?php echo $k['id_keranjang']; ?>">
                   </td>
                 </tr>
               <?php } ?>
               </tbody>
             </table>
-            <th>TOTAL   :<span style="opacity:0;"></span>Rp. <p id="total_harga">0</p></th>
-            <br>
+            <th>Total Harga<span style="opacity:0;"></span><p id="total_harga">Rp. 0</p></th>
+            <div class="form-group ">
+            <label class="control-label " for="alamat">
+             Alamat Tujuan<br>(Free Ongkir Seluruh Indonesia!)
+            </label>
+            <textarea class="form-control" cols="40" id="alamat" name="alamat" rows="1" required=""></textarea>
+           </div>
             <label for="upload_foto">Bukti Transfer</label>
-            <input type="file" id="upload_foto" class="form-control" name="bukti">
+            <input type="file" id="upload_foto" class="form-control" name="bukti" required="">
           </div>
           <div class="modal-footer d-flex justify-content-center">
               <button class="btn btn-primary">Submit</button>

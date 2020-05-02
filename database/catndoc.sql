@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 01, 2020 at 05:23 PM
+-- Generation Time: May 02, 2020 at 08:22 AM
 -- Server version: 10.4.8-MariaDB
--- PHP Version: 7.3.10
+-- PHP Version: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -31,7 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `appointment` (
   `email` varchar(100) NOT NULL,
   `id_ap` int(11) NOT NULL,
-  `notelp` int(100) NOT NULL,
+  `notelp` varchar(12) NOT NULL,
   `tanggal` date NOT NULL,
   `nama_pet` varchar(100) NOT NULL,
   `jenis_pet` varchar(100) NOT NULL,
@@ -44,9 +44,9 @@ CREATE TABLE `appointment` (
 --
 
 INSERT INTO `appointment` (`email`, `id_ap`, `notelp`, `tanggal`, `nama_pet`, `jenis_pet`, `keluhan`, `status`) VALUES
-('daniandhika03@gmail.com', 1, 1231234, '2020-04-07', 'Goliath', 'Kucing', 'qwertyq', 'Belum'),
-('daniandhika03@gmail.com', 4, 4321, '2012-12-12', 'Heli', 'Anjing', 'UwU', 'belum'),
-('sya@heggi', 6, 123, '2012-12-12', 'zz', 'Kucing', 'aw', 'belum');
+('daniandhika03@gmail.com', 1, '000001231234', '2020-04-07', 'Goliath', 'Kucing', 'qwertyq', 'Belum'),
+('daniandhika03@gmail.com', 4, '000000004321', '2012-12-12', 'Heli', 'Anjing', 'UwU', 'belum'),
+('sya@heggi', 7, '123', '2012-12-12', 'awawawa', 'Kucing', 'sakit', 'belum');
 
 -- --------------------------------------------------------
 
@@ -83,20 +83,23 @@ CREATE TABLE `keranjang` (
   `id_product` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
   `tanggal` date NOT NULL,
+  `alamat` text NOT NULL,
   `bukti` varchar(50) DEFAULT NULL,
-  `status` varchar(100) NOT NULL
+  `status` varchar(100) NOT NULL,
+  `resi` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `keranjang`
 --
 
-INSERT INTO `keranjang` (`id_keranjang`, `id_user`, `id_product`, `quantity`, `tanggal`, `bukti`, `status`) VALUES
-(14, 12, 1, 1, '2020-05-01', 'buktitransfer.jpg', 'proses'),
-(15, 12, 2, 2, '2020-05-01', 'buktitransfer.jpg', 'delivery'),
-(16, 12, 4, 2, '2020-05-01', NULL, 'belum'),
-(17, 12, 3, 1, '2020-05-01', NULL, 'belum'),
-(18, 12, 5, 1, '2020-05-01', NULL, 'belum');
+INSERT INTO `keranjang` (`id_keranjang`, `id_user`, `id_product`, `quantity`, `tanggal`, `alamat`, `bukti`, `status`, `resi`) VALUES
+(14, 12, 1, 1, '2020-05-01', 'Antapani', 'buktitransfer.jpg', 'proses', ''),
+(15, 12, 2, 2, '2020-05-01', 'uw', 'buktitransfer.jpg', 'proses', ''),
+(16, 12, 4, 2, '2020-05-01', 'Antapani, Bandung', '197234-min1.jpg', 'done', ''),
+(17, 12, 3, 1, '2020-05-01', '', 'KTM_SYARAIHANHEGGI_1301184219-min2.jpg', 'refund', ''),
+(18, 12, 5, 1, '2020-05-01', 'awe', 'KTM_SYARAIHANHEGGI_1301184219-min2.jpg', 'proses', ''),
+(20, 12, 5, 1, '2020-05-02', '', NULL, 'belum', '');
 
 -- --------------------------------------------------------
 
@@ -198,7 +201,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `id_ap` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_ap` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `hewan`
@@ -210,7 +213,7 @@ ALTER TABLE `hewan`
 -- AUTO_INCREMENT for table `keranjang`
 --
 ALTER TABLE `keranjang`
-  MODIFY `id_keranjang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_keranjang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `product`
