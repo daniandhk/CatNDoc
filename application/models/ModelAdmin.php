@@ -52,7 +52,7 @@ class ModelAdmin extends CI_Model{
 	}
 
 	public function get_all_penjualan() {
-		$this->db->select('id_keranjang, user.nama as pembeli, product.nama as barang, quantity, bukti, status, tanggal')
+		$this->db->select('id_keranjang, user.nama as pembeli, product.nama as barang, quantity, bukti, status, tanggal, alamat, resi')
 						->from('keranjang')
 						->join('user', 'user.id_user = keranjang.id_user')
 						->join('product', 'product.id_product = keranjang.id_product')
@@ -64,8 +64,8 @@ class ModelAdmin extends CI_Model{
 		$this->db->where('id_keranjang', $id_keranjang)->set('status','packing')->update('keranjang');
 	}
 
-	public function kirimBarang($id_keranjang) {
-		$this->db->where('id_keranjang', $id_keranjang)->set('status','delivery')->update('keranjang');
+	public function kirimBarang($id_keranjang, $data) {
+		$this->db->where('id_keranjang', $id_keranjang)->set('status','delivery')->set('resi', $data['resi'])->update('keranjang');
 	}
 
 	public function batalKirim($id_keranjang) {
@@ -74,5 +74,9 @@ class ModelAdmin extends CI_Model{
 
 	public function batalPembayaran($id_keranjang) {
 		$this->db->where('id_keranjang', $id_keranjang)->set('status','proses')->update('keranjang');
+	}
+
+	public function ubahNomorResi($id_keranjang, $data) {
+		$this->db->where('id_keranjang', $id_keranjang)->set('resi', $data['resi'])->update('keranjang');
 	}
 }

@@ -242,7 +242,8 @@
 						            	<a href="#" data-toggle="modal" data-target="#kirim<?php echo $no; ?>" class="btn btn-info"><i class="fa fa-truck"></i> Kirim</a>
 						            	<a href="#" data-toggle="modal" data-target="#cancelPembayaran<?php echo $no++; ?>" class="btn btn-danger my-1"><i class="fa fa-window-close"></i> Batal</a>
 						            	<?php } else if($pen['status'] == "delivery"){?>
-						            	<a href="#" data-toggle="modal" data-target="#cancelDeliv<?php echo $no++; ?>" class="btn btn-danger"><i class="fa fa-window-close"></i> Batal</a>
+						            	<a href="#" data-toggle="modal" data-target="#cekResi<?php echo $no; ?>" class="btn btn-primary"><i class="fa fa-list-alt"></i> Cek Resi</a>
+						            	<a href="#" data-toggle="modal" data-target="#cancelDeliv<?php echo $no++; ?>" class="btn btn-danger my-2"><i class="fa fa-window-close"></i> Batal</a>
 						            	<?php } ?>
 						            </td>
 								</tr>
@@ -345,9 +346,26 @@
 			      		</div>
 			      	<div class="modal-body">
 			        	<p>Barang <b><?php echo $pen['barang']; ?></b> dengan jumlah <b><?php echo $pen['quantity']; ?></b> akan dikirim kepada <b><?php echo $pen['pembeli']; ?></b>  ?</p>
+			        	<form action="<?php echo base_url('index.php/ControlAdmin/kirimBarang/').$pen['id_keranjang']; ?>" method="post">
+			        		<div class="form-group row">
+			        			<label for="alamat" class="col-3 col-form-label"><b>Alamat</b></label>
+			        			<div class="col-9">
+			        				<textarea class="form-control-plaintext" name="alamat" placeholder="Alamat" readonly><?php echo $pen['alamat']; ?> </textarea>
+			        			</div>
+			        		</div>
+			        		<div class="form-group row">
+			        			<label for="no_resi" class="col-3 col-form-label"><b>No. Resi</b></label>
+			        			<div class="col-9">
+			        				<input type="text" class="form-control" name="no_resi" placeholder="No. Resi" value="<?php echo $pen['resi']; ?>" required>
+			        				<?php if ($pen['resi'] != "") { ?>
+				        			<small><i>Pesanan ini sudah pernah diinputkan resi yang tertera, apabila ada kesalahan mohon diganti.</i></small>
+				        			<?php } ?>
+			        			</div>
+			        		</div>
 			      	</div>
 			      	<div class="modal-footer">
-			      		<a class="btn btn-info" href="<?php echo base_url('index.php/ControlAdmin/kirimBarang/').$pen['id_keranjang']; ?>"><i class="fa fa-truck"></i> Ya, Kirim</a>
+			      		<button class="btn btn-info"><i class="fa fa-truck"></i> Ya, Kirim</button>
+			      		</form>
 			        	<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 			      	</div>
 			    	</div>
@@ -374,7 +392,7 @@
 			  	</div>
 			</div>
 		<?php } else if($pen['status'] == "delivery") { ?>
-			<div class="modal fade" id="cancelDeliv<?php echo $no++; ?>" tabindex="-1" role="dialog">
+			<div class="modal fade" id="cancelDeliv<?php echo $no; ?>" tabindex="-1" role="dialog">
 			  	<div class="modal-dialog" role="document">
 			    	<div class="modal-content">
 			      		<div class="modal-header">
@@ -388,6 +406,47 @@
 			      	</div>
 			      	<div class="modal-footer">
 			      		<a class="btn btn-danger" href="<?php echo base_url('index.php/ControlAdmin/batalKirim/').$pen['id_keranjang']; ?>"><i class="fa fa-window-close"></i> Ya, Batalkan</a>
+			        	<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			      	</div>
+			    	</div>
+			  	</div>
+			</div>
+
+			<div class="modal fade" id="cekResi<?php echo $no++; ?>" tabindex="-1" role="dialog">
+			  	<div class="modal-dialog" role="document">
+			    	<div class="modal-content">
+			      		<div class="modal-header">
+				        	<h5 class="modal-title">Cek Resi</h5>
+			        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          			<span aria-hidden="true">&times;</span>
+			        		</button>
+			      		</div>
+			      	<div class="modal-body">
+			      		<form action="<?php echo base_url('index.php/ControlAdmin/ubahNomorResi/').$pen['id_keranjang']; ?>" method="post">
+			      			<div class="form-group row">
+			      				<label for="penerima" class="col-3 col-form-label"><b>Penerima</b></label>
+			        			<div class="col-9">
+			        				<input type="text" class="form-control-plaintext" name="penerima" placeholder="Penerima" value="<?php echo $pen['pembeli']; ?>" readonly>
+			        			</div>
+			        			<label for="barang" class="col-3 col-form-label"><b>Barang</b></label>
+			        			<div class="col-9">
+			        				<input type="text" class="form-control-plaintext" name="barang" placeholder="Penerima" value="<?php echo $pen['barang']; ?> (<?php echo $pen['quantity']; ?>)" readonly>
+			        			</div>
+			        			<label for="alamat" class="col-3 col-form-label"><b>Alamat</b></label>
+			        			<div class="col-9">
+			        				<textarea class="form-control-plaintext" name="alamat" placeholder="Alamat" readonly><?php echo $pen['alamat']; ?> </textarea>
+			        			</div>
+			        		</div>
+			        		<div class="form-group row">
+			        			<label for="no_resi" class="col-3 col-form-label"><b>No. Resi</b></label>
+			        			<div class="col-9">
+			        				<input type="text" class="form-control" name="no_resi" placeholder="No. Resi" value="<?php echo $pen['resi']; ?>" required>
+			        			</div>
+			        		</div>
+			      	</div>
+			      	<div class="modal-footer">
+			      		<button class="btn btn-primary"><i class="fa fa-pencil"></i> Ubah Resi</button>
+			      	</form>
 			        	<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 			      	</div>
 			    	</div>

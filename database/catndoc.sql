@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 02, 2020 at 08:22 AM
+-- Generation Time: May 02, 2020 at 11:29 AM
 -- Server version: 10.4.8-MariaDB
--- PHP Version: 7.3.11
+-- PHP Version: 7.3.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -94,11 +94,11 @@ CREATE TABLE `keranjang` (
 --
 
 INSERT INTO `keranjang` (`id_keranjang`, `id_user`, `id_product`, `quantity`, `tanggal`, `alamat`, `bukti`, `status`, `resi`) VALUES
-(14, 12, 1, 1, '2020-05-01', 'Antapani', 'buktitransfer.jpg', 'proses', ''),
-(15, 12, 2, 2, '2020-05-01', 'uw', 'buktitransfer.jpg', 'proses', ''),
-(16, 12, 4, 2, '2020-05-01', 'Antapani, Bandung', '197234-min1.jpg', 'done', ''),
-(17, 12, 3, 1, '2020-05-01', '', 'KTM_SYARAIHANHEGGI_1301184219-min2.jpg', 'refund', ''),
-(18, 12, 5, 1, '2020-05-01', 'awe', 'KTM_SYARAIHANHEGGI_1301184219-min2.jpg', 'proses', ''),
+(14, 12, 1, 1, '2020-05-01', 'Antapani', 'buktitransfer.jpg', 'delivery', '290333495'),
+(15, 12, 2, 2, '2020-05-01', 'uw', 'buktitransfer.jpg', 'packing', ''),
+(16, 12, 4, 2, '2020-05-01', 'Antapani, Bandung', 'buktitransfer1(2).jpg', 'done', ''),
+(17, 12, 3, 1, '2020-05-01', '', 'buktitransfer3.jpg', 'refund', ''),
+(18, 12, 5, 1, '2020-05-01', 'awe', 'buktitransfer3.jpg', 'proses', ''),
 (20, 12, 5, 1, '2020-05-02', '', NULL, 'belum', '');
 
 -- --------------------------------------------------------

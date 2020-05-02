@@ -45,7 +45,10 @@ class ControlAdmin extends CI_Controller{
 
 	public function kirimBarang() {
 		$id_keranjang = $this->uri->segment(3);
-		$this->ModelAdmin->kirimBarang($id_keranjang);
+		$data = array(
+			'resi' => $this->input->post('no_resi')
+		);
+		$this->ModelAdmin->kirimBarang($id_keranjang, $data);
 		redirect('ControlAdmin');
 	}
 
@@ -58,6 +61,15 @@ class ControlAdmin extends CI_Controller{
 	public function batalPembayaran() {
 		$id_keranjang = $this->uri->segment(3);
 		$this->ModelAdmin->batalPembayaran($id_keranjang);
+		redirect('ControlAdmin');
+	}
+
+	public function ubahNomorResi() {
+		$id_keranjang = $this->uri->segment(3);
+		$data = array(
+			'resi' => $this->input->post('no_resi')
+		);
+		$this->ModelAdmin->ubahNomorResi($id_keranjang, $data);
 		redirect('ControlAdmin');
 	}
 }
