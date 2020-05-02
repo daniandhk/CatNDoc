@@ -19,6 +19,13 @@
         font-size: 19px;
       }     
 
+      .editjumbo {
+        border:7px solid #003366;
+        width: 73%;
+        margin: 0 auto;
+        margin-bottom:2%;
+        border-radius:50px;
+      }
     </style>
   </head>
   <body>
@@ -71,6 +78,9 @@
   </div>
 </div>
 
+<br>
+<br>
+<div class="jumbotron jumbotron-fluid editjumbo">
       <!-- START USER PROFILE -->
       <div class="container">
                   <div class="row">
@@ -144,7 +154,7 @@
                       </div>
                   </div>
       </div>
-
+</div>
     <?php $no = 0; foreach ($appointment as $a) { if($a['email'] == $email) { $no++?>
     <div class="modal fade" id="detailAppointment<?php echo $no; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
