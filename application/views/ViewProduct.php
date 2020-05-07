@@ -33,6 +33,7 @@
 		input[type=number] {
   			-moz-appearance: textfield;
 		}
+		.dataTables_filter, .dataTables_info, .dataTables_length { display: none; }
 		/* Chrome, Safari, Edge, Opera */
 		input::-webkit-outer-spin-button,
 		input::-webkit-inner-spin-button {
@@ -69,7 +70,8 @@
    				<button id="btn4" class="btn btn-secondary my-1">LIST PRODUCT</button>
    			</div>
    			<div class="col-9">
-   				<div class="my-2">
+   				<!-- Tanpa JSON dan AjAX -->
+   				<!-- <div class="my-2">
    					<div class="card">
    						<div class="card-header inline-block" style="font-weight: bolder;">LIST PRODUCT
 						</div>
@@ -98,30 +100,52 @@
    							</table>
    						</div>
    					</div>
-   				</div>
+   				</div> -->
+
+   				<!-- Dengan JSON dan AJAX -->
+   				<div class="my-2">
+	   					<div class="card">
+	   						<div class="card-header inline-block" style="font-weight: bolder;">LIST PRODUCT
+							</div>
+	   						<div class="card-body" id="tblproduct">
+	   							<table id="product_table" class="table table-hover table-bordered" style="">
+	   								<thead>
+	   									<tr>
+	   										<th>Nama Product</th>
+	   										<th>Foto</th>
+	   										<th>Harga</th>
+	   										<th>Action</th>
+	   									</tr>
+	   								</thead>
+	   								<tbody></tbody>
+	   							</table>
+	   						</div>
+	   					</div>
+	   				</div>
 
    				<div class="my-2" id="add_product">
    					<div class="card">
    						<div class="card-header inline-block" style="font-weight: bolder;">ADD PRODUCT
 						</div>
    						<div class="card-body">
-   							<?php echo form_open_multipart('ControlProduct/addProduct');?>
+   							<?php //echo form_open_multipart('ControlProduct/addProduct');?>
+   							<form id="form_addProduct">
 						        <input type="hidden" class="form-control" placeholder="ID Product" name="id_product" value=""  required>
 						          <div class="form-group">
 						            <label for="nama">Nama</label>
-						            <input type="text" class="form-control" id="nama" placeholder="Nama" name="nama"  value="" required>
+						            <input type="text" class="form-control" id="field_nama" placeholder="Nama" name="nama"  value="" required>
 						          </div>
 						          <div class="form-group">
 						            <label for="harga">Harga</label>
-						            <input type="number" class="form-control" id="harga" placeholder="Harga" name="harga" value="" required>
+						            <input type="number" class="form-control" id="field_harga" placeholder="Harga" name="harga" value="" required>
 						          </div>
 						          <div class="form-group">
 						            <label for="deskripsi">Deskripsi</label>
-						            <input type="textarea" id="deskripsi" class="form-control" placeholder="Deskripsi" name="deskripsi" value="">
+						            <textarea class="form-control" name="deskripsi" id="deskripsi_field"></textarea>
 						          </div>
 						          <div class="form-group">
 						            <label for="jenis">Jenis</label>
-						            <select class="form-control" name="jenis">
+						            <select class="form-control" name="jenis" id="jenis_select">
 						            	<option value="Makanan">Makanan</option>
 						            	<option value="Peralatan">Peralatan</option>
 						            	<option value="Lain-lain">Lain-lain</option>
@@ -129,12 +153,12 @@
 						          </div>
 						        <div class="form-group">
 						        	<label for="upload_foto">Upload Foto</label>
-						        	<input type="file" id="upload_foto" class="form-control" name="foto">
+						        	<input type="file" id="upload_foto" class="form-control" id="upload_foto_field" name="foto">
 						        </div>
 						        <div class="modal-footer">
-						        <input  type="submit" class="btn btn-primary" id="hapus" value="Submit" placeholder="Simpan">
+						        <input  type="submit" id="btn_add_product" class="btn btn-primary" id="hapus" value="Submit" placeholder="Simpan">
 						        </div>
-						        </form>
+						    </form>
    						</div>
    					</div>
    				</div>
@@ -212,8 +236,66 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <!-- DataTables -->
+    <script type="text/javascript" src="<?php echo base_url('assets/DataTables/DataTables-1.10.20/js/jquery.dataTables.min.js'); ?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/DataTables/DataTables-1.10.20/js/dataTables.bootstrap4.min.js'); ?>"></script>
+
+    <script type="text/javascript">
+    	$(document).ready(function(){
+    		show_product();
+
+    		$('#product_table').dataTable();
+
+    		function show_product() {
+    			$.ajax({
+    				type : 'ajax',
+    				url : '<?php echo site_url('ControlProduct/show_product') ?>',
+    				async : true,
+    				dataType : 'json',
+    				success : function(data) {
+    					var html = '';
+    					var i;
+    					for(i=0; i<data.length; i++) {
+    						html += '<tr>' +
+    								'<td>'+data[i].nama+'</td>'+
+    								'<td><img src="<?php echo base_url('assets/img/Sale/') ?>'+data[i].foto+'" class="text-center imageTableShow"</td>'+
+    								'<td>'+data[i].harga+'</td>'+
+   									'<td>'+'<a href="" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#modalDetailProduct'+data[i].id_product+'">Detail</a>'+
+   										'<a href="" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#modalGantiFoto'+data[i].id_product+'">Ganti Foto</a>'+
+   									'</td>';
+
+    					}
+    					$('#product_table').html(html);
+    				}
+    			});
+    		}
+
+    		$('#form_addProduct').submit(function(e){
+    			// var nama = $('#field_nama').val();
+    			// var harga = $('#field_harga').val();
+    			// var deskripsi = $('#deskripsi_field').val();
+    			// var jenis = $('#jenis_select').val();
+    			
+    			e.preventDefault();
+    			$.ajax({
+    				type : "POST",
+    				url : "<?php echo base_url('index.php/ControlProduct/addNewProduct'); ?>",
+    				dataType : "JSON",
+    				data : new FormData(this),
+    				// data : {nama: nama, harga: harga, deskripsi: deskripsi, jenis: jenis},
+    				processData:false,
+                    contentType:false,
+                    cache:false,
+                    async:false,
+    			});
+    			show_product();
+    			return false;
+    		});
+    	});
+    </script>
   </body>
 </html>

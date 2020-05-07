@@ -46,6 +46,36 @@ class ControlProduct extends CI_Controller {
 		}
 	}
 
+	public function addNewProduct() {
+		$config['upload_path'] = './assets/img/Sale/';
+		$config['allowed_types'] = 'jpg|png|jpeg';
+		$config['max_size']  = '1024';
+		$config['max_width']  = '1024';
+		$config['max_height']  = '1024';
+		
+		$this->load->library('upload', $config);
+		
+		if ( ! $this->upload->do_upload('foto')){
+			$error = array('error' => $this->upload->display_errors());
+			echo $error['error'];
+		}
+		else {
+			$file = $this->upload->data();
+			$img_name = $this->upload->file_name;
+			$data = array(
+				'nama' => $this->input->post('nama'),
+				'harga' => $this->input->post('harga'),
+				'deskripsi' => $this->input->post('deskripsi'),
+				'jenis' => $this->input->post('jenis'),
+				'foto' => $img_name
+			);
+			$result = $this->ModelAdmin->addProduct($data);
+			echo json_decode($result);
+			
+			redirect('ControlProduct');
+		}
+	}
+
 	public function editProduct() {
 		$data = array(
 			'nama' => $this->input->post('nama'),
@@ -86,6 +116,11 @@ class ControlProduct extends CI_Controller {
 			echo 'Success';
 			redirect('ControlProduct');
 		}
+	}
+
+	public function show_product() {
+		$data = $this->ModelAdmin->get_products();
+		echo json_encode($data);
 	}
 }
 
