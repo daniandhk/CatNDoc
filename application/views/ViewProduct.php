@@ -166,73 +166,95 @@
    		</div>
    	</div>
     
-    
-  	<?php foreach ($product as $p ) {?>
-  	<div class="modal fade" id="modalDetailProduct<?php echo $p['id_product']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	    <div class="modal-dialog" role="document">
-	      	<div class="modal-content">
-	        	<div class="modal-header">
-	        		<center><h2>DETAIL BARANG</h2></center>
-	        	</div>
-	        	<div class="modal-body">
-	        <!-- isi form ini -->
-	        		<?php echo form_open_multipart('ControlProduct/editProduct/');?>
-	        			<input type="hidden" class="form-control" placeholder="ID Product" name="id_product" value="<?php echo $p['id_product']; ?>"  required>
-	          			<div class="form-group">
-	            			<label for="nama">Nama</label>
-	            			<input type="text" class="form-control" id="nama" placeholder="Nama" name="nama"  value="<?php echo $p['nama']; ?>" required>
-	          			</div>
-	          			<div class="form-group">
-	            			<label for="harga">Harga</label>
-	            			<input type="text" class="form-control" id="harga" placeholder="Harga" name="harga" value="<?php echo $p['harga']; ?>" required>
-	          			</div>
-	          			<div class="form-group">
-	            			<label for="deskripsi">Deskripsi</label>
-	            			<input type="textarea" id="deskripsi" class="form-control" placeholder="Deskripsi" name="deskripsi" value="<?php echo $p['deskripsi']; ?>">
-	          			</div>
-	        		</div>
-	        		<div class="modal-footer">
-	          			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-	        			<input  type="submit" class="btn btn-primary" id="hapus" value="Submit" placeholder="Simpan">
-	        		</div>
-	        		</form>
-	      		</div>
-	    	</div>
-	 	</div>
+    <div id="modalDetailandDelete">
+    	<?php foreach ($product as $p ) {?>
+	  	<div class="modal fade" id="modalDetailProduct<?php echo $p['id_product']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		    <div class="modal-dialog" role="document">
+		      	<div class="modal-content">
+		        	<div class="modal-header">
+		        		<center><h2>DETAIL BARANG</h2></center>
+		        	</div>
+		        	<div class="modal-body">
+		        <!-- isi form ini -->
+		        		<?php echo form_open_multipart('ControlProduct/editProduct/');?>
+		        			<input type="hidden" class="form-control" placeholder="ID Product" name="id_product" value="<?php echo $p['id_product']; ?>"  required>
+		          			<div class="form-group">
+		            			<label for="nama">Nama</label>
+		            			<input type="text" class="form-control" id="nama" placeholder="Nama" name="nama"  value="<?php echo $p['nama']; ?>" required>
+		          			</div>
+		          			<div class="form-group">
+		            			<label for="harga">Harga</label>
+		            			<input type="text" class="form-control" id="harga" placeholder="Harga" name="harga" value="<?php echo $p['harga']; ?>" required>
+		          			</div>
+		          			<div class="form-group">
+		            			<label for="deskripsi">Deskripsi</label>
+		            			<input type="textarea" id="deskripsi" class="form-control" placeholder="Deskripsi" name="deskripsi" value="<?php echo $p['deskripsi']; ?>">
+		          			</div>
+		        		</div>
+		        		<div class="modal-footer">
+		          			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		        			<input  type="submit" class="btn btn-primary" id="hapus" value="Submit" placeholder="Simpan">
+		        		</div>
+		        		</form>
+		      		</div>
+		    	</div>
+		 	</div>
 
-	 <div class="modal fade" id="modalGantiFoto<?php echo $p['id_product']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	    <div class="modal-dialog" role="document">
-	      	<div class="modal-content">
-	        	<div class="modal-header">
-	        		<center><h2>FOTO BARANG</h2></center>
-	        	</div>
-	        	<div class="modal-body">
-	        		<?php echo form_open_multipart('ControlProduct/editProductFoto/');?>
-	        			<input type="hidden" class="form-control" placeholder="ID Product" name="id_product" value="<?php echo $p['id_product']; ?>"  required>
-	          			<div class="form-group">
-	            			<label for="nama">Nama</label>
-	            			<input type="text" class="form-control" id="nama" placeholder="Nama" disabled value="<?php echo $p['nama']; ?>" required>
-	          			</div>
-	          			<div class="form-group">
-	        				<label for="Foto">Foto</label>
-	        				<div>
-	        					<img class="imageModal" style="width:100%;max-width: 200px;height: auto" src="<?php echo base_url('assets/img/sale/').$p['foto']; ?>">
-	        				</div>
-	        			</div>
-	        			<div class="form-group">
-	        				<label for="upload_foto">Upload Foto</label>
-	        				<input type="file" id="upload_foto" class="form-control" name="foto">
-	        			</div>
-	        	</div>
-	        	<div class="modal-footer">
-	          		<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-	        		<input  type="submit" class="btn btn-primary" id="hapus" value="Submit" placeholder="Simpan">
-	        	</div>
-	        	</form>
-	      	</div>
-	    </div>
-	 </div>
-	<?php } ?>
+		 <div class="modal fade" id="modalGantiFoto<?php echo $p['id_product']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		    <div class="modal-dialog" role="document">
+		      	<div class="modal-content">
+		        	<div class="modal-header">
+		        		<center><h2>FOTO BARANG</h2></center>
+		        	</div>
+		        	<div class="modal-body">
+		        		<?php echo form_open_multipart('ControlProduct/editProductFoto/');?>
+		        			<input type="hidden" class="form-control" placeholder="ID Product" name="id_product" value="<?php echo $p['id_product']; ?>"  required>
+		          			<div class="form-group">
+		            			<label for="nama">Nama</label>
+		            			<input type="text" class="form-control" id="nama" placeholder="Nama" disabled value="<?php echo $p['nama']; ?>" required>
+		          			</div>
+		          			<div class="form-group">
+		        				<label for="Foto">Foto</label>
+		        				<div>
+		        					<img class="imageModal" style="width:100%;max-width: 200px;height: auto" src="<?php echo base_url('assets/img/sale/').$p['foto']; ?>">
+		        				</div>
+		        			</div>
+		        			<div class="form-group">
+		        				<label for="upload_foto">Upload Foto</label>
+		        				<input type="file" id="upload_foto" class="form-control" name="foto">
+		        			</div>
+		        	</div>
+		        	<div class="modal-footer">
+		          		<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		        		<input  type="submit" class="btn btn-primary" id="hapus" value="Submit" placeholder="Simpan">
+		        	</div>
+		        	</form>
+		      	</div>
+		    </div>
+		 </div>
+
+		 <div class="modal fade" id="deleteProduct<?php echo $p['id_product']; ?>" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Konfirmasi Delete Product</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<p>Apakah anda yakin untuk menghapus <b><?php echo $p['nama']; ?></b>?</p>
+						<img class="imageModal" style="width:100%;max-width: 200px;height: auto" src="<?php echo base_url('assets/img/sale/').$p['foto']; ?>">
+					</div>
+					<div class="modal-footer">
+						<a class="btn btn-danger" href="<?php echo base_url('index.php/ControlProduct/deleteProduct/')?>'+data.id_product+'"><i class="fa fa-trash"></i> Ya, Hapus</a>
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						</div>
+				</div>
+			</div>
+		</div>
+		<?php } ?>
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -266,10 +288,108 @@
     								'<td>'+data[i].harga+'</td>'+
    									'<td>'+'<a href="" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#modalDetailProduct'+data[i].id_product+'">Detail</a>'+
    										'<a href="" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#modalGantiFoto'+data[i].id_product+'">Ganti Foto</a>'+
+   										'<a href="" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#deleteProduct'+data[i].id_product+'">Hapus</a>'+
    									'</td>';
 
     					}
     					$('#product_table').html(html);
+    				}
+    			});
+    		}
+
+    		function addNewModal() {
+    			$.ajax({
+    				type : 'ajax',
+    				url : '<?php echo site_url('ControlProduct/getNewestProduct') ?>',
+    				async : true,
+    				dataType : 'json',
+    				success : function(data) {
+    					var html = '';
+    					var i = 0;
+    					html += '<div class="modal fade" id="modalDetailProduct'+data.id_product+'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">'+
+	    						'<div class="modal-dialog" role="document">'+
+							      	'<div class="modal-content">'+
+							        	'<div class="modal-header">'+
+							        		'<center><h2>DETAIL BARANG</h2></center>'+
+							        	'</div>'+
+							        	'<div class="modal-body">'+
+							        		'<form action="<?php echo site_url('ControlProduct/editProduct'); ?>" enctype="multipart/form-data" method="post" accept-charset="utf-8">'+
+							        			'<input type="hidden" class="form-control" placeholder="ID Product" name="id_product" value="'+data.id_product+'"  required>'+
+							        			'<div class="form-group">'+
+							            			'<label for="nama">Nama</label>'+
+							            			'<input type="text" class="form-control" id="nama" placeholder="Nama" name="nama"  value="'+data.nama+'" required>'+
+							          			'</div>'+
+							          			'<div class="form-group">'+
+							            			'<label for="harga">Harga</label>'+
+							            			'<input type="text" class="form-control" id="harga" placeholder="Harga" name="harga" value="'+data.harga+'" required>'+
+							          			'</div>'+
+							          			'<div class="form-group">'+
+							            			'<label for="deskripsi">Deskripsi</label>'+
+							            			'<input type="textarea" id="deskripsi" class="form-control" placeholder="Deskripsi" name="deskripsi" value="'+data.deskripsi+'">'+
+							          			'</div>'+
+							        		'</div>'+
+							        		'<div class="modal-footer">'+
+							          			'<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>'+
+							        			'<input  type="submit" class="btn btn-primary" id="hapus" value="Submit" placeholder="Simpan">'+
+							        		'</div>'+
+							        		'</form>'+
+							      		'</div>'+
+							    	'</div>'+
+							 	'</div>'+
+
+							 '<div class="modal fade" id="modalGantiFoto'+data.id_product+'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">'+
+							    '<div class="modal-dialog" role="document">'+
+							      	'<div class="modal-content">'+
+							        	'<div class="modal-header">'+
+							        		'<center><h2>FOTO BARANG</h2></center>'+
+							        	'</div>'+
+							        	'<div class="modal-body">'+
+							        		'<form action="<?php echo site_url('ControlProduct/editProductFoto'); ?>" enctype="multipart/form-data" method="post" accept-charset="utf-8">'+
+							        			'<input type="hidden" class="form-control" placeholder="ID Product" name="id_product" value="'+data.id_product+'"  required>'+
+							          			'<div class="form-group">'+
+							            			'<label for="nama">Nama</label>'+
+							            			'<input type="text" class="form-control" id="nama" placeholder="Nama" disabled value="'+data.nama+'" required>'+
+							          			'</div>'+
+							          			'<div class="form-group">'+
+							        				'<label for="Foto">Foto</label>'+
+							        				'<div>'+
+							        					'<img class="imageModal" style="width:100%;max-width: 200px;height: auto" src="<?php echo base_url('assets/img/sale/'); ?>'+data.foto+'">'+
+							        				'</div>'+
+							        			'</div>'+
+							        			'<div class="form-group">'+
+							        				'<label for="upload_foto">Upload Foto</label>'+
+							        				'<input type="file" id="upload_foto" class="form-control" name="foto">'+
+							        			'</div>'+
+							        	'</div>'+
+							        	'<div class="modal-footer">'+
+							          		'<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>'+
+							        		'<input  type="submit" class="btn btn-primary" id="hapus" value="Submit" placeholder="Simpan">'+
+							        	'</div>'+
+							        	'</form>'+
+							      	'</div>'+
+							    '</div>'+
+							 '</div>'+
+							 '<div class="modal fade" id="deleteProduct'+data.id_product+'" tabindex="-1" role="dialog">'+
+							  	'<div class="modal-dialog" role="document">'+
+							    	'<div class="modal-content">'+
+							      		'<div class="modal-header">'+
+								        	'<h5 class="modal-title">Konfirmasi Delete Product</h5>'+
+							        		'<button type="button" class="close" data-dismiss="modal" aria-label="Close">'+
+							          			'<span aria-hidden="true">&times;</span>'+
+							        		'</button>'+
+							      		'</div>'+
+							      	'<div class="modal-body">'+
+							        	'<p>Apakah anda yakin untuk menghapus <b>'+data.nama+'</b>?</p>'+
+							        	'<img class="imageModal" style="width:100%;max-width: 200px;height: auto" src="<?php echo base_url('assets/img/sale/') ?>'+data.foto+'">'+
+							      	'</div>'+
+							      	'<div class="modal-footer">'+
+							      		'<a class="btn btn-danger" href="<?php echo base_url('index.php/ControlProduct/deleteProduct/')?>'+data.id_product+'"><i class="fa fa-trash"></i> Ya, Hapus</a>'+
+							        	'<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>'+
+							      	'</div>'+
+							    	'</div>'+
+							  	'</div>'+
+							'</div>';
+							 $('#modalDetailandDelete').append(html);
     				}
     			});
     		}
@@ -292,6 +412,7 @@
                     cache:false,
                     async:false,
     			});
+    			addNewModal();
     			show_product();
     			return false;
     		});

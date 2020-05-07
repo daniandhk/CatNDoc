@@ -41,6 +41,9 @@ class ModelAdmin extends CI_Model{
 
 	public function addProduct($data) {
 		$this->db->insert('product', $data);
+		$insert_id = $this->db->insert_id();
+
+		return $insert_id;
 	}
 
 	public function editProduct($data,$id_product) {
@@ -78,5 +81,13 @@ class ModelAdmin extends CI_Model{
 
 	public function ubahNomorResi($id_keranjang, $data) {
 		$this->db->where('id_keranjang', $id_keranjang)->set('resi', $data['resi'])->update('keranjang');
+	}
+
+	public function getNewestProduct() {
+		return $this->db->select('*')->from('product')->limit(1)->order_by('id_product', 'desc')->get()->row_array();
+	}
+
+	public function deleteBarang($id_product) {
+		return $this->db->where('id_product', $id_product)->delete('product');
 	}
 }
