@@ -72,4 +72,10 @@ class ControlAdmin extends CI_Controller{
 		$this->ModelAdmin->ubahNomorResi($id_keranjang, $data);
 		redirect('ControlAdmin');
 	}
+
+	public function refund() {
+		$id = $this->uri->segment(3);
+		$this->ModelAdmin->refund($id);
+		redirect('ControlAdmin');
+	}
 }

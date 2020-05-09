@@ -81,7 +81,7 @@
    				<h3 style="font-weight: bolder">Lihat Data</p>
    				<button id="btn1" class="btn btn-secondary my-1">DATA USER</button>
    				<button id="btn2" class="btn btn-secondary my-1">DATA APPOINMENT</button> 
-   				<button id="btn3" class="btn btn-secondary my-1">DATA HEWAN</button>
+   				<!-- <button id="btn3" class="btn btn-secondary my-1">DATA HEWAN</button> -->
    				<button id="btn4" class="btn btn-secondary my-1">DATA PENJUALAN</button>
    			</div>
    			<div class="col-9">
@@ -244,7 +244,9 @@
 						            	<?php } else if($pen['status'] == "delivery"){?>
 						            	<a href="#" data-toggle="modal" data-target="#cekResi<?php echo $no; ?>" class="btn btn-primary"><i class="fa fa-list-alt"></i> Cek Resi</a>
 						            	<a href="#" data-toggle="modal" data-target="#cancelDeliv<?php echo $no++; ?>" class="btn btn-danger my-2"><i class="fa fa-window-close"></i> Batal</a>
-						            	<?php } ?>
+						            	<?php } else if($pen['status'] == "refund"){?>
+						            	<a href="#" data-toggle="modal" data-target="#refund<?php echo $no++; ?>" class="btn btn-info"><i class="fa fa-check"></i> Refund</a>
+						           		 <?php } ?>
 						            </td>
 								</tr>
 								<?php  } ?>
@@ -452,8 +454,23 @@
 			    	</div>
 			  	</div>
 			</div>
-		<?php }
-	} ?>
+		<?php } else if($pen['status'] == "refund") { ?>
+			<div class="modal fade" id="refund<?php echo $no; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+			        <div class="modal-content">
+			          <div class="modal-header text-center">
+			            <h4 class="modal-title font-weight-bold">Apakah Sudah di Refund?</h4>
+			            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			              <span aria-hidden="true">&times;</span>
+			            </button>
+			    </div>
+			    <div class="modal-footer d-flex justify-content-center">
+			              <a class="btn btn-danger" href="<?php echo base_url('index.php/ControlAdmin/refund/').$pen['id_keranjang']; ?>"><i class="fa fa-trash"></i> Ya, Sudah</a>
+			            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			      </div>
+			  </div>
+			</div>
+	<?php } }?>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

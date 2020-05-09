@@ -90,4 +90,8 @@ class ModelAdmin extends CI_Model{
 	public function deleteBarang($id_product) {
 		return $this->db->where('id_product', $id_product)->delete('product');
 	}
+
+	public function refund($id) {
+		$this->db->where('id_keranjang', $id)->delete('keranjang');
+	}
 }

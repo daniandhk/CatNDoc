@@ -81,9 +81,6 @@
           <li class="nav-item">
             <a class="nav-link" href="<?php echo site_url('ControlShop'); ?>">Shop<span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-          </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li class="nav-item active"><a href="<?= site_url('ControlCart'); ?>" class="nav-link"><i class="fa fa-shopping-cart"></i> Cart </a></li>

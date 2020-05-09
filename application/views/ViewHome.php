@@ -23,7 +23,7 @@
         filter: blur(5px);
         -webkit-filter: blur(5px);
         width: 100%;
-        height: 721px;
+        height: 1720px;
         background-size: cover;
     }
     
@@ -65,6 +65,21 @@
         font-weight: bold;
         position: absolute;
         top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        width: 60%;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .centered3{
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0, 0.4);
+        color: white;
+        font-weight: bold;
+        position: absolute;
+        top: 150%;
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: 2;
@@ -156,6 +171,12 @@
             <br>
             <h1 class="welkam2" style="color: white;"> ONE STOP FOR YOUR PET</h1>
             <a href="#" class="btn btn-default btn-rounded mb-4 button2" style="color: white;" data-toggle="modal" data-target="#modalContactForm">REQUEST APPOINTMENT</a>
+        </div>
+
+        <div class="centered3">
+          <h1>Apa Itu Cat N Doc?</h1>
+          <p>Cat N Doc merupakan web untuk memesan layanan kesehatan khusus kucing dan anjing.</p>
+          <p>Cat N Doc juga menyediakan layanan Petshop untuk keperluan hewan peliharaan anda.</p>
         </div>
 
         <div class="top-right">

@@ -56,9 +56,6 @@
           <li class="nav-item active">
             <a class="nav-link" href="#"><b>Shop</b><span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-          </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <?php if (!isset($_SESSION['logged_in'])){ ?>
@@ -163,7 +160,6 @@
   <div class="col-lg-3">
     <div id="demo">
       <h1 class="my-4">Shop</h1>
-      <button type="button" onclick="loadDoc()">Change Content</button>
     </div>  
   </div>
   <div class="col-lg-9">
@@ -250,12 +246,8 @@
             <p class="card-text"><?php echo $p['deskripsi'] ?></p>
           </div>
           <div class="col-auto my-1">
-            <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Jumlah</label>
-            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="quantity">
-              <option selected value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-            </select>
+            <label for="quantity">Jumlah (1-3): </label>
+            <input type="range" id="vol" name="quantity" min="1" max="3">
           </div>
           <div class="modal-footer">
             <button type="submit" class="btn btn-primary">Submit</button>
@@ -267,21 +259,6 @@
 </div>
 <?php  } ?>
 
-    
-
-    <script>
-      function loadDoc() {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-          if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("demo").innerHTML =
-            this.responseText;
-          }
-        };
-        xhttp.open("GET", "ajax_barang.txt", true);
-        xhttp.send();
-      }
-    </script> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

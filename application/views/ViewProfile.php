@@ -44,17 +44,14 @@
           <li class="nav-item">
             <a class="nav-link" href="<?php echo site_url('Homepage'); ?>">Home</a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="#"><b>Profile</b><span class="sr-only">(current)</span></a>
-          </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
+            <a class="nav-link" href="<?php echo site_url('ControlShop'); ?>">Shop</a>
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li class="nav-item"><a href="<?= site_url('ControlCart'); ?>" class="nav-link"><i class="fa fa-shopping-cart"></i> Cart </a></li>
           <?php if (isset($_SESSION['logged_in'])){ ?>
-          <li class="nav-item"><a href="<?= site_url('ControlProfile'); ?>" class="nav-link"><i class="fa fa-user"></i> <?php echo $nama; ?></a></li>
+          <li class="nav-item active"><a href="<?= site_url('ControlProfile'); ?>" class="nav-link"><i class="fa fa-user"></i> <?php echo $nama; ?><span class="sr-only">(current)</span></a></li>
           <li class="nav-item"><a href="" class="nav-link" data-target="#modalLogout" data-toggle="modal"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
           <?php }?>
         </ul>
