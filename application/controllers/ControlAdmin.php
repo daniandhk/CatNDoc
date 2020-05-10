@@ -11,12 +11,16 @@ class ControlAdmin extends CI_Controller{
 
 	public function index()
 	{
-		$data['product'] = $this->ModelAdmin->get_products();
-		$data['users'] = $this->ModelAdmin->get_all_users();
-		$data['ap'] = $this->ModelAdmin->get_all_apointments();
-		$data['hewan'] = $this->ModelAdmin->get_all_hewan();
-		$data['penjualan'] = $this->ModelAdmin->get_all_penjualan();
-		$this->load->view('ViewAdmin', $data);
+		if(isset($_SESSION['email']) && $_SESSION['email'] == 'admin@admin') {
+			$data['product'] = $this->ModelAdmin->get_products();
+			$data['users'] = $this->ModelAdmin->get_all_users();
+			$data['ap'] = $this->ModelAdmin->get_all_apointments();
+			$data['hewan'] = $this->ModelAdmin->get_all_hewan();
+			$data['penjualan'] = $this->ModelAdmin->get_all_penjualan();
+			$this->load->view('ViewAdmin', $data);
+		} else {
+			redirect('','refresh')('HomePage');
+		}
 	}
 
 	public function deleteUser() {

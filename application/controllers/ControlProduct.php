@@ -12,8 +12,12 @@ class ControlProduct extends CI_Controller {
 
 	public function index()
 	{
-		$data['product'] = $this->ModelAdmin->get_products();
-		$this->load->view('ViewProduct', $data);
+		if(isset($_SESSION['email']) && $_SESSION['email'] == 'admin@admin') {
+			$data['product'] = $this->ModelAdmin->get_products();
+			$this->load->view('ViewProduct', $data);
+		} else {
+			redirect('HomePage');
+		}
 	}
 
 	public function addNewProduct() {

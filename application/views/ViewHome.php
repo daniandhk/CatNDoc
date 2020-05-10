@@ -199,7 +199,9 @@
                     <li><a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalLogout">Logout</a></li>
                     <?php } ?>
                     <li><a href="<?= site_url('ControlShop') ?>" class="btn btn-default btn-rounded mb-4" data-toggle="" data-target="">Shop</a></li>
+                    <?php if(isset($_SESSION['email']) && $_SESSION['email'] == 'admin@admin') { ?>
                     <li><a href="<?= site_url('ControlAdmin') ?>" class="btn btn-default btn-rounded mb-4" data-toggle="" data-target="">CEK ADMIN</a></li>
+                    <?php } ?>
                 </ul>
             </div>
         </div>
