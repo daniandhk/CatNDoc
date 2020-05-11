@@ -176,8 +176,9 @@
 		        	</div>
 		        	<div class="modal-body">
 		        <!-- isi form ini -->
-		        		<?php echo form_open_multipart('ControlProduct/editProduct/');?>
+		        		<form action="<?php echo site_url('ControlProduct/editProduct'); ?>" method="post">
 		        			<input type="hidden" class="form-control" placeholder="ID Product" name="id_product" value="<?php echo $p['id_product']; ?>"  required>
+		        			<input type="hidden" class="form-control" placeholder="ID Product" name="jenis" value="<?php echo $p['jenis']; ?>"  required>
 		          			<div class="form-group">
 		            			<label for="nama">Nama</label>
 		            			<input type="text" class="form-control" id="nama" placeholder="Nama" name="nama"  value="<?php echo $p['nama']; ?>" required>
@@ -193,9 +194,9 @@
 		        		</div>
 		        		<div class="modal-footer">
 		          			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-		        			<input  type="submit" class="btn btn-primary" id="hapus" value="Submit" placeholder="Simpan">
+		        				<input  type="submit" class="btn btn-primary" id="hapus" value="Simpan">
+		        				</form>
 		        		</div>
-		        		</form>
 		      		</div>
 		    	</div>
 		 	</div>
@@ -247,7 +248,7 @@
 						<img class="imageModal" style="width:100%;max-width: 200px;height: auto" src="<?php echo base_url('assets/img/sale/').$p['foto']; ?>">
 					</div>
 					<div class="modal-footer">
-						<a class="btn btn-danger" href="<?php echo base_url('index.php/ControlProduct/deleteProduct/')?>'+data.id_product+'"><i class="fa fa-trash"></i> Ya, Hapus</a>
+						<a class="btn btn-danger" href="<?php echo base_url('index.php/ControlProduct/deleteProduct/'.$p['id_product'])?>"><i class="fa fa-trash"></i> Ya, Hapus</a>
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 						</div>
 				</div>
@@ -312,9 +313,10 @@
 							        	'<div class="modal-header">'+
 							        		'<center><h2>DETAIL BARANG</h2></center>'+
 							        	'</div>'+
+							        	'<form action="<?php echo site_url('ControlProduct/editProduct'); ?>" method="post" accept-charset="utf-8">'+
 							        	'<div class="modal-body">'+
-							        		'<form action="<?php echo site_url('ControlProduct/editProduct'); ?>" enctype="multipart/form-data" method="post" accept-charset="utf-8">'+
 							        			'<input type="hidden" class="form-control" placeholder="ID Product" name="id_product" value="'+data.id_product+'"  required>'+
+							        			'<input type="hidden" class="form-control" placeholder="ID Product" name="jenis" value="'+data.jenis+'" required>'+
 							        			'<div class="form-group">'+
 							            			'<label for="nama">Nama</label>'+
 							            			'<input type="text" class="form-control" id="nama" placeholder="Nama" name="nama"  value="'+data.nama+'" required>'+
@@ -330,7 +332,7 @@
 							        		'</div>'+
 							        		'<div class="modal-footer">'+
 							          			'<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>'+
-							        			'<input  type="submit" class="btn btn-primary" id="hapus" value="Submit" placeholder="Simpan">'+
+							        			'<input  type="submit" class="btn btn-primary" id="" value="Simpan" placeholder="Simpan">'+
 							        		'</div>'+
 							        		'</form>'+
 							      		'</div>'+
@@ -343,8 +345,8 @@
 							        	'<div class="modal-header">'+
 							        		'<center><h2>FOTO BARANG</h2></center>'+
 							        	'</div>'+
+							        	'<form action="<?php echo site_url('ControlProduct/editProductFoto'); ?>" enctype="multipart/form-data" method="post" accept-charset="utf-8">'+
 							        	'<div class="modal-body">'+
-							        		'<form action="<?php echo site_url('ControlProduct/editProductFoto'); ?>" enctype="multipart/form-data" method="post" accept-charset="utf-8">'+
 							        			'<input type="hidden" class="form-control" placeholder="ID Product" name="id_product" value="'+data.id_product+'"  required>'+
 							          			'<div class="form-group">'+
 							            			'<label for="nama">Nama</label>'+
@@ -383,7 +385,7 @@
 							        	'<img class="imageModal" style="width:100%;max-width: 200px;height: auto" src="<?php echo base_url('assets/img/sale/') ?>'+data.foto+'">'+
 							      	'</div>'+
 							      	'<div class="modal-footer">'+
-							      		'<a class="btn btn-danger" href="<?php echo base_url('index.php/ControlProduct/deleteProduct/')?>'+data.id_product+'"><i class="fa fa-trash"></i> Ya, Hapus</a>'+
+							      		'<a class="btn btn-danger" href="<?php echo base_url("index.php/ControlProduct/deleteProduct/") ?>'+data.id_product+'"><i class="fa fa-trash"></i> Ya, Hapus</a>'+
 							        	'<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>'+
 							      	'</div>'+
 							    	'</div>'+

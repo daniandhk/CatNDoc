@@ -19,7 +19,7 @@ class ControlAdmin extends CI_Controller{
 			$data['penjualan'] = $this->ModelAdmin->get_all_penjualan();
 			$this->load->view('ViewAdmin', $data);
 		} else {
-			redirect('','refresh')('HomePage');
+			redirect('Homepage');
 		}
 	}
 

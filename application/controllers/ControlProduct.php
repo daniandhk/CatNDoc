@@ -55,13 +55,13 @@ class ControlProduct extends CI_Controller {
 			'nama' => $this->input->post('nama'),
 			'harga' => $this->input->post('harga'),
 			'deskripsi' => $this->input->post('deskripsi'),
-			'jenis' => $this->input->post('jenis'),
+			'jenis' => $this->input->post('jenis')
 		);
 		$id_product = $this->input->post('id_product');
 		$this->ModelAdmin->editProduct($data, $id_product);
 
-		echo 'Success';
 		redirect('ControlProduct');
+		echo '<script>console.log("edit success")</script>';
 	}
 
 	public function editProductFoto() {
@@ -84,7 +84,7 @@ class ControlProduct extends CI_Controller {
 				'foto' => $img_name
 			);
 			$id_product = $this->input->post('id_product');
-			$this->ModelAdmin->editProduct($data, $id_product);
+			$this->ModelAdmin->editProductFoto($data, $id_product);
 
 			echo 'Success';
 			redirect('ControlProduct');
@@ -105,6 +105,8 @@ class ControlProduct extends CI_Controller {
 		$id_product = $this->uri->segment(3);
 		$data = $this->ModelAdmin->deleteBarang($id_product);
 		echo json_encode($data);
+
+		redirect('ControlProduct');
 	}
 }
 

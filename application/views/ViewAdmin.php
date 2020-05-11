@@ -219,8 +219,9 @@
 									</tr>
 			    				</thead>
 							    <?php 
-								$no = 1;
+								$no = 0;
 								foreach ($penjualan as $pen) {
+									$no++;
 								?>
 								<tr>
 									<td><?php echo $no; ?></td>
@@ -237,15 +238,15 @@
 						            <td><?php if($pen['status'] == "belum") { ?>
 						            	<a href="#" class="btn btn-secondary disabled"><i class="fa fa-check"></i> Terima</a>
 						            	<?php } else if($pen['status'] == "proses"){?>
-						            	<a href="#" data-toggle="modal" data-target="#penjualan<?php echo $no++; ?>" class="btn btn-success"><i class="fa fa-check"></i> Terima</a>
+						            	<a href="#" data-toggle="modal" data-target="#penjualan<?php echo $pen['id_keranjang']; ?>" class="btn btn-success"><i class="fa fa-check"></i> Terima</a>
 						            	<?php } else if($pen['status'] == "packing"){?>
-						            	<a href="#" data-toggle="modal" data-target="#kirim<?php echo $no; ?>" class="btn btn-info"><i class="fa fa-truck"></i> Kirim</a>
-						            	<a href="#" data-toggle="modal" data-target="#cancelPembayaran<?php echo $no++; ?>" class="btn btn-danger my-1"><i class="fa fa-window-close"></i> Batal</a>
+						            	<a href="#" data-toggle="modal" data-target="#kirim<?php echo $pen['id_keranjang']; ?>" class="btn btn-info"><i class="fa fa-truck"></i> Kirim</a>
+						            	<a href="#" data-toggle="modal" data-target="#cancelPembayaran<?php echo $pen['id_keranjang']; ?>" class="btn btn-danger my-1"><i class="fa fa-window-close"></i> Batal</a>
 						            	<?php } else if($pen['status'] == "delivery"){?>
-						            	<a href="#" data-toggle="modal" data-target="#cekResi<?php echo $no; ?>" class="btn btn-primary"><i class="fa fa-list-alt"></i> Cek Resi</a>
-						            	<a href="#" data-toggle="modal" data-target="#cancelDeliv<?php echo $no++; ?>" class="btn btn-danger my-2"><i class="fa fa-window-close"></i> Batal</a>
+						            	<a href="#" data-toggle="modal" data-target="#cekResi<?php echo $pen['id_keranjang']; ?>" class="btn btn-primary"><i class="fa fa-list-alt"></i> Cek Resi</a>
+						            	<a href="#" data-toggle="modal" data-target="#cancelDeliv<?php echo $pen['id_keranjang']; ?>" class="btn btn-danger my-2"><i class="fa fa-window-close"></i> Batal</a>
 						            	<?php } else if($pen['status'] == "refund"){?>
-						            	<a href="#" data-toggle="modal" data-target="#refund<?php echo $no++; ?>" class="btn btn-info"><i class="fa fa-check"></i> Refund</a>
+						            	<a href="#" data-toggle="modal" data-target="#refund<?php echo $pen['id_keranjang']; ?>" class="btn btn-info"><i class="fa fa-check"></i> Refund</a>
 						           		 <?php } ?>
 						            </td>
 								</tr>
@@ -313,10 +314,10 @@
 	<?php } } ?>
 
 	<?php 
-	$no = 1;
+
 	foreach ($penjualan as $pen) {
 		if($pen['status'] == "proses") { ?>
-			<div class="modal fade" id="penjualan<?php echo $no++; ?>" tabindex="-1" role="dialog">
+			<div class="modal fade" id="penjualan<?php echo $pen['id_keranjang']; ?>" tabindex="-1" role="dialog">
 			  	<div class="modal-dialog" role="document">
 			    	<div class="modal-content">
 			      		<div class="modal-header">
@@ -337,7 +338,7 @@
 			  	</div>
 			</div>
 		<?php } else if($pen['status'] == "packing") { ?>
-			<div class="modal fade" id="kirim<?php echo $no; ?>" tabindex="-1" role="dialog">
+			<div class="modal fade" id="kirim<?php echo $pen['id_keranjang']; ?>" tabindex="-1" role="dialog">
 			  	<div class="modal-dialog" role="document">
 			    	<div class="modal-content">
 			      		<div class="modal-header">
@@ -374,7 +375,7 @@
 			  	</div>
 			</div>
 
-			<div class="modal fade" id="cancelPembayaran<?php echo $no++; ?>" tabindex="-1" role="dialog">
+			<div class="modal fade" id="cancelPembayaran<?php echo $pen['id_keranjang']; ?>" tabindex="-1" role="dialog">
 			  	<div class="modal-dialog" role="document">
 			    	<div class="modal-content">
 			      		<div class="modal-header">
@@ -394,7 +395,7 @@
 			  	</div>
 			</div>
 		<?php } else if($pen['status'] == "delivery") { ?>
-			<div class="modal fade" id="cancelDeliv<?php echo $no; ?>" tabindex="-1" role="dialog">
+			<div class="modal fade" id="cancelDeliv<?php echo $pen['id_keranjang']; ?>" tabindex="-1" role="dialog">
 			  	<div class="modal-dialog" role="document">
 			    	<div class="modal-content">
 			      		<div class="modal-header">
@@ -414,7 +415,7 @@
 			  	</div>
 			</div>
 
-			<div class="modal fade" id="cekResi<?php echo $no++; ?>" tabindex="-1" role="dialog">
+			<div class="modal fade" id="cekResi<?php echo $pen['id_keranjang']; ?>" tabindex="-1" role="dialog">
 			  	<div class="modal-dialog" role="document">
 			    	<div class="modal-content">
 			      		<div class="modal-header">
@@ -455,7 +456,7 @@
 			  	</div>
 			</div>
 		<?php } else if($pen['status'] == "refund") { ?>
-			<div class="modal fade" id="refund<?php echo $no; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal fade" id="refund<?php echo $pen['id_keranjang']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			  <div class="modal-dialog" role="document">
 			        <div class="modal-content">
 			          <div class="modal-header text-center">
@@ -470,6 +471,7 @@
 			      </div>
 			  </div>
 			</div>
+		</div>
 	<?php } }?>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
